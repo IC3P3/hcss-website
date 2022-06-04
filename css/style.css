@@ -17,3 +17,64 @@
 img {
     width: 100%;
 }
+
+a {
+    font-weight: 700;
+    transition: all 0.4s ease;
+}
+
+body {
+    line-height: 1.8;
+    color: #898fa1;
+    font-size: 15px;
+    font-family: 'Asap', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #11245a;
+}
+
+section {
+    padding-top: 125px;
+    padding-bottom: 125px;
+}
+
+.btn {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 0;
+}
+
+.btn-events {
+    background-color: #00416d;
+    color: rgb(255, 255, 255);
+}
+
+.btn-events:hover {
+    background-color: #002b47;
+    color: rgb(255, 255, 255);
+}
+
+#home {
+    background: linear-gradient(rgba(110, 112, 116, 0.5), rgba(110, 112, 116, 0.5)) , url(../img/home.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+}
+
+#home h1 {
+    font-weight: 700;
+}
+
+#home p {
+    max-width: 550px;
+    margin: 18px auto;
+}
