@@ -126,3 +126,7 @@ section {
     max-width: 550px;
     margin: 18px auto;
 }
+
+#media {
+    scroll-margin-top: -23px;
+}
