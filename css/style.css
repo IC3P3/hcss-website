@@ -130,3 +130,7 @@ section {
 #media {
     scroll-margin-top: -23px;
 }
+
+#call {
+    background-color: rgb(17, 36, 90);
+}
