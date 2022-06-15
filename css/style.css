@@ -48,6 +48,25 @@ section {
     padding-bottom: 125px;
 }
 
+footer .footer-links a,
+footer .social-icons a {
+    color: rgb(144, 147, 179);
+}
+
+footer .social-icons {
+    font-size: 24px;
+}
+
+footer .footer-links a:hover,
+footer .social-icons a:hover {
+    color: rgb(38, 63, 117);
+}
+
+footer .footer-links a {
+    display: block;
+    font-weight: 400;
+}
+
 .title-small {
     font-size: 18px;
     letter-spacing: 1px;
@@ -157,6 +176,17 @@ section {
     height: 34px;
     border-radius: 100px;
     font-size: 24px;
+}
+
+.footer-top {
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+
+.footer-buttom {
+    padding-top: 30px;
+    padding-bottom: 80px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #home {
