@@ -48,6 +48,15 @@ section {
     padding-bottom: 125px;
 }
 
+form .form-controll {
+    border-radius: 0;
+}
+
+form .form-control:focus {
+    box-shadow: none;
+    border-color: rgb(38, 63, 117);
+}
+
 footer .footer-links a,
 footer .social-icons a {
     color: rgb(144, 147, 179);
