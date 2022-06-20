@@ -217,6 +217,30 @@ footer .footer-links a {
     margin: 18px auto;
 }
 
+#about {
+    scroll-margin-top: 25px;
+}
+
+#media {
+    scroll-margin-top: -23px;
+}
+
+#club {
+    scroll-margin-top: 105px;
+}
+
+#sponsoring {
+    scroll-margin-top: 30px;
+}
+
+#contact {
+    scroll-margin-top: 30px;
+}
+
 #call {
     background-color: rgb(17, 36, 90);
+}
+
+#legal {
+    scroll-margin-top: 310px;
 }
