@@ -1,8 +1,6 @@
-const path = '../json/events.json';
+function testHello(){
+    const eventElement = document.getElementById("event-list");
 
-fetch(path)
-    .then(result => result.json())
-    .then(data => )
-    .catch((error) => {
-        console.error(error);
-    });
+    console.log(eventElement);
+    eventElement.innerHTML = '<h1>Hello World</h1>'
+}
