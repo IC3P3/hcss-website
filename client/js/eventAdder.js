@@ -1,17 +1,16 @@
 function readJSON(path, id) {
-    fetch(path)
-        .then(result => result.json())
-        .then(data => addContentToId(data, id))
-        .catch((error) => console.error(error));
+  fetch(path)
+    .then((result) => result.json())
+    .then((data) => addContentToId(data, id))
+    .catch((error) => console.error(error));
 }
 
 function addContentToId(data, id) {
-    const element = document.getElementById(id);
-    let innerOut = ``;
+  const element = document.getElementById(id);
+  let innerOut = ``;
 
-    data.forEach(obj => {
-        innerOut += 
-        `<div class="row">
+  data.forEach((obj) => {
+    innerOut += `<div class="row">
             <div class="col-3">
                 <p>
                     ${obj.date} <br>
@@ -32,8 +31,8 @@ function addContentToId(data, id) {
             </div>
         </div>
         <div class="horizontal-line"></div>
-        <br><br>`
-    });
+        <br><br>`;
+  });
 
-    element.innerHTML = innerOut;
+  element.innerHTML = innerOut;
 }
