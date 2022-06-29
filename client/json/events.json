@@ -1,26 +1,26 @@
 [
     {
-        "date" : "01.07.2022",
-        "time" : "17:30 Uhr",
-        "duration" : "ca. 45 Minuten",
+        "date" : "2022-07-01",
+        "time" : "17:30:00",
+        "duration" : "45M",
         "title" : "Test Event 00",
         "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
         "location" : "Gemeindehaus St. Marienberg, Klosterstraße 12 in Helmstedt"
     },
     {
-        "date" : "03.08.2022",
-        "time" : "15:45 Uhr",
-        "duration" : "ca. 1:30 Stunden",
-        "title" : "Test Event 02",
-        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
-        "location" : "Klosterkirche Riddagshausen, Klostergang in Braunschweig"
-    },
-    {
-        "date" : "15.12.2022",
-        "time" : "06:30 Uhr",
-        "duration" : "ca. 1 Stunde",
+        "date" : "2022-12-15",
+        "time" : "06:00:00",
+        "duration" : "1H",
         "title" : "Test Event 01",
         "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
         "location" : "Gemeindehaus St. Marienberg, Klosterstraße 12 in Helmstedt"
+    },
+    {
+        "date" : "2022-08-03",
+        "time" : "06:00:00",
+        "duration" : "1H30M",
+        "title" : "Test Event 02",
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        "location" : "Klosterkirche Riddagshausen, Klostergang in Braunschweig"
     }
 ]
