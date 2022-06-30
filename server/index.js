@@ -2,7 +2,7 @@ const dotenv = require('dotenv').config();
 const http = require('http');
 const express = require('express');
 const socketio =  require('socket.io');
-const nodemailer = require('nodemainer');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const server = http.createServer(app);
@@ -10,15 +10,17 @@ const io = socketio(server);
 
 const port = dotenv.parsed.SERVER_PORT;
 const smtpServer = dotenv.parsed.SMTP_SERVER_URL;
-const smptServerPort = dotenv.parsed.SMTP_SERVER_PORT;
+const smtpServerPort = dotenv.parsed.SMTP_SERVER_PORT;
 const smtpUsername = dotenv.parsed.SMTP_USERNAME;
+const smtpPassword = dotenv.parsed.SMTP_PASSWORD;
 
 const transporter = nodemailer.createTransporter({
     host: smtpServer,
-    port: smptServerPort,
-    secure: smptServerPort === 465,
+    port: smtpServerPort,
+    secure: smtpServerPort === 465,
     auth: {
-        user
+        user: smtpUsername,
+        pass: smtpPassword
     }
 });
 
@@ -33,3 +35,23 @@ server.on('close', () => {
 server.listen(port, () => {
     console.log("[Mail Sent Server] The Server is now listening to port " + port);
 });
+
+io.on('connection', socket => {
+    socket.on('sendContact', (contactName, contactAdress, contactMessage) => {
+        const info = transporter.sendMail({
+            from: smtpUsername,
+            to: smtpUsername,
+            subject: "Neue Nachricht von der Website",
+            text: `Neue Nachricht von "${contactName}" <${contactAdress}> mit der Nachricht: ${contactMessage}.`
+        });
+        
+        transporter.sendMail(info, (error, res) => {
+            if(error) {
+                console.error("[Maile Sent Server] An error has occurred: " + error);
+            } else {
+                console.log("[Mail Sent Server] A message has been sent: " + res.response);
+            }
+        });
+    });
+});
+
