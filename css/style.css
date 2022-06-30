@@ -1,1 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,700;1,400&display=swap');
+
+.navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-item {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.navbar-nav .nav-link.active {
+    color: #4151dd;
+}
+
+img {
+    width: 100%;
+}
