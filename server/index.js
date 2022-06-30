@@ -44,7 +44,7 @@ io.on('connection', socket => {
     socket.on('sendContact', (contactName, contactAdress, contactMessage) => {
         const info = transporter.sendMail({
             from: smtpUsername,
-            to: "niklas.eifler2001@gmail.com",
+            to: smtpUsername,
             subject: "Neue Nachricht von der Website",
             text: `Neue Nachricht von "${contactName}" <${contactAdress}> mit der Nachricht: ${contactMessage}.`
         });        
