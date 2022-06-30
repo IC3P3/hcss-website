@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/boxicons.min.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -459,7 +459,7 @@
               <button
                 type="submit"
                 class="btn btn-primary"
-                onclick="sendContactInformation(document.getElementById('name').value, document.getElementById('email').value, document.getElementById('message').value)"
+                onclick="sendContactInformation(document.getElementById('name').value, document.getElementById('email').value, document.getElementById('message').value);reset();"
               >
                 Absenden
               </button>
@@ -483,12 +483,12 @@
         </div>
       </div>
     </section>
-
-    <script type="text/javascript" src="json/events.json"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/eventAdder.js"></script>
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="js/contactSender.js"></script>
+  
+    <script src="json/events.json"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/eventAdder.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="js/contactSender.js"></script>  
   </body>
 
   <footer>
@@ -536,7 +536,7 @@
           </div>
         </div>
       </div>
-      <div class="footer-buttom">
+      <!-- <div class="footer-buttom">
         <div class="container">
           <div class="row">
             <div class="col-auto">
@@ -544,7 +544,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
   </footer>
 </html>
