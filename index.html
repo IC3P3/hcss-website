@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/style.css">
         <title>Helmstedter Chor- und Singschule</title>
     </head>
-    <body data-bs-spy="scroll" data-bs-target=".navbar" onload="testHello()">
+    <body data-bs-spy="scroll" data-bs-target=".navbar" onload="readJSON('../json/events.json', 'event-list')">
         <nav class="navbar fixed-top navbar-expand-lg bg-light bg-white">
             <div class="container">
                 <a class="navbar-brand" href="#">
@@ -86,15 +86,17 @@
         </section>
 
         <section id="events">
-            <div class="row gy-4">
-                <div class="col-12 section-intro">
-                    <h1>Unsere nächsten Termine</h1>
-                    <div class="horizontal-line"></div>
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-12 section-intro">
+                        <h1>Unsere nächsten Termine</h1>
+                        <div class="horizontal-line"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div id="event-list">
-                    
+                <div class="row">
+                    <div id="event-list">
+                        
+                    </div>
                 </div>
             </div>
         </section>
@@ -355,7 +357,7 @@
 
         <script type="text/javascript" src="json/events.json"></script>
         <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript" src="js/test.js"></script>
+        <script type="text/javascript" src="js/eventAdder.js"></script>
     </body>
 
     <footer>
