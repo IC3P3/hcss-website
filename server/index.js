@@ -17,8 +17,6 @@ const smtpServerPort = dotenv.parsed.SMTP_SERVER_PORT;
 const smtpUsername = dotenv.parsed.SMTP_USERNAME;
 const smtpPassword = dotenv.parsed.SMTP_PASSWORD;
 
-console.log(`${port} ${smtpServer} ${smtpServerPort} ${smtpUsername} ${smtpPassword}`)
-
 const transporter = nodemailer.createTransport({
     host: smtpServer,
     port: smtpServerPort,
@@ -51,9 +49,6 @@ io.on('connection', socket => {
             text: `Neue Nachricht von "${contactName}" <${contactAdress}> mit der Nachricht: ${contactMessage}.`
         });        
         transporter.sendMail(info, (error, res) => {
-            console.log("[Mail Sent Server] Name: " + contactName);
-            console.log("[Mail Sent Server] E-Mail: " + contactAdress);
-            console.log("[Mail Sent Server] Message: " + contactMessage);
             if(error) {
                 console.error("[Mail Sent Server] An error has occurred: " + error);
             } else {
