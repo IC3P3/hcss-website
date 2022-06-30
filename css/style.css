@@ -124,6 +124,10 @@ footer .footer-links a {
     margin: 16px auto 0 auto;
 }
 
+.about-img {
+    width: 75px;
+}
+
 .media-item {
     overflow: hidden;
     position: relative;
