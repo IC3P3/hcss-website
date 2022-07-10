@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
+    <!-- Initialization of CSS files, the favicon, charset and viewport -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/boxicons.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <!-- End of the header with title -->
     <title>Helmstedter Chor- und Singschule</title>
   </head>
+  <!-- Start of body with -->
+  <!-- data-bs-spy automatically updates which link is active and displays it in navbar, selected by data-bs-target -->
+  <!-- readJSON fills the div with the id event-list from the events.json file when the side loads -->
   <body
     data-bs-spy="scroll"
     data-bs-target=".navbar"
     onload="readJSON('../json/events.json', 'event-list')"
   >
-    <nav class="navbar fixed-top navbar-expand-lg bg-light bg-white">
+    <!-- fixed-top moves the navigation bar at the to of the viewport at any time -->
+    <!-- With navbar-expand-lg the navbar never collapse -->
+    <!-- bg-light adds a white background -->
+    <nav class="navbar fixed-top navbar-expand-lg bg-light">
+      <!-- container is the base of building with bootstrap -->
+      <!-- this container is around the navbar -->
       <div class="container">
+        <!-- adds the image logo.png which gets you back to the start by clicking on it -->
         <a class="navbar-brand" href="#">
-          <img src="img/logo.png" alt="" width="75" height="98" />
+          <img src="img/logo.png" alt="" width="56" height="74" />
         </a>
+        <!-- navbar-toggler shows a button to collaps (.data-bs-toggle) the menu if the screen is too small -->
+        <!-- data-bs-target/aria-controls targets the div arround the buttons of the navbar -->
+        <!-- aria-expanded let's the button hidden by default -->
+        <!-- the span is just the picture of the navbar toggler -->
         <button
           class="navbar-toggler"
           type="button"
@@ -30,6 +45,9 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- The div marks the part of the navigation bar which will be collaps if the screen is too small -->
+        <!-- ms-auto makes an automatic spacing between the li-tags -->
+        <!-- Creates a list of links pointing to the different sections -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -61,13 +79,20 @@
       </div>
     </nav>
 
+    <!-- start of #home section -->
     <section id="home">
+      <!-- centered headline of home section -->
+      <!-- The content will be put into a container which text gets centered (.text-center) -->
+      <!-- Puts a row in that container and alligns the content to the center -->
+      <!-- col-md-10 creates a column and moves it 10 units to the right -->
       <div class="container text-center">
         <div class="row justify-content-center">
           <div class="col-md-10">
+            <!-- White text with a smaller display text (.display-4) -->
             <h1 class="text-white display-4">
               Helmstedter Chor- und Singschule
             </h1>
+            <!-- White text with a button unter the text heading to #events -->
             <p class="text-white">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -79,6 +104,8 @@
       </div>
     </section>
 
+    <!-- start of #about section -->
+    <!-- TODO: This section will be reworked as I don't know what to do with this section -->
     <section id="about">
       <div class="container">
         <div class="row gy-4">
@@ -127,7 +154,10 @@
       </div>
     </section>
 
+    <!-- Start of the #events section -->
     <section id="events">
+      <!-- Creates a container and place the headline in the mid of the row -->
+      <!-- Writes the headline with an horizontal line under it -->
       <div class="container">
         <div class="row gy-4">
           <div class="col-12 section-intro">
@@ -135,19 +165,25 @@
             <div class="horizontal-line"></div>
           </div>
         </div>
+        <!-- Creates a row which will be filled by the events.js -->
         <div class="row">
           <div id="event-list"></div>
         </div>
       </div>
     </section>
 
+    <!-- Start of the #media section by creating a row -->
     <section id="media" class="row g-0">
+      <!-- Creates another row to write the headline into it with an horizontal line under it -->
       <div class="row gy-4">
         <div class="col-12 section-intro">
           <h1>Medien</h1>
           <div class="horizontal-line"></div>
         </div>
       </div>
+      <!-- Every element will be put into two columns with a different width -->
+      <!-- Adds an image and text which is displayed ontop of the image -->
+      <!-- repeated six times -->
       <div class="col-lg-4 col-sm-6">
         <div class="media-item">
           <img src="img/media-img_1.jpg" alt="" />
@@ -216,20 +252,26 @@
       </div>
     </section>
 
+    <!-- Begin of the #club section by creating a row with all content centered -->
     <section id="club" class="row g-0 py-0 text-center justify-content-center">
+      <!-- Default Headline -->
       <div class="row gy-4">
         <div class="col-12 section-intro">
           <h1>Unser Verein</h1>
           <div class="horizontal-line"></div>
         </div>
       </div>
+      <!-- add two columns with three texts beneath the image -->
       <div class="col-lg-2 col-sm-6 club-member">
         <div class="club-member-img">
           <img src="img/club-member_1.png" alt="" />
         </div>
+        <!-- added a padding of 4 -->
         <div class="p-4">
+          <!-- sets margin top to 3 and margin bottom to 0 with a white text for all -->
           <h5 class="title-small mt-3 mb-0 text-white">Max Mustermann</h5>
           <small class="text-white">1. Vorsitzender</small>
+          <!-- adds an horizontal line -->
           <div class="hline"></div>
           <p class="text-white">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -308,19 +350,60 @@
           </p>
         </div>
       </div>
-      <a class="btn btn-success" href="files/Anmeldeformular für aktive Mitsänger.pdf" target="_blank">Test Download</a>
+      <div class="row p-4 pdf-files">
+        <div class="col-sm-1 col-lg-3">
+          <a
+            class="btn btn-success"
+            href="files/Anmeldeformular für aktive Mitsänger.pdf"
+            target="_blank"
+            >Anmeldeformular für aktive Mitglieder</a
+          >
+          <p>Anmeldeformular für aktive Mitsänger.pdf<br>[186 KB]</p>
+        </div>
+        <div class="col-sm-1 col-lg-3">
+          <a
+          class="btn btn-success"
+          href="files/Anmeldeformular für passive Mitglieder.pdf"
+          target="_blank"
+          >Anmeldeformular für passive Mitglieder</a
+          >
+          <p>Anmeldeformular für passive Mitglieder.pdf<br>[31 KB]</p>
+        </div>
+        <div class="col-sm-1 col-lg-3">
+          <a
+          class="btn btn-success"
+          href="files/Beitragsordnung Chor ab 1.4.2018.pdf"
+          target="_blank"
+          >Beitragsordnung seit dem 01.04.2018</a
+          >
+          <p>Beitragsordnung Chor ab 1.4.2018.pdf<br>[248 KB]</p>
+        </div>
+        <div class="col-sm-1 col-lg-3">
+          <a
+          class="btn btn-success"
+          href="files/Satzung des Vereins.pdf"
+          target="_blank"
+          >Satzung des Helmstedter Chor- und Singschule e.V.</a
+          >
+          <p>Satzung des Vereins.pdf<br>[232 KB]</p>
+        </div>
+      </div>
     </section>
 
+    <!-- Begin of the sponsoring section -->
     <section id="sponsoring">
       <div class="container">
+        <!-- Default headline -->
         <div class="row gy-4">
           <div class="col-12 section-intro">
-            <h1>Der Föderverein</h1>
+            <h1>Der Förderverein</h1>
             <div class="horizontal-line"></div>
           </div>
         </div>
+        <!-- Creates a new row and two columns with a flexable width -->
         <div class="row">
           <div class="col-lg-4 col-sm-6 sponsoring d-flex">
+            <!-- Access boxicon from font -->
             <div class="bicon-font me-3">
               <i class="bx bx-question-mark"></i>
             </div>
@@ -410,14 +493,17 @@
       </div>
     </section>
 
+    <!-- Begin of contact form -->
     <section id="contact">
       <div class="container">
+        <!-- Default headline -->
         <div class="row gy-4">
           <div class="col-12 section-intro">
             <h1>Kontaktformular</h1>
             <div class="horizontal-line"></div>
           </div>
         </div>
+        <!-- Center all items in a new row and column -->
         <div class="row align-items-center">
           <div class="col-lg-4">
             <img src="img/contact.jpg" alt="" />
@@ -425,6 +511,7 @@
           <div class="col-lg-6 offset-lg-1">
             <form>
               <div class="mb-3">
+                
                 <small>Name</small>
                 <input
                   type="text"
@@ -483,12 +570,12 @@
         </div>
       </div>
     </section>
-  
+
     <script src="json/events.json"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/eventAdder.js"></script>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script src="js/contactSender.js"></script>  
+    <script src="js/contactSender.js"></script>
   </body>
 
   <footer>
@@ -496,7 +583,7 @@
       <div class="footer-top">
         <div class="container">
           <div class="row gy-3">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <h4 class="logo-text">Helmstedter Chor- und Singschule</h4>
               <div class="social-icons">
                 <a href="#"><i class="bx bxl-facebook"></i></a>
@@ -506,7 +593,7 @@
               </div>
             </div>
             <div class="col-md-2">
-              <h5 class="title-smallall">Navigation</h5>
+              <h5 class="title-small">Navigation</h5>
               <div class="footer-links">
                 <a href="#home">Start</a>
                 <a href="#about">Über uns</a>
@@ -517,16 +604,16 @@
                 <a href="#contact">Kontakt</a>
               </div>
             </div>
-            <div class="col-md-2">
-              <h5 class="title-smallall">Ansprechpartner Verein</h5>
+            <div class="col-md-3">
+              <h5 class="title-small">Ansprechpartner Verein</h5>
               <div class="footer-links">
                 <p class="mb">Max Mustermann</p>
                 <p class="mb">1. Vorsitzender</p>
                 <p class="mb">max@mustermann.de</p>
               </div>
             </div>
-            <div class="col-md-2">
-              <h5 class="title-smallall">Ansprechpartner Förderverein</h5>
+            <div class="col-md-4">
+              <h5 class="title-small">Ansprechpartner Förderverein</h5>
               <div class="footer-links">
                 <p class="mb">Max Mustermann</p>
                 <p class="mb">Vorsitzender</p>
@@ -536,15 +623,7 @@
           </div>
         </div>
       </div>
-      <!-- <div class="footer-buttom">
-        <div class="container">
-          <div class="row">
-            <div class="col-auto">
-              <p class="mb-0">Erstellt von Nikas Eifler</p>
-            </div>
-          </div>
-        </div>
-      </div> -->
+      <!-- Erstellt von Nikas Eifler 2022 -->
     </section>
   </footer>
 </html>

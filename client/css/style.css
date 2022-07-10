@@ -196,6 +196,19 @@ footer .footer-links a {
   overflow: hidden;
 }
 
+.pdf-files a {
+  background-color: #00416d;
+  border: none;
+  height: 65px;
+  display: flex;
+  align-items: center;
+}
+
+.pdf-files a:hover {
+  background-color: #002b47;
+  border: none;
+}
+
 .sponsoring .bicon-font {
   width: 34px;
   height: 34px;
