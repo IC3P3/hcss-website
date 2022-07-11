@@ -358,34 +358,34 @@
             target="_blank"
             >Anmeldeformular für aktive Mitglieder</a
           >
-          <p>Anmeldeformular für aktive Mitsänger.pdf<br>[186 KB]</p>
+          <p>Anmeldeformular für aktive Mitsänger.pdf<br />[186 KB]</p>
         </div>
         <div class="col-sm-1 col-lg-3">
           <a
-          class="btn btn-success"
-          href="files/Anmeldeformular für passive Mitglieder.pdf"
-          target="_blank"
-          >Anmeldeformular für passive Mitglieder</a
+            class="btn btn-success"
+            href="files/Anmeldeformular für passive Mitglieder.pdf"
+            target="_blank"
+            >Anmeldeformular für passive Mitglieder</a
           >
-          <p>Anmeldeformular für passive Mitglieder.pdf<br>[31 KB]</p>
+          <p>Anmeldeformular für passive Mitglieder.pdf<br />[31 KB]</p>
         </div>
         <div class="col-sm-1 col-lg-3">
           <a
-          class="btn btn-success"
-          href="files/Beitragsordnung Chor ab 1.4.2018.pdf"
-          target="_blank"
-          >Beitragsordnung seit dem 01.04.2018</a
+            class="btn btn-success"
+            href="files/Beitragsordnung Chor ab 1.4.2018.pdf"
+            target="_blank"
+            >Beitragsordnung seit dem 01.04.2018</a
           >
-          <p>Beitragsordnung Chor ab 1.4.2018.pdf<br>[248 KB]</p>
+          <p>Beitragsordnung Chor ab 1.4.2018.pdf<br />[248 KB]</p>
         </div>
         <div class="col-sm-1 col-lg-3">
           <a
-          class="btn btn-success"
-          href="files/Satzung des Vereins.pdf"
-          target="_blank"
-          >Satzung des Helmstedter Chor- und Singschule e.V.</a
+            class="btn btn-success"
+            href="files/Satzung des Vereins.pdf"
+            target="_blank"
+            >Satzung des Helmstedter Chor- und Singschule e.V.</a
           >
-          <p>Satzung des Vereins.pdf<br>[232 KB]</p>
+          <p>Satzung des Vereins.pdf<br />[232 KB]</p>
         </div>
       </div>
     </section>
@@ -408,6 +408,8 @@
               <i class="bx bx-question-mark"></i>
             </div>
             <div>
+              <!-- Add a small title with a text beneath it -->
+              <!-- Repeating the same block 6 times -->
               <h5 class="title-small">Was sind die Ziele des Fördervereins?</h5>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum,
@@ -504,20 +506,24 @@
           </div>
         </div>
         <!-- Center all items in a new row and column -->
+        <!-- Contains the image on the left side of the form -->
         <div class="row align-items-center">
           <div class="col-lg-4">
             <img src="img/contact.jpg" alt="" />
           </div>
+          <!-- Start of the form with a column an an offset for the picture -->
           <div class="col-lg-6 offset-lg-1">
             <form>
               <div class="mb-3">
-                
+                <!-- Input field for the name and flagged as required -->
+                <!-- The same for the email with a control if it is an email and the message itself -->
                 <small>Name</small>
                 <input
                   type="text"
                   class="form-control"
                   id="name"
-                  aria-describedby="emailHelp"
+                  aria-describedby="nameHelp"
+                  required
                 />
               </div>
               <div class="mb-3">
@@ -527,6 +533,7 @@
                   class="form-control"
                   id="email"
                   aria-describedby="emailHelp"
+                  required
                 />
                 <div id="emailHelp" class="form-text">
                   Der Name und die E-Mail werden nicht weitergegeben und nur für
@@ -541,8 +548,10 @@
                   cols="30"
                   rows="4"
                   class="form-control"
+                  required
                 ></textarea>
               </div>
+              <!-- The button executes on a click the sendContanctInformation from js/contactSender.js -->
               <button
                 type="submit"
                 class="btn btn-primary"
@@ -556,6 +565,8 @@
       </div>
     </section>
 
+    <!-- Start of the cta section -->
+    <!-- adds a white text with a button and puts it in the center of the container -->
     <section id="call" class="py-5">
       <div class="container py-4">
         <div class="row justify-content-center">
@@ -563,6 +574,7 @@
             <h3 class="text-white">Haben Sie interesse an unserer Arbeit?</h3>
           </div>
           <div class="col-auto">
+            <!-- The buttons goes back to the #events section -->
             <a href="#events" class="btn btn-light"
               >Unsere nächsten Auftritte</a
             >
@@ -571,6 +583,7 @@
       </div>
     </section>
 
+    <!-- adds the 3 javascript files, the event.json and the socket.io script -->
     <script src="json/events.json"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/eventAdder.js"></script>
@@ -579,11 +592,14 @@
   </body>
 
   <footer>
+    <!-- Start of the legal section -->
     <section id="legal">
       <div class="footer-top">
         <div class="container">
+          <!-- Creates a row in a container with 4 columns -->
           <div class="row gy-3">
             <div class="col-md-3">
+              <!-- The first one adds the title with corresponding social media redirections -->
               <h4 class="logo-text">Helmstedter Chor- und Singschule</h4>
               <div class="social-icons">
                 <a href="#"><i class="bx bxl-facebook"></i></a>
@@ -593,6 +609,7 @@
               </div>
             </div>
             <div class="col-md-2">
+              <!-- After that the navigation gets added to access all sections (except #call) -->
               <h5 class="title-small">Navigation</h5>
               <div class="footer-links">
                 <a href="#home">Start</a>
@@ -604,6 +621,7 @@
                 <a href="#contact">Kontakt</a>
               </div>
             </div>
+            <!-- The last two show the contact data of the contact persons -->
             <div class="col-md-3">
               <h5 class="title-small">Ansprechpartner Verein</h5>
               <div class="footer-links">
