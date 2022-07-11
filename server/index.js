@@ -16,8 +16,9 @@ const smtpServer = dotenv.parsed.SMTP_SERVER_URL;
 const smtpServerPort = dotenv.parsed.SMTP_SERVER_PORT;
 const smtpUsername = dotenv.parsed.SMTP_USERNAME;
 const smtpPassword = dotenv.parsed.SMTP_PASSWORD;
+const recipientEmail = dotenv.parsed.RECIPIENT_EMAIL;
 
-const transporter = nodemailer.createTransport({
+var transporter = nodemailer.createTransport({
     host: smtpServer,
     port: smtpServerPort,
     secure: smtpServerPort === 465,
@@ -40,15 +41,14 @@ server.listen(port, () => {
 });
 
 io.on('connection', socket => {
-    console.log("[Mail Sent Server] Client Connected")
     socket.on('sendContact', (contactName, contactAdress, contactMessage) => {
-        const info = transporter.sendMail({
+        const infoInternMail = transporter.sendMail({
             from: smtpUsername,
-            to: smtpUsername,
+            to: recipientEmail,
             subject: "Neue Nachricht von der Website",
             text: `Neue Nachricht von "${contactName}" <${contactAdress}> mit der Nachricht: ${contactMessage}.`
         });        
-        transporter.sendMail(info, (error, res) => {
+        transporter.sendMail(infoInternMail, (error, res) => {
             if(error) {
                 console.error("[Mail Sent Server] An error has occurred: " + error);
             } else {
