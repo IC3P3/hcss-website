@@ -1,6 +1,7 @@
-import { Table, Column, Model, DataType, ForeignKey } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, HasMany } from 'sequelize-typescript';
 
 import Event from './Event';
+import HomeContent from './HomeContent';
 
 @Table({
 	timestamps: false,
@@ -32,6 +33,9 @@ class Media extends Model {
 		type: DataType.NUMBER
 	})
 	declare event_id: string;
+
+	@HasMany(() => HomeContent)
+	declare homeContent: HomeContent[];
 }
 
 export default Media;
