@@ -5,7 +5,7 @@ import { DATABASE_LOCATION } from '$env/static/private';
 const sequelize = new Sequelize({
 	dialect: 'sqlite',
 	storage: DATABASE_LOCATION,
-	models: [__dirname + '/models'],
+	models: [import.meta.dirname + '/models'],
 	logging: false
 });
 
