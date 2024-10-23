@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType, ForeignKey } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, PrimaryKey } from 'sequelize-typescript';
 
 import Media from './Media';
 
@@ -8,8 +8,8 @@ import Media from './Media';
 	modelName: 'HomeContent'
 })
 class HomeContent extends Model {
+	@PrimaryKey
 	@Column({
-		primaryKey: true,
 		allowNull: false,
 		type: DataType.STRING
 	})
