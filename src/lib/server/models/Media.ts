@@ -1,4 +1,12 @@
-import { Table, Column, Model, DataType, ForeignKey, HasMany } from 'sequelize-typescript';
+import {
+	Table,
+	Column,
+	Model,
+	DataType,
+	ForeignKey,
+	HasMany,
+	PrimaryKey
+} from 'sequelize-typescript';
 
 import Event from './Event';
 import HomeContent from './HomeContent';
@@ -9,9 +17,8 @@ import HomeContent from './HomeContent';
 	modelName: 'Media'
 })
 class Media extends Model {
+	@PrimaryKey
 	@Column({
-		primaryKey: true,
-		autoIncrement: true,
 		allowNull: false,
 		type: DataType.NUMBER
 	})
