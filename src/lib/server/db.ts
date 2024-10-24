@@ -16,4 +16,4 @@ sequelize.addModels([Event, Media, HomeContent]);
 
 sequelize.sync();
 
-export default { sequelize, Event, Media, HomeContent };
+export { sequelize, Event, Media, HomeContent };

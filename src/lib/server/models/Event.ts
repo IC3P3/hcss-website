@@ -1,4 +1,12 @@
-import { Table, Column, Model, DataType, HasMany, PrimaryKey } from 'sequelize-typescript';
+import {
+	Table,
+	Column,
+	Model,
+	DataType,
+	HasMany,
+	PrimaryKey,
+	AutoIncrement
+} from 'sequelize-typescript';
 
 import Media from './Media';
 
@@ -9,9 +17,9 @@ import Media from './Media';
 })
 class Event extends Model {
 	@PrimaryKey
+	@AutoIncrement
 	@Column({
-		allowNull: false,
-		type: DataType.NUMBER
+		type: DataType.INTEGER
 	})
 	declare id: number;
 
