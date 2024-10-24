@@ -5,7 +5,8 @@ import {
 	DataType,
 	ForeignKey,
 	HasMany,
-	PrimaryKey
+	PrimaryKey,
+	AutoIncrement
 } from 'sequelize-typescript';
 
 import Event from './Event';
@@ -18,9 +19,9 @@ import HomeContent from './HomeContent';
 })
 class Media extends Model {
 	@PrimaryKey
+	@AutoIncrement
 	@Column({
-		allowNull: false,
-		type: DataType.NUMBER
+		type: DataType.INTEGER
 	})
 	declare id: number;
 
