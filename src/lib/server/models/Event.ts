@@ -5,11 +5,15 @@ import {
 	DataType,
 	HasMany,
 	PrimaryKey,
-	AutoIncrement
+	AutoIncrement,
+	DefaultScope
 } from 'sequelize-typescript';
 
 import Media from './Media';
 
+@DefaultScope(() => ({
+	attributes: ['title', 'subtitle', 'address', 'time']
+}))
 @Table({
 	timestamps: false,
 	tableName: 'events',
