@@ -20,3 +20,23 @@
 	</label>
 	<button type="submit" formaction="?/createEvent">Veranstaltung erstellen</button>
 </form>
+
+<h2>Bilder hinzufügen</h2>
+<form method="POST" action="?/addImage" enctype="multipart/form-data">
+	<label>
+		Image
+		<input name="image" type="file" accept="image/*" required />
+	</label>
+	<label>
+		Untertitel
+		<input name="subtitle" type="text" />
+	</label>
+
+	<!-- TODO: Make a dropdown with every currently added Events by name -->
+	<label>
+		Veranstaltung
+		<input name="event_id" type="number" required />
+	</label>
+
+	<button type="submit">Bild hinzufügen</button>
+</form>
