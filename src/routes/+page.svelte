@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	export let data: PageData;
+
+	import type { PageData } from './$types';
+
+	import Header from '$lib/components/Header.svelte';
+
+	const homeImage = data.content.find((image) => image['homeContent.id'] === 'home')?.id.toString();
+</script>
+
+{#if homeImage}
+	<Header {homeImage} />
+{/if}
