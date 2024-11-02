@@ -25,7 +25,7 @@
 <form method="POST" action="?/addImage" enctype="multipart/form-data">
 	<label>
 		Image
-		<input name="image" type="file" accept="image/*" required />
+		<input name="image" type="file" accept="image/webp" required />
 	</label>
 	<label>
 		Untertitel
