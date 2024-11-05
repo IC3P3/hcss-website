@@ -6,8 +6,12 @@ export const actions = {
 	createEvent: async ({ request }) => {
 		const data = await request.formData();
 
+		// FIX: Tell typescript how this object looks
+		let newEvent = Object.fromEntries(data);
+		newEvent.time = new Date(newEvent.time).getTime();
+
 		// TODO: Add error handling if creating an entry fails
-		const event = Event.create(Object.fromEntries(data));
+		const event = await Event.create(newEvent);
 
 		return { success: true };
 	},
