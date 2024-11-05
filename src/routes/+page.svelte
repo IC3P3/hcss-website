@@ -7,6 +7,7 @@
 	import Events from '$lib/components/Events.svelte';
 	import Offerings from '$lib/components/Offerings.svelte';
 	import About from '$lib/components/About.svelte';
+	import Club from '$lib/components/Club.svelte';
 
 	// TODO: Make this modular and not hard coded
 	// NOTE: Maybe by adding the id in the db table HomeContent to the id of the element
@@ -20,3 +21,4 @@
 <Events events={data.events} />
 <Offerings />
 <About />
+<Club />
