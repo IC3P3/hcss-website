@@ -15,7 +15,7 @@ export const load: PageServerLoad = async () => {
 		raw: true
 	});
 
-	// TODO: Add conversion checking to satisfy Typescript
+	// FIX: Add conversion checking to satisfy Typescript
 	const content = (await Media.findAll({
 		include: {
 			model: HomeContent,
