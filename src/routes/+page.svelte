@@ -9,6 +9,7 @@
 	import Offerings from '$lib/components/Offerings.svelte';
 	import About from '$lib/components/About.svelte';
 	import Club from '$lib/components/Club.svelte';
+	import CTA from '$lib/components/CTA.svelte';
 
 	// TODO: Make this modular and not hard coded
 	// NOTE: Maybe by adding the id in the db table HomeContent to the id of the element
@@ -33,3 +34,4 @@
 <Offerings />
 <About />
 <Club />
+<CTA />
