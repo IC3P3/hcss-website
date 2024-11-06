@@ -12,7 +12,10 @@
 		<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 		<div class="lg:grid lg:grid-cols-3">
 			<div class="text-center self-center lg:px-7">
-				<p>{event.time}</p>
+				<p>{new Date(event.time).toLocaleDateString('de')}</p>
+				<p>
+					{new Date(event.time).toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' })}
+				</p>
 			</div>
 			<div class="lg:self-center">
 				<h3 class="text-lg lg:text-xl">{event.title}</h3>
