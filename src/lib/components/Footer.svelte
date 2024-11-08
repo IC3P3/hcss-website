@@ -1,7 +1,6 @@
-<!-- TODO: Readd image -->
-<!--<script lang="ts">
+<script lang="ts">
 	import logo from '$lib/assets/logo.png';
-</script>-->
+</script>
 
 <footer class="bg-white mt-4">
 	<section id="legal">
@@ -9,8 +8,7 @@
 			<div class="md:flex md:justify-between">
 				<div class="mb-8">
 					<a href="/" class="flex items-center">
-						<!-- TODO: Readd the image source -->
-						<img class="h-8 mr-3" alt="Logo der Helmstedter Chor- und Singschule" />
+						<img src={logo} class="h-8 mr-3" alt="Logo der Helmstedter Chor- und Singschule" />
 						<span class="self-center text-2xl font-semibold whitespace-nowrap">HCSS</span>
 					</a>
 				</div>

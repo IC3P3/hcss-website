@@ -1,14 +1,12 @@
-<!-- TODO: Readd Logo (Maybe as svg) -->
-<!--<script lang="ts">
-	import logo from '$lib/asss/logo.png';
-</script>-->
+<script lang="ts">
+	import logo from '$lib/assets/logo.png';
+</script>
 
 <!-- TODO: Small extend button doesn't extend Navbar -->
 <nav class="border-gray-200 bg-gray-50 fixed w-full z-50">
 	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<a href="/" class="flex items-center">
-			<!-- TODO: No current source for image -->
-			<img class="h-8 mr-3" alt="Logo der Helmstedter Chor- und Singschule" />
+			<img src={logo} class="h-8 mr-3" alt="Logo der Helmstedter Chor- und Singschule" />
 			<span class="self-center text-2xl font-semibold whitespace-nowrap">HCSS</span>
 		</a>
 		<button
