@@ -1,42 +1,122 @@
-<h1>Einträge hinzufügen</h1>
+<section class="mx-auto max-w-screen-xl p-6 py-8">
+	<!-- Page Header -->
+	<h1 class="text-3xl font-extrabold text-blue-950 mb-6">Einträge hinzufügen</h1>
 
-<h2>Veranstaltung hinzufügen</h2>
-<form method="POST">
-	<label>
-		Titel
-		<input name="title" type="text" required />
-	</label>
-	<label>
-		Untertitel
-		<input name="subtitle" type="text" />
-	</label>
-	<label>
-		Adresse
-		<input name="address" type="text" required />
-	</label>
-	<label>
-		Uhrzeit
-		<input name="time" type="datetime-local" required />
-	</label>
-	<button type="submit" formaction="?/createEvent">Veranstaltung erstellen</button>
-</form>
+	<!-- Veranstaltung hinzufügen form -->
+	<section class="mb-12 bg-white p-6 rounded-lg shadow-md border border-gray-200">
+		<h2 class="text-2xl font-semibold text-blue-950 mb-4">Veranstaltung hinzufügen</h2>
 
-<h2>Bilder hinzufügen</h2>
-<form method="POST" action="?/addImage" enctype="multipart/form-data">
-	<label>
-		Image
-		<input name="image" type="file" accept="image/webp" required />
-	</label>
-	<label>
-		Untertitel
-		<input name="subtitle" type="text" />
-	</label>
+		<form method="POST" class="space-y-6">
+			<!-- Title Field -->
+			<div>
+				<label for="title" class="block text-gray-700 font-medium mb-2">Titel</label>
+				<input
+					name="title"
+					id="title"
+					type="text"
+					required
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				/>
+			</div>
 
-	<!-- TODO: Make a dropdown with every currently added Events by name -->
-	<label>
-		Veranstaltung
-		<input name="event_id" type="number" required />
-	</label>
+			<!-- Subtitle Field -->
+			<div>
+				<label for="subtitle" class="block text-gray-700 font-medium mb-2">Untertitel</label>
+				<input
+					name="subtitle"
+					id="subtitle"
+					type="text"
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				/>
+			</div>
 
-	<button type="submit">Bild hinzufügen</button>
-</form>
+			<!-- Address Field -->
+			<div>
+				<label for="address" class="block text-gray-700 font-medium mb-2">Adresse</label>
+				<input
+					name="address"
+					id="address"
+					type="text"
+					required
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				/>
+			</div>
+
+			<!-- Date/Time Field -->
+			<div>
+				<label for="time" class="block text-gray-700 font-medium mb-2">Uhrzeit</label>
+				<input
+					name="time"
+					id="time"
+					type="datetime-local"
+					required
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				/>
+			</div>
+
+			<!-- Submit Button -->
+			<div class="flex justify-center">
+				<button
+					type="submit"
+					formaction="?/createEvent"
+					class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-sm uppercase hover:bg-blue-800 transition-colors"
+				>
+					Veranstaltung erstellen
+				</button>
+			</div>
+		</form>
+	</section>
+
+	<!-- Bilder hinzufügen form -->
+	<section class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+		<h2 class="text-2xl font-semibold text-blue-950 mb-4">Bilder hinzufügen</h2>
+
+		<form method="POST" action="?/addImage" enctype="multipart/form-data" class="space-y-6">
+			<!-- Image Upload Field -->
+			<div>
+				<label for="image" class="block text-gray-700 font-medium mb-2">Image</label>
+				<input
+					name="image"
+					id="image"
+					type="file"
+					accept="image/webp"
+					required
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				/>
+			</div>
+
+			<!-- Subtitle Field for Image -->
+			<div>
+				<label for="image-subtitle" class="block text-gray-700 font-medium mb-2">Untertitel</label>
+				<input
+					name="subtitle"
+					id="image-subtitle"
+					type="text"
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				/>
+			</div>
+
+			<!-- Event Dropdown Field -->
+			<div>
+				<label for="event_id" class="block text-gray-700 font-medium mb-2">Veranstaltung</label>
+				<input
+					name="event_id"
+					id="event_id"
+					type="number"
+					required
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				/>
+			</div>
+
+			<!-- Submit Button for Image Upload -->
+			<div class="flex justify-center">
+				<button
+					type="submit"
+					class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-sm uppercase hover:bg-blue-800 transition-colors"
+				>
+					Bild hinzufügen
+				</button>
+			</div>
+		</form>
+	</section>
+</section>
