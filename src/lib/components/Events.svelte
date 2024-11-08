@@ -4,7 +4,7 @@
 
 <section
 	id="events"
-	class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 text-center justify-center bg-gray-50"
+	class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 text-center justify-center"
 >
 	<h2 class="text-blue-950 font-extrabold text-4xl mb-8">Termine</h2>
 
@@ -12,7 +12,7 @@
 		<div class="my-8 p-6 bg-white shadow-md rounded-lg border border-gray-200">
 			<div class="lg:grid lg:grid-cols-3 gap-8">
 				<!-- Date & Time -->
-				<div class="text-center lg:text-left">
+				<div class="text-center l g:text-left">
 					<p class="text-xl font-semibold text-blue-950">
 						{new Date(event.time).toLocaleDateString('de', {
 							day: '2-digit',
