@@ -14,10 +14,14 @@
 				<!-- Date & Time -->
 				<div class="text-center lg:text-left">
 					<p class="text-xl font-semibold text-blue-950">
-						{new Date(event.time).toLocaleDateString('de')}
+						{new Date(event.time).toLocaleDateString('de', {
+							day: '2-digit',
+							month: 'long',
+							year: 'numeric'
+						})}
 					</p>
 					<p class="text-lg text-gray-600">
-						{new Date(event.time).toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' })}
+						{new Date(event.time).toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' })} Uhr
 					</p>
 				</div>
 
