@@ -1,4 +1,8 @@
 <script lang="ts">
+	import Facebook from '$lib/assets/Facebook.svelte';
+	import Instagram from '$lib/assets/Instagram.svelte';
+	import Soundcloud from '$lib/assets/Soundcloud.svelte';
+
 	export let media: string[];
 </script>
 
@@ -16,12 +20,46 @@
 					class="absolute inset-0 flex items-end bg-blue-700 bg-opacity-75 p-8 opacity-0 group-hover:opacity-100 hover:opacity-100 transition-opacity duration-300"
 				>
 					<div class="flex flex-col items-start w-full">
-						<!-- FIX: Replace placeholder and input concert title -->
 						<h3 class="text-white text-2xl font-semibold mb-2">Placeholder</h3>
 						<span class="text-white text-sm">{item.subtitle}</span>
 					</div>
 				</div>
 			</div>
 		{/each}
+	</div>
+
+	<div class="mt-8 flex flex-col items-center justify-center gap-6">
+		<p class="justify-center text-center text-blue-950 font-bold text-xl mx-auto max-w-screen-xl">
+			Entdecke mehr Inhalte auf unseren sozialen Netzwerken!
+		</p>
+
+		<div class="flex gap-6">
+			<a
+				href="https://facebook.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-blue-950 hover:text-blue-600"
+			>
+				<Facebook style="h-8" />
+			</a>
+
+			<a
+				href="https://instagram.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-blue-950 hover:text-blue-600"
+			>
+				<Instagram style="h-8" />
+			</a>
+
+			<a
+				href="https://soundcloud.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-blue-950 hover:text-blue-600"
+			>
+				<Soundcloud style="h-8" />
+			</a>
+		</div>
 	</div>
 </section>
