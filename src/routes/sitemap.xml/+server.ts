@@ -3,7 +3,7 @@ import type { RequestEvent } from '../$types';
 export async function GET({ request }: RequestEvent) {
 	// NOTE: Needs to be tested with a real domain
 	// Maybe need to manually add https
-	const host: string = request.headers.get('host')!;
+	const host: string = request.headers.get('host') || 'https://hcss-ev.de';
 	const routes = import.meta.glob('/src/routes/**/+page.svelte', {
 		eager: true,
 		import: 'default'

@@ -1,7 +1,7 @@
 import type { RequestEvent } from '../$types';
 
 export async function GET({ request }: RequestEvent) {
-	const host = request.headers.get('host')!;
+	const host = request.headers.get('host') || 'https://hcss-ev.de';
 
 	const body = robots(host);
 	const response = new Response(body);
