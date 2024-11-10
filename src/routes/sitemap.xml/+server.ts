@@ -26,6 +26,7 @@ export async function GET({ request }: RequestEvent) {
 	return response;
 }
 
+// NOTE: Possibly could add an dynamic image sitemap in the future
 const sitemap = (pages: string[], host: string) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
   xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
