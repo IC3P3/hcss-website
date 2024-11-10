@@ -30,6 +30,7 @@
 {/if}
 
 <Events events={data.events} />
+<!-- FIX: More TS type fixing -->
 <Media {media} />
 <Offerings />
 <About />
