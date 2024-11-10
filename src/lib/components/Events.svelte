@@ -25,13 +25,11 @@
 					</p>
 				</div>
 
-				<!-- Event Title & Subtitle -->
 				<div class="lg:col-span-1 lg:text-center">
 					<h3 class="text-2xl font-bold text-blue-950 mb-2">{event.title}</h3>
 					<p class="text-gray-700 text-lg">{event.subtitle}</p>
 				</div>
 
-				<!-- Address -->
 				<div class="text-center lg:text-left">
 					<p class="text-lg text-gray-700">{event.address}</p>
 				</div>
