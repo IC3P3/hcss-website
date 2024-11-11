@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+
 	import imagePlaceholder from '$lib/assets/placeholder-image.png';
 
 	let uploadedImage: string;
@@ -59,7 +61,8 @@
 	<section class="mb-12 bg-white p-6 rounded-lg shadow-md border border-gray-200">
 		<h2 class="text-2xl font-semibold text-blue-950 mb-4">Veranstaltung hinzufügen</h2>
 
-		<form method="POST" class="space-y-6">
+		<!-- TODO: Add feedback after sumbmit -->
+		<form method="POST" class="space-y-6" use:enhance>
 			<div>
 				<label for="title" class="block text-gray-700 font-medium mb-2">Titel</label>
 				<input
@@ -118,11 +121,14 @@
 	<section class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
 		<h2 class="text-2xl font-semibold text-blue-950 mb-4">Bilder hinzufügen</h2>
 
+		<!-- TODO: Clear preview image after submit
+					Add feedback after submit -->
 		<form
 			method="POST"
 			action="?/addImage"
 			enctype="multipart/form-data"
 			class="space-y-6 flex flex-wrap"
+			use:enhance
 		>
 			<div class="w-full md:w-1/2 space-y-6">
 				<div>
