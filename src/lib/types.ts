@@ -4,4 +4,9 @@ interface Content {
 	'homeContent.id': string;
 }
 
-export type { Content };
+interface EventMinimal {
+	id: number;
+	title: string;
+}
+
+export type { Content, EventMinimal };
