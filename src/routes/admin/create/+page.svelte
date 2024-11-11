@@ -126,7 +126,7 @@
 		>
 			<div class="w-full md:w-1/2 space-y-6">
 				<div>
-					<label for="image" class="block text-gray-700 font-medium mb-2">Image</label>
+					<label for="image" class="block text-gray-700 font-medium mb-2">Bild</label>
 					<input
 						name="image"
 						id="image"
