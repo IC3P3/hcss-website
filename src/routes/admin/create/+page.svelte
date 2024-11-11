@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 
+	import type { PageData } from './$types';
+
 	import imagePlaceholder from '$lib/assets/placeholder-image.png';
 
 	let uploadedImage: string;
+
+	export let data: PageData;
 
 	async function handleImageSelection(e: Event) {
 		const file = (e.target as HTMLInputElement)?.files?.[0];
@@ -157,13 +161,16 @@
 
 				<div>
 					<label for="event_id" class="block text-gray-700 font-medium mb-2">Veranstaltung</label>
-					<input
+					<select
 						name="event_id"
 						id="event_id"
-						type="number"
 						required
 						class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-					/>
+					>
+						{#each data.events as event}
+							<option value={event.id}>{event.title}</option>
+						{/each}
+					</select>
 				</div>
 			</div>
 
