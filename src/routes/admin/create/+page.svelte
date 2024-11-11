@@ -3,12 +3,53 @@
 
 	let uploadedImage: string;
 
-	function handleImageSelection(e: Event) {
-		const image = (e.target as HTMLInputElement)?.files?.[0];
+	async function handleImageSelection(e: Event) {
+		const file = (e.target as HTMLInputElement)?.files?.[0];
 
-		if (!image) return;
+		if (!file) return;
 
-		uploadedImage = URL.createObjectURL(image);
+		const image = new Image();
+		const reader = new FileReader();
+
+		reader.onload = function (e) {
+			if (e.target?.result) {
+				image.src = e.target.result as string;
+			}
+		};
+		reader.readAsDataURL(file);
+
+		image.onload = function () {
+			const canvas = document.createElement('canvas');
+			const ctx = canvas.getContext('2d');
+
+			if (!ctx) return;
+
+			canvas.width = image.width;
+			canvas.height = image.height;
+
+			ctx.drawImage(image, 0, 0);
+
+			const webpImage = canvas.toDataURL('image/webp');
+			const byteString = atob(webpImage.split(',')[1]);
+			const arrayBuffer = new ArrayBuffer(byteString.length);
+			const uint8Array = new Uint8Array(arrayBuffer);
+
+			for (let i = 0; i < byteString.length; i++) {
+				uint8Array[i] = byteString.charCodeAt(i);
+			}
+
+			const webpBlob = new Blob([uint8Array], { type: 'image/webp' });
+
+			uploadedImage = URL.createObjectURL(webpBlob);
+
+			const fileInput = document.querySelector('#image') as HTMLInputElement;
+			const dataTransfer = new DataTransfer();
+			const convertedFile = new File([webpBlob], file.name.replace(/\.[^/.]+$/, '.webp'), {
+				type: 'image/webp'
+			});
+			dataTransfer.items.add(convertedFile);
+			fileInput.files = dataTransfer.files;
+		};
 	}
 </script>
 
@@ -90,7 +131,7 @@
 						name="image"
 						id="image"
 						type="file"
-						accept="image/webp"
+						accept="image/*"
 						required
 						on:change={handleImageSelection}
 						class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
