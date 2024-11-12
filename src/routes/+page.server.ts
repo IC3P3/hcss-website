@@ -1,9 +1,9 @@
 import type { PageServerLoad } from './$types';
-import type { Content } from '$lib/types';
+import type { ContentMinimal } from '$lib/types';
 
 import { Op } from 'sequelize';
 
-import { Media, HomeContent, Event } from '$lib/server/db';
+import { Media, Content, Event } from '$lib/server/db';
 
 export const load: PageServerLoad = async () => {
 	const events: Event[] = await Event.findAll({
@@ -18,13 +18,13 @@ export const load: PageServerLoad = async () => {
 	// FIX: Add conversion checking to satisfy Typescript
 	const content = (await Media.findAll({
 		include: {
-			model: HomeContent,
+			model: Content,
 			required: true,
 			attributes: ['id']
 		},
 		raw: true,
 		attributes: ['subtitle', 'id']
-	})) as Content[];
+	})) as ContentMinimal[];
 
 	return {
 		events: events,
