@@ -12,6 +12,7 @@ export const load: PageServerLoad = async () => {
 				[Op.gte]: new Date().getTime()
 			}
 		},
+		order: ['time'],
 		raw: true
 	});
 
