@@ -4,10 +4,10 @@ import Media from './Media';
 
 @Table({
 	timestamps: false,
-	tableName: 'homeContent',
-	modelName: 'HomeContent'
+	tableName: 'content',
+	modelName: 'Content'
 })
-class HomeContent extends Model {
+class Content extends Model {
 	@PrimaryKey
 	@Column({
 		allowNull: false,
@@ -22,4 +22,4 @@ class HomeContent extends Model {
 	declare media_id: number;
 }
 
-export default HomeContent;
+export default Content;

@@ -10,7 +10,7 @@ import {
 } from 'sequelize-typescript';
 
 import Event from './Event';
-import HomeContent from './HomeContent';
+import Content from './Content';
 
 @Table({
 	timestamps: false,
@@ -42,8 +42,8 @@ class Media extends Model {
 	})
 	declare event_id: string;
 
-	@HasMany(() => HomeContent)
-	declare homeContent: HomeContent[];
+	@HasMany(() => Content)
+	declare content: Content[];
 }
 
 export default Media;

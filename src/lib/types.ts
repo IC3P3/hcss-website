@@ -1,7 +1,7 @@
-interface Content {
+interface ContentMinimal {
 	subtitle: string;
 	id: number;
-	'homeContent.id': string;
+	'content.id': string;
 }
 
 interface EventMinimal {
@@ -9,4 +9,4 @@ interface EventMinimal {
 	title: string;
 }
 
-export type { Content, EventMinimal };
+export type { ContentMinimal, EventMinimal };
