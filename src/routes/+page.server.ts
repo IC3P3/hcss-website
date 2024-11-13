@@ -21,7 +21,10 @@ export const load: PageServerLoad = async () => {
 		include: {
 			model: Content,
 			required: true,
-			attributes: ['id']
+			attributes: ['id'],
+			where: {
+				category: 0
+			}
 		},
 		raw: true,
 		attributes: ['subtitle', 'id']

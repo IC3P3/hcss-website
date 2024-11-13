@@ -15,6 +15,12 @@ class Content extends Model {
 	})
 	declare id: string;
 
+	@Column({
+		allowNull: false,
+		type: DataType.NUMBER
+	})
+	declare category: number;
+
 	@ForeignKey(() => Media)
 	@Column({
 		type: DataType.NUMBER
