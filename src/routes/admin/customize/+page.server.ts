@@ -1,8 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
 
-import { Sequelize } from 'sequelize';
-
-import { Content, Media } from '$lib/server/db';
+import { Category, Content, Media } from '$lib/server/db';
 
 export const load: PageServerLoad = async () => {
 	const media = await Media.findAll({
@@ -14,8 +12,7 @@ export const load: PageServerLoad = async () => {
 		raw: true
 	});
 
-	const categories = await Content.findAll({
-		attributes: [[Sequelize.fn('DISTINCT', Sequelize.col('category')), 'category']],
+	const categories = await Category.findAll({
 		raw: true
 	});
 

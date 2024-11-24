@@ -11,16 +11,16 @@
 
 	{#each data.contentCategories as category}
 		<div class="mb-8">
-			<h2 class="text-2xl font-semibold text-blue-950 mb-4">{category.category}</h2>
+			<h2 class="text-2xl font-semibold text-blue-950 mb-4">{category.displayName}</h2>
 
 			<!-- NOTE: Should move the image further to the right -->
 			{#each data.content as content}
-				{#if content.category === category.category}
+				{#if content.category === category.id}
 					<div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-6">
 						<form method="POST" class="flex items-start space-x-6">
 							<div class="flex flex-col space-y-4 w-2/3 max-w-md">
 								<label for="imageSelection" class="block text-gray-700 font-medium">
-									{content.id}
+									{content.displayName}
 									<select
 										name="imageSelection"
 										id="imageSelection-{content.id}"
