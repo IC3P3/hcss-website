@@ -1,4 +1,4 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad, Actions } from './$types';
 
 import { Sequelize } from 'sequelize';
 
@@ -25,3 +25,23 @@ export const load: PageServerLoad = async () => {
 		contentCategories: categories
 	};
 };
+
+export const actions = {
+	default: async ({ request }) => {
+		// FIX: Ones more Typescript shenanigans
+		const data = await request.formData();
+		const changeValue = Object.fromEntries(data);
+
+		const content = await Content.findByPk(changeValue.imageId);
+
+		if (content) {
+			// Update only the media_id field
+			content.media_id = changeValue.imageSelection;
+
+			// Save the content, but only update the media_id field by specifying it explicitly
+			await content.save({ fields: ['media_id'] });
+		}
+
+		return { success: true };
+	}
+} satisfies Actions;

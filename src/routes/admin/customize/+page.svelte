@@ -17,24 +17,25 @@
 			{#each data.content as content}
 				{#if content.category === category.category}
 					<div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-6">
-						<form class="flex items-start space-x-6">
+						<form method="POST" class="flex items-start space-x-6">
 							<div class="flex flex-col space-y-4 w-2/3 max-w-md">
 								<label for="imageSelection" class="block text-gray-700 font-medium">
 									{content.id}
+									<select
+										name="imageSelection"
+										id="imageSelection-{content.id}"
+										class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+										bind:value={content.media_id}
+									>
+										{#each data.images as media}
+											<option value={media.id} selected={content.media_id === media.id}>
+												{media.subtitle}
+											</option>
+										{/each}
+									</select>
 								</label>
 
-								<select
-									name="imageSelection"
-									id="imageSelection-{content.id}"
-									class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-									bind:value={content.media_id}
-								>
-									{#each data.images as media}
-										<option value={media.id} selected={content.media_id === media.id}>
-											{media.subtitle}
-										</option>
-									{/each}
-								</select>
+								<input name="imageId" type="hidden" value={content.id} />
 
 								<button
 									type="submit"
