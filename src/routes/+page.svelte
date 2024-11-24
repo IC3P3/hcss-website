@@ -25,6 +25,10 @@
 		});
 </script>
 
+<svelte:head>
+	<title>Helmstedter Chor- und Singschule</title>
+</svelte:head>
+
 {#if homeImage}
 	<Header {homeImage} />
 {/if}
