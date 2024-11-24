@@ -23,7 +23,7 @@ export const load: PageServerLoad = async () => {
 			required: true,
 			attributes: ['id'],
 			where: {
-				category: 0
+				category: 1
 			}
 		},
 		raw: true,
