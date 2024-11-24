@@ -1,6 +1,7 @@
 import { Table, Column, Model, DataType, ForeignKey, PrimaryKey } from 'sequelize-typescript';
 
 import Media from './Media';
+import Category from './Category';
 
 @Table({
 	timestamps: false,
@@ -15,6 +16,12 @@ class Content extends Model {
 	})
 	declare id: string;
 
+	@Column({
+		type: DataType.STRING
+	})
+	declare displayName: string;
+
+	@ForeignKey(() => Category)
 	@Column({
 		allowNull: false,
 		type: DataType.NUMBER
