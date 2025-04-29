@@ -1,38 +1,16 @@
-import { Table, Column, Model, DataType, ForeignKey, PrimaryKey } from 'sequelize-typescript';
+import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { Media } from './Media';
 
-import Media from './Media';
-import Category from './Category';
+export const Content = sqliteTable('Content', {
+	id: int().primaryKey({ autoIncrement: true }),
+	displayName: text(),
+	category_id: int()
+		.references(() => Category.id, { onDelete: 'cascade' })
+		.notNull(),
+	media_id: int().references(() => Media.id, { onDelete: 'set null' })
+});
 
-@Table({
-	timestamps: false,
-	tableName: 'content',
-	modelName: 'Content'
-})
-class Content extends Model {
-	@PrimaryKey
-	@Column({
-		allowNull: false,
-		type: DataType.STRING
-	})
-	declare id: string;
-
-	@Column({
-		type: DataType.STRING
-	})
-	declare displayName: string;
-
-	@ForeignKey(() => Category)
-	@Column({
-		allowNull: false,
-		type: DataType.NUMBER
-	})
-	declare category: number;
-
-	@ForeignKey(() => Media)
-	@Column({
-		type: DataType.NUMBER
-	})
-	declare media_id: number;
-}
-
-export default Content;
+export const Category = sqliteTable('Category', {
+	id: int().primaryKey({ autoIncrement: true }),
+	displayName: text()
+});
