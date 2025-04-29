@@ -1,5 +1,5 @@
-<script>
-	export let homeImage;
+<script lang="ts">
+	let { homeImage = $bindable() } = $props();
 
 	homeImage = `/api/content/image?id=${homeImage}`;
 </script>

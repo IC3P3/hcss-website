@@ -1,5 +1,4 @@
 <script lang="ts">
-	export let data: PageData;
 
 	import type { PageData } from './$types';
 
@@ -10,6 +9,11 @@
 	import About from '$lib/components/About.svelte';
 	import Club from '$lib/components/Club.svelte';
 	import CTA from '$lib/components/CTA.svelte';
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	// TODO: Make this modular and not hard coded
 	// NOTE: Maybe by adding the id in the db table Content to the id of the element

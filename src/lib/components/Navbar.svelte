@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	import logo from '$lib/assets/logo.png';
 </script>
 
 <!-- TODO: Small extend button doesn't extend Navbar -->
-{#if $page.url.pathname.includes('admin')}
+{#if page.url.pathname.includes('admin')}
 	<nav class="border-gray-200 bg-gray-50 fixed w-full z-50">
 		<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 			<a href="/" class="flex items-center">
