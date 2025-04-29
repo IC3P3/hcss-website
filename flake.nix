@@ -4,12 +4,13 @@
     inputs = {
         flake-utils.url = "github:numtide/flake-utils";
 
+        # Project Packages
         # NodeJS 20.17.0
-        nodejs_dep.url = "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269";
+        nodejs_dep.url = "github:NixOS/nixpkgs/eb0e0f21f15c559d2ac7633dc81d079d1caf5f5f";
         # pnpm 9.10.0
-        pnpm_dep.url = "github:NixOS/nixpkgs/673d99f1406cb09b8eb6feab4743ebdf70046557";
+        pnpm_dep.url = "github:NixOS/nixpkgs/b2b0718004cc9a5bca610326de0a82e6ea75920b";
         # Sqlite 3.46.0
-        sqlite_dep.url = "github:NixOS/nixpkgs/268bb5090a3c6ac5e1615b38542a868b52ef8088";
+        sqlite_dep.url = "github:NixOS/nixpkgs/18dd725c29603f582cf1900e0d25f9f1063dbf11";
     };
 
     outputs = {
@@ -26,12 +27,13 @@
         in {
             devShells.default = nodejs_dep.mkShell {
                 packages = [
-                    nodejs_dep.nodejs_20
+                    nodejs_dep.nodejs_22
                     pnpm_dep.pnpm
                     sqlite_dep.sqlite
                 ];
 
                 shellHook = ''
+                    { exec zsh ; }
                     { echo -n NodeJS:\ ; node --version ; }
                     { echo -n pnpm:\ ; pnpm --version ; }
                     { echo -n SQLite:\ ; sqlite3 --version | awk '{print $1}' ; }
