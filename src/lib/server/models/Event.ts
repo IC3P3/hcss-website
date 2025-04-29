@@ -1,57 +1,9 @@
-import {
-	Table,
-	Column,
-	Model,
-	DataType,
-	HasMany,
-	PrimaryKey,
-	AutoIncrement,
-	DefaultScope
-} from 'sequelize-typescript';
+import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-import Media from './Media';
-
-@DefaultScope(() => ({
-	attributes: ['title', 'subtitle', 'address', 'time']
-}))
-@Table({
-	timestamps: false,
-	tableName: 'events',
-	modelName: 'Event'
-})
-class Event extends Model {
-	@PrimaryKey
-	@AutoIncrement
-	@Column({
-		type: DataType.INTEGER
-	})
-	declare id: number;
-
-	@Column({
-		allowNull: false,
-		type: DataType.STRING
-	})
-	declare title: string;
-
-	@Column({
-		type: DataType.STRING
-	})
-	declare subtitle: string;
-
-	@Column({
-		allowNull: false,
-		type: DataType.STRING
-	})
-	declare address: string;
-
-	@Column({
-		allowNull: false,
-		type: DataType.NUMBER
-	})
-	declare time: number;
-
-	@HasMany(() => Media)
-	declare media: Media[];
-}
-
-export default Event;
+export const Event = sqliteTable('Event', {
+	id: int().primaryKey({ autoIncrement: true }),
+	title: text().notNull(),
+	subtitle: text(),
+	address: text().notNull(),
+	time: int().notNull()
+});

@@ -1,20 +1,19 @@
-import { Sequelize } from 'sequelize-typescript';
+import { drizzle } from 'drizzle-orm/libsql';
+import { createClient } from '@libsql/client';
+import { Media } from './models/Media';
+import { Event } from './models/Event';
+import { Content, Category } from './models/Content';
+import { DATABASE_URL } from '$env/static/private';
 
-import { DATABASE_LOCATION } from '$env/static/private';
+if (!DATABASE_URL) throw new Error('DATABASE_URL is not set');
 
-import Event from './models/Event';
-import Media from './models/Media';
-import Content from './models/Content';
-import Category from './models/Category';
+const client = createClient({ url: DATABASE_URL });
 
-const sequelize = new Sequelize({
-	dialect: 'sqlite',
-	storage: DATABASE_LOCATION,
-	logging: false
+export const db = drizzle(client, {
+	schema: {
+		Media,
+		Event,
+		Content,
+		Category
+	}
 });
-
-sequelize.addModels([Event, Media, Content, Category]);
-
-sequelize.sync();
-
-export { sequelize, Event, Media, Content, Category };
