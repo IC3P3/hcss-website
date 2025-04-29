@@ -3,7 +3,11 @@
 	import Instagram from '$lib/assets/Instagram.svelte';
 	import Soundcloud from '$lib/assets/Soundcloud.svelte';
 
-	export let media: string[];
+	interface Props {
+		media: string[];
+	}
+
+	let { media }: Props = $props();
 </script>
 
 <section

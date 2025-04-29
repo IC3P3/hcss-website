@@ -5,9 +5,13 @@
 
 	import imagePlaceholder from '$lib/assets/placeholder-image.png';
 
-	let uploadedImage: string;
+	let uploadedImage: string = $state();
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	async function handleImageSelection(e: Event) {
 		const file = (e.target as HTMLInputElement)?.files?.[0];
@@ -143,7 +147,7 @@
 						type="file"
 						accept="image/*"
 						required
-						on:change={handleImageSelection}
+						onchange={handleImageSelection}
 						class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
 					/>
 				</div>
