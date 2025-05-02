@@ -6,22 +6,22 @@
 
 <!-- TODO: Small extend button doesn't extend Navbar -->
 {#if page.url.pathname.includes('admin')}
-	<nav class="border-gray-200 bg-gray-50 fixed w-full z-50">
-		<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+	<nav class="fixed z-50 w-full border-gray-200 bg-gray-50">
+		<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
 			<a href="/" class="flex items-center">
-				<img src={logo} class="h-8 mr-3" alt="Logo der Helmstedter Chor- und Singschule" />
+				<img src={logo} class="mr-3 h-8" alt="Logo der Helmstedter Chor- und Singschule" />
 				<span class="self-center text-2xl font-semibold whitespace-nowrap">HCSS</span>
 			</a>
 			<button
 				data-collapse-toggle="navbar-solid-bg"
 				type="button"
-				class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+				class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none md:hidden"
 				aria-controls="navbar-solid-bg"
 				aria-expanded="false"
 			>
 				<span class="sr-only">Open main menu</span>
 				<svg
-					class="w-5 h-5"
+					class="h-5 w-5"
 					aria-hidden="true"
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -38,26 +38,26 @@
 			</button>
 			<div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
 				<ul
-					class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent"
+					class="mt-4 flex flex-col rounded-lg bg-gray-50 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent"
 				>
 					<li>
 						<a
 							href="/admin/create"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Inhalt erstellen</a
 						>
 					</li>
 					<li>
 						<a
 							href="/admin/customize"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Angezeigte Inhalte anpassen</a
 						>
 					</li>
 					<li>
 						<a
 							href="/admin/logout"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Abmelden</a
 						>
 					</li>
@@ -66,22 +66,22 @@
 		</div>
 	</nav>
 {:else}
-	<nav class="border-gray-200 bg-gray-50 fixed w-full z-50">
-		<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+	<nav class="fixed z-50 w-full border-gray-200 bg-gray-50">
+		<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
 			<a href="/" class="flex items-center">
-				<img src={logo} class="h-8 mr-3" alt="Logo der Helmstedter Chor- und Singschule" />
+				<img src={logo} class="mr-3 h-8" alt="Logo der Helmstedter Chor- und Singschule" />
 				<span class="self-center text-2xl font-semibold whitespace-nowrap">HCSS</span>
 			</a>
 			<button
 				data-collapse-toggle="navbar-solid-bg"
 				type="button"
-				class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+				class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none md:hidden"
 				aria-controls="navbar-solid-bg"
 				aria-expanded="false"
 			>
 				<span class="sr-only">Open main menu</span>
 				<svg
-					class="w-5 h-5"
+					class="h-5 w-5"
 					aria-hidden="true"
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -98,47 +98,47 @@
 			</button>
 			<div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
 				<ul
-					class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent"
+					class="mt-4 flex flex-col rounded-lg bg-gray-50 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent"
 				>
 					<li>
 						<a
 							href="#about"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Über uns</a
 						>
 					</li>
 					<li>
 						<a
 							href="#events"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Termine</a
 						>
 					</li>
 					<li>
 						<a
 							href="#offering"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Angebote</a
 						>
 					</li>
 					<li>
 						<a
 							href="#media"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Medien</a
 						>
 					</li>
 					<li>
 						<a
 							href="#clubs"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Vereine</a
 						>
 					</li>
 					<li>
 						<a
 							href="#legal"
-							class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
 							>Impressum</a
 						>
 					</li>

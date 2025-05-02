@@ -12,20 +12,20 @@
 
 <section
 	id="media"
-	class="max-w-screen-xl mx-auto w-screen p-4 py-6 lg:py-8 text-center justify-center"
+	class="mx-auto w-screen max-w-screen-xl justify-center p-4 py-6 text-center lg:py-8"
 >
-	<h2 class="text-blue-950 font-extrabold text-4xl">Medien</h2>
+	<h2 class="text-4xl font-extrabold text-blue-950">Medien</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="flex flex-wrap justify-between">
 		{#each media as item}
-			<div class="relative overflow-hidden w-full sm:w-1/2 lg:w-1/3 group">
-				<img class="w-full h-64 object-cover" src="/api/content/image?id={item.id}" alt="" />
+			<div class="group relative w-full overflow-hidden sm:w-1/2 lg:w-1/3">
+				<img class="h-64 w-full object-cover" src="/api/content/image?id={item.id}" alt="" />
 				<div
-					class="absolute inset-0 flex items-end bg-blue-700 bg-opacity-75 p-8 opacity-0 group-hover:opacity-100 hover:opacity-100 transition-opacity duration-300"
+					class="bg-opacity-75 absolute inset-0 flex items-end bg-blue-700 p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:opacity-100"
 				>
-					<div class="flex flex-col items-start w-full">
-						<h3 class="text-white text-2xl font-semibold mb-2">Placeholder</h3>
-						<span class="text-white text-sm">{item.subtitle}</span>
+					<div class="flex w-full flex-col items-start">
+						<h3 class="mb-2 text-2xl font-semibold text-white">Placeholder</h3>
+						<span class="text-sm text-white">{item.subtitle}</span>
 					</div>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 	</div>
 
 	<div class="mt-8 flex flex-col items-center justify-center gap-6">
-		<p class="justify-center text-center text-blue-950 font-bold text-xl mx-auto max-w-screen-xl">
+		<p class="mx-auto max-w-screen-xl justify-center text-center text-xl font-bold text-blue-950">
 			Entdecke mehr Inhalte auf unseren sozialen Netzwerken!
 		</p>
 

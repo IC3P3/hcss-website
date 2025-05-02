@@ -1,18 +1,18 @@
 <section
 	id="clubs"
-	class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 text-center justify-center"
+	class="mx-auto w-full max-w-screen-xl justify-center p-4 py-6 text-center lg:py-8"
 >
-	<h2 class="text-blue-950 font-extrabold text-4xl">Unsere Vereine</h2>
+	<h2 class="text-4xl font-extrabold text-blue-950">Unsere Vereine</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-		<div class="bg-white p-6 rounded-lg shadow-lg">
-			<h3 class="text-blue-950 font-bold text-lg mb-2">Helmstedter Chor- und Singschule e.V.</h3>
-			<div class="flex items-center mb-4">
+	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+		<div class="rounded-lg bg-white p-6 shadow-lg">
+			<h3 class="mb-2 text-lg font-bold text-blue-950">Helmstedter Chor- und Singschule e.V.</h3>
+			<div class="mb-4 flex items-center">
 				<!-- TODO: Image is missing -->
-				<img alt="" class="w-12 h-12 rounded-full mr-4" />
+				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
 				<div>
-					<h4 class="text-gray-800 font-semibold">Max Mustermann</h4>
-					<p class="text-gray-600 text-sm">1. Vorsitzender</p>
+					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
+					<p class="text-sm text-gray-600">1. Vorsitzender</p>
 				</div>
 			</div>
 			<p class="text-gray-700">
@@ -21,12 +21,12 @@
 				et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
 				Lorem ipsum dolor sit amet.
 			</p>
-			<div class="flex items-center mb-4 mt-16">
+			<div class="mt-16 mb-4 flex items-center">
 				<!-- TODO: Image is missing -->
-				<img alt="" class="w-12 h-12 rounded-full mr-4" />
+				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
 				<div>
-					<h4 class="text-gray-800 font-semibold">Max Mustermann</h4>
-					<p class="text-gray-600 text-sm">2. Vorsitzender</p>
+					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
+					<p class="text-sm text-gray-600">2. Vorsitzender</p>
 				</div>
 			</div>
 			<p class="text-gray-700">
@@ -36,14 +36,14 @@
 				Lorem ipsum dolor sit amet.
 			</p>
 		</div>
-		<div class="bg-white p-6 rounded-lg shadow-lg">
-			<h3 class="text-blue-950 font-bold text-lg mb-2">Föderverein</h3>
-			<div class="flex items-center mb-4">
+		<div class="rounded-lg bg-white p-6 shadow-lg">
+			<h3 class="mb-2 text-lg font-bold text-blue-950">Föderverein</h3>
+			<div class="mb-4 flex items-center">
 				<!-- TODO: Image is missing -->
-				<img alt="" class="w-12 h-12 rounded-full mr-4" />
+				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
 				<div>
-					<h4 class="text-gray-800 font-semibold">Max Mustermann</h4>
-					<p class="text-gray-600 text-sm">1. Vorsitzender</p>
+					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
+					<p class="text-sm text-gray-600">1. Vorsitzender</p>
 				</div>
 			</div>
 			<p class="text-gray-700">
@@ -52,12 +52,12 @@
 				et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
 				Lorem ipsum dolor sit amet.
 			</p>
-			<div class="flex items-center mb-4 mt-16">
+			<div class="mt-16 mb-4 flex items-center">
 				<!-- TODO: Image is missing -->
-				<img alt="" class="w-12 h-12 rounded-full mr-4" />
+				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
 				<div>
-					<h4 class="text-gray-800 font-semibold">Max Mustermann</h4>
-					<p class="text-gray-600 text-sm">2. Vorsitzender</p>
+					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
+					<p class="text-sm text-gray-600">2. Vorsitzender</p>
 				</div>
 			</div>
 			<p class="text-gray-700">

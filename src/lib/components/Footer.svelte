@@ -5,18 +5,18 @@
 	import logo from '$lib/assets/logo.png';
 </script>
 
-<footer class="bg-white mt-4">
+<footer class="mt-4 bg-white">
 	<section id="legal">
 		<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
 			<div class="md:flex md:justify-between">
 				<div class="mb-8">
 					<a href="/" class="flex items-center">
-						<img src={logo} class="h-8 mr-3" alt="Logo der Helmstedter Chor- und Singschule" />
+						<img src={logo} class="mr-3 h-8" alt="Logo der Helmstedter Chor- und Singschule" />
 						<span class="self-center text-2xl font-semibold whitespace-nowrap">HCSS</span>
 					</a>
 				</div>
 			</div>
-			<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+			<div class="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
 				<div>
 					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Navigation</h2>
 					<ul class="text-grey-500 fonz-medium">
@@ -44,7 +44,7 @@
 					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
 						Ansprechpartner des Vereins
 					</h2>
-					<ul class="text-gray-500 font-medium">
+					<ul class="font-medium text-gray-500">
 						<li class="mb-4">
 							<span>Person A</span>
 						</li>
@@ -62,7 +62,7 @@
 					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
 						Ansprechpartner des Fördervereins
 					</h2>
-					<ul class="text-gray-500 font-medium">
+					<ul class="font-medium text-gray-500">
 						<li class="mb-4">
 							<span>Person B</span>
 						</li>
@@ -83,7 +83,7 @@
 					><a href="https://hcss-ev.de/" class="hover:underline">Helmstedter Chor- und Singschule</a
 					></span
 				>
-				<div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
+				<div class="mt-4 flex space-x-5 sm:mt-0 sm:justify-center">
 					<a href="https://facebook.com/" class="text-gray-500 hover:text-gray-900">
 						<Facebook style="h-4" />
 					</a>
