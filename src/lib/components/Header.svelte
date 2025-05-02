@@ -6,15 +6,15 @@
 
 <section
 	id="home"
-	class="bg-fixed bg-center bg-cover items-center"
+	class="items-center bg-cover bg-fixed bg-center"
 	style="background-image: url({homeImage})"
 >
 	<div
-		class="bg-image flex flex-col justify-center bg-cover bg-center items-center h-screen"
+		class="bg-image flex h-screen flex-col items-center justify-center bg-cover bg-center"
 		style="background-color: rgba(110, 112, 116, 0.5);"
 	>
-		<h1 class="text-white text-4xl font-bold text-center">Helmsteder Chor- und Singschule</h1>
-		<p class="text-white text-center mt-4 max-w-lg px-4 mx-5">
+		<h1 class="text-center text-4xl font-bold text-white">Helmsteder Chor- und Singschule</h1>
+		<p class="mx-5 mt-4 max-w-lg px-4 text-center text-white">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
 			invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
 			justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
@@ -22,7 +22,7 @@
 		</p>
 		<a
 			href="/events"
-			class="bg-blue-700 text-white mt-4 font-bold text-xs uppercase px-7 py-3 rounded-none hover:bg-blue-900"
+			class="mt-4 rounded-none bg-blue-700 px-7 py-3 text-xs font-bold text-white uppercase hover:bg-blue-900"
 			>Unsere Termine</a
 		>
 	</div>

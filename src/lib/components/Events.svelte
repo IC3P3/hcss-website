@@ -4,14 +4,14 @@
 
 <section
 	id="events"
-	class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 text-center justify-center"
+	class="mx-auto w-full max-w-screen-xl justify-center p-4 py-6 text-center lg:py-8"
 >
-	<h2 class="text-blue-950 font-extrabold text-4xl mb-8">Termine</h2>
+	<h2 class="mb-8 text-4xl font-extrabold text-blue-950">Termine</h2>
 
 	{#each events as event}
-		<div class="my-8 p-6 bg-white shadow-md rounded-lg border border-gray-200">
-			<div class="lg:grid lg:grid-cols-4 gap-8">
-				<div class="align-middle mt-1">
+		<div class="my-8 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+			<div class="gap-8 lg:grid lg:grid-cols-4">
+				<div class="mt-1 align-middle">
 					<p class="text-left text-xl font-semibold text-blue-950">
 						{new Date(event.time).toLocaleDateString('de', {
 							day: '2-digit',
@@ -25,13 +25,13 @@
 				</div>
 
 				<div class="lg:col-span-2 lg:text-center">
-					<h3 class="text-2xl font-bold text-blue-950 mb-2">{event.title}</h3>
-					<p class="text-gray-700 text-lg">{event.subtitle}</p>
+					<h3 class="mb-2 text-2xl font-bold text-blue-950">{event.title}</h3>
+					<p class="text-lg text-gray-700">{event.subtitle}</p>
 				</div>
 
-				<div class="lg:text-left align-middle">
+				<div class="align-middle lg:text-left">
 					{#each event.address.split(', ') as part}
-						<p class="text-right text-lg text-gray-700 align-right">{part}</p>
+						<p class="align-right text-right text-lg text-gray-700">{part}</p>
 					{/each}
 				</div>
 			</div>
