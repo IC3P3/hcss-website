@@ -40,10 +40,7 @@ export const actions = {
 			.where(eq(Content.id, changedValue.imageId))
 			.limit(1);
 
-		if (content.length === 0) {
-			console.log(changedValue.imageId);
-			return { success: false };
-		}
+		if (content.length === 0) return { success: false };
 
 		await db
 			.update(Content)
