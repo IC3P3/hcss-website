@@ -1,13 +1,13 @@
-import { drizzle } from 'drizzle-orm/libsql';
-import { createClient } from '@libsql/client';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { Media } from './models/Media';
 import { Event } from './models/Event';
 import { Content, Category } from './models/Content';
-import { DATABASE_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+import Database from 'better-sqlite3';
 
-if (!DATABASE_URL) throw new Error('DATABASE_URL is not set');
+if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
 
-const client = createClient({ url: DATABASE_URL });
+const client = new Database(env.DATABASE_URL);
 
 export const db = drizzle(client, {
 	schema: {

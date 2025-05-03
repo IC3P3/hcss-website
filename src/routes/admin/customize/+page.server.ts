@@ -1,23 +1,24 @@
-import type { PageServerLoad, Actions } from './$types';
-
-import { Category, Content, Media } from '$lib/server/db';
+import { db } from '$lib/server/db';
+import { Category, Content } from '$lib/server/models/Content';
+import { Media } from '$lib/server/models/Media';
+import type { Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
+import { eq } from 'drizzle-orm';
 
 export const load: PageServerLoad = async () => {
-	const media = await Media.findAll({
-		attributes: ['id', 'subtitle'],
-		raw: true
-	});
+	const media = await db
+		.select({
+			id: Media.id,
+			subtitle: Media.subtitle
+		})
+		.from(Media);
 
-	const content = await Content.findAll({
-		raw: true
-	});
+	const content = await db.select().from(Content);
 
-	const categories = await Category.findAll({
-		raw: true
-	});
+	const categories = await db.select().from(Category);
 
 	return {
-		images: media,
+		media: media,
 		content: content,
 		contentCategories: categories
 	};
@@ -25,20 +26,33 @@ export const load: PageServerLoad = async () => {
 
 export const actions = {
 	default: async ({ request }) => {
-		// FIX: Ones more Typescript shenanigans
 		const data = await request.formData();
-		const changeValue = Object.fromEntries(data);
+		const formEntries = Object.fromEntries(data);
 
-		const content = await Content.findByPk(changeValue.imageId);
+		const changedValue: { imageId: string; imageSelection: number } = {
+			imageId: formEntries.imageId.toString(),
+			imageSelection: Number(formEntries.imageSelection)
+		};
 
-		if (content) {
-			// Update only the media_id field
-			content.media_id = changeValue.imageSelection;
+		const content = await db
+			.select()
+			.from(Content)
+			.where(eq(Content.id, changedValue.imageId))
+			.limit(1);
 
-			// Save the content, but only update the media_id field by specifying it explicitly
-			await content.save({ fields: ['media_id'] });
+		if (content.length === 0) {
+			console.log(changedValue.imageId);
+			return { success: false };
 		}
 
-		return { success: true };
+		await db
+			.update(Content)
+			.set({ media_id: changedValue.imageSelection })
+			.where(eq(Content.id, changedValue.imageId))
+			.limit(1)
+			.catch((err) => {
+				console.error(err);
+				return { success: false };
+			});
 	}
 } satisfies Actions;
