@@ -2,6 +2,18 @@
 	import { page } from '$app/state';
 
 	import logo from '$lib/assets/logo.png';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		const toggleButton = document.querySelector('[data-collapse-toggle="navbar-solid-bg"]');
+		const menu = document.getElementById('navbar-solid-bg');
+
+		if (toggleButton && menu) {
+			toggleButton.addEventListener('click', () => {
+				menu.classList.toggle('hidden');
+			});
+		}
+	});
 </script>
 
 <!-- TODO: Small extend button doesn't extend Navbar -->
@@ -102,16 +114,16 @@
 				>
 					<li>
 						<a
-							href="#about"
+							href="#events"
 							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
-							>Über uns</a
+							>Termine</a
 						>
 					</li>
 					<li>
 						<a
-							href="#events"
+							href="#media"
 							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
-							>Termine</a
+							>Medien</a
 						>
 					</li>
 					<li>
@@ -123,9 +135,9 @@
 					</li>
 					<li>
 						<a
-							href="#media"
+							href="#about"
 							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
-							>Medien</a
+							>Über uns</a
 						>
 					</li>
 					<li>
