@@ -4,7 +4,10 @@
 	import Soundcloud from '$lib/assets/Soundcloud.svelte';
 
 	interface Props {
-		media: string[];
+		media: {
+			media_id: number;
+			subtitle: string;
+		}[];
 	}
 
 	let { media }: Props = $props();
@@ -19,7 +22,7 @@
 	<div class="flex flex-wrap justify-between">
 		{#each media as item}
 			<div class="group relative w-full overflow-hidden sm:w-1/2 lg:w-1/3">
-				<img class="h-64 w-full object-cover" src="/api/content/image?id={item.id}" alt="" />
+				<img class="h-64 w-full object-cover" src="/api/image?id={item.media_id}" alt="" />
 				<div
 					class="bg-opacity-75 absolute inset-0 flex items-end bg-blue-700 p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:opacity-100"
 				>

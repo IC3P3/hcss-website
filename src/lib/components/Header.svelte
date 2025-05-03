@@ -1,7 +1,7 @@
 <script lang="ts">
 	let { homeImage = $bindable() } = $props();
 
-	homeImage = `/api/content/image?id=${homeImage}`;
+	homeImage = `/api/image?id=${homeImage}`;
 </script>
 
 <section

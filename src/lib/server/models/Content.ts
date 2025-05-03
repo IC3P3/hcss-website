@@ -2,7 +2,7 @@ import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { Media } from './Media';
 
 export const Content = sqliteTable('Content', {
-	id: int().primaryKey({ autoIncrement: true }),
+	id: text().primaryKey(),
 	displayName: text(),
 	category_id: int()
 		.references(() => Category.id, { onDelete: 'cascade' })
