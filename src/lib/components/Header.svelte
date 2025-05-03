@@ -21,7 +21,7 @@
 			ipsum dolor sit amet.
 		</p>
 		<a
-			href="/events"
+			href="#events"
 			class="mt-4 rounded-none bg-blue-700 px-7 py-3 text-xs font-bold text-white uppercase hover:bg-blue-900"
 			>Unsere Termine</a
 		>
