@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import placeholder from '$lib/assets/placeholder-image.png';
 
 	interface Props {
@@ -34,7 +35,7 @@
 			{#each data.content as content}
 				{#if content.category_id === category.id}
 					<div class="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
-						<form method="POST" class="flex items-start space-x-6">
+						<form method="POST" class="flex items-start space-x-6" use:enhance>
 							<div class="flex w-2/3 max-w-md flex-col space-y-4">
 								<label for="imageSelection" class="block font-medium text-gray-700">
 									{content.displayName}
