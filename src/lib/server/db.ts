@@ -4,6 +4,7 @@ import { Event } from './models/Event';
 import { Content, Category } from './models/Content';
 import { env } from '$env/dynamic/private';
 import Database from 'better-sqlite3';
+import { Session, User } from './models/Session';
 
 if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
 
@@ -14,6 +15,8 @@ export const db = drizzle(client, {
 		Media,
 		Event,
 		Content,
-		Category
+		Category,
+		Session,
+		User
 	}
 });
