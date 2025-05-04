@@ -1,4 +1,8 @@
-<form action="?/login" method="POST">
+<script lang="ts">
+	import { enhance } from '$app/forms';
+</script>
+
+<form action="?/login" method="POST" use:enhance>
 	<div>
 		<label for="username">Benutzername</label>
 		<input type="text" id="username" name="username" required />
