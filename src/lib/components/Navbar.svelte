@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
 
 	import logo from '$lib/assets/logo.png';
@@ -67,11 +68,12 @@
 						>
 					</li>
 					<li>
-						<a
-							href="/admin/logout"
-							class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
-							>Abmelden</a
-						>
+						<form action="/admin/logout" method="POST" use:enhance>
+							<button
+								class="block rounded py-2 pr-4 pl-3 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
+								type="submit">Abmelden</button
+							>
+						</form>
 					</li>
 				</ul>
 			</div>
