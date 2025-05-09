@@ -5,11 +5,11 @@
         flake-utils.url = "github:numtide/flake-utils";
 
         # Project Packages
-        # NodeJS 20.17.0
+        # NodeJS 22.14.0
         nodejs_dep.url = "github:NixOS/nixpkgs/eb0e0f21f15c559d2ac7633dc81d079d1caf5f5f";
-        # pnpm 9.10.0
+        # pnpm 10.8.0
         pnpm_dep.url = "github:NixOS/nixpkgs/b2b0718004cc9a5bca610326de0a82e6ea75920b";
-        # Sqlite 3.46.0
+        # Sqlite 3.48.0
         sqlite_dep.url = "github:NixOS/nixpkgs/18dd725c29603f582cf1900e0d25f9f1063dbf11";
     };
 
