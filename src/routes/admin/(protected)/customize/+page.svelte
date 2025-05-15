@@ -27,12 +27,12 @@
 <section class="mx-auto max-w-screen-xl p-6 py-8 pt-20">
 	<h1 class="mb-6 text-3xl font-extrabold text-blue-950">Angezeigte Bilder ändern</h1>
 
-	{#each data.contentCategories as category}
+	{#each data.contentCategories as category (category.id)}
 		<div class="mb-8">
 			<h2 class="mb-4 text-2xl font-semibold text-blue-950">{category.displayName}</h2>
 
 			<!-- NOTE: Should move the image further to the right -->
-			{#each data.content as content}
+			{#each data.content as content (content.id)}
 				{#if content.category_id === category.id}
 					<div class="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
 						<form method="POST" class="flex items-start space-x-6" use:enhance>
@@ -45,7 +45,7 @@
 										class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
 										bind:value={content.media_id}
 									>
-										{#each data.media as media}
+										{#each data.media as media (media.id)}
 											<option value={media.id} selected={content.media_id === media.id}>
 												{media.subtitle}
 											</option>
