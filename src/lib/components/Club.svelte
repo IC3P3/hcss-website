@@ -7,28 +7,6 @@
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 		<div class="rounded-lg bg-white p-6 shadow-lg">
 			<h3 class="mb-2 text-lg font-bold text-blue-950">Helmstedter Chor- und Singschule e.V.</h3>
-			<div class="mb-4 flex items-center">
-				<!-- TODO: Image is missing -->
-				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
-				<div>
-					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
-					<p class="text-sm text-gray-600">1. Vorsitzender</p>
-				</div>
-			</div>
-			<p class="text-gray-700">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-				invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-				et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-				Lorem ipsum dolor sit amet.
-			</p>
-			<div class="mt-16 mb-4 flex items-center">
-				<!-- TODO: Image is missing -->
-				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
-				<div>
-					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
-					<p class="text-sm text-gray-600">2. Vorsitzender</p>
-				</div>
-			</div>
 			<p class="text-gray-700">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
 				invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
@@ -38,28 +16,6 @@
 		</div>
 		<div class="rounded-lg bg-white p-6 shadow-lg">
 			<h3 class="mb-2 text-lg font-bold text-blue-950">Föderverein</h3>
-			<div class="mb-4 flex items-center">
-				<!-- TODO: Image is missing -->
-				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
-				<div>
-					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
-					<p class="text-sm text-gray-600">1. Vorsitzender</p>
-				</div>
-			</div>
-			<p class="text-gray-700">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-				invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-				et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-				Lorem ipsum dolor sit amet.
-			</p>
-			<div class="mt-16 mb-4 flex items-center">
-				<!-- TODO: Image is missing -->
-				<img alt="" class="mr-4 h-12 w-12 rounded-full" />
-				<div>
-					<h4 class="font-semibold text-gray-800">Max Mustermann</h4>
-					<p class="text-sm text-gray-600">2. Vorsitzender</p>
-				</div>
-			</div>
 			<p class="text-gray-700">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
 				invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
