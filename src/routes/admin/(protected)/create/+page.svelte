@@ -173,7 +173,7 @@
 						required
 						class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
 					>
-						{#each data.events as event}
+						{#each data.events as event (event.id)}
 							<option value={event.id}>{event.title}</option>
 						{/each}
 					</select>
