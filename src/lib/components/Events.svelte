@@ -8,7 +8,7 @@
 >
 	<h2 class="mb-8 text-4xl font-extrabold text-blue-950">Termine</h2>
 
-	{#each events as event (event.title)}
+	{#each events as event}
 		<div class="my-8 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
 			<div class="gap-8 lg:grid lg:grid-cols-4">
 				<div class="mt-1 align-middle">
@@ -30,7 +30,7 @@
 				</div>
 
 				<div class="align-middle lg:text-left">
-					{#each event.address.split(', ') as part (part.title)}
+					{#each event.address.split(', ') as part}
 						<p class="align-right text-right text-lg text-gray-700">{part}</p>
 					{/each}
 				</div>
