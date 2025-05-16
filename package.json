@@ -51,7 +51,7 @@
 	"dependencies": {
 		"argon2": "^0.43.0",
 		"better-sqlite3": "^11.8.0",
-		"drizzle-orm": "^0.40.0"
+		"drizzle-orm": "^0.43.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
