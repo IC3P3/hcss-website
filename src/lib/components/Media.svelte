@@ -20,7 +20,7 @@
 	<h2 class="text-4xl font-extrabold text-blue-950">Medien</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="flex flex-wrap justify-between">
-		{#each media as item (item.media_id)}
+		{#each media as item}
 			<div class="group relative w-full overflow-hidden sm:w-1/2 lg:w-1/3">
 				<img class="h-64 w-full object-cover" src="/api/image?id={item.media_id}" alt="" />
 				<div
