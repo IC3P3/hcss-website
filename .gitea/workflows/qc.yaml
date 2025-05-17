@@ -7,18 +7,20 @@ jobs:
     lint:
         name: Lint
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
-        if: ${{ github.event_name != 'pull_request' || (github.base_ref != 'dev' && github.base_ref != 'main') }}
+        if: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         continue-on-error: true
         container:
-            image: node:${{ vars.NODE_VERSION }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
+            image: node:${{ vars.NODE_VERSION || '18' }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
         steps:
             - uses: actions/checkout@v4
-
+            
             - name: Cache dependencies
               uses: actions/cache@v3
               with:
                   path: node_modules
-                  key: ${{ hashFiles('package-lock.json') }}
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node-
 
             - name: Install dependencies
               run: npm clean-install
@@ -29,17 +31,19 @@ jobs:
     lint-strict:
         name: Strict Linting
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
-        if: ${{ github.event_name == 'pull_request' && (github.base_ref == 'dev' || github.base_ref == 'main') }}
+        if: ${{ gitea.event_name == 'pull_request' && (gitea.base_ref == 'dev' || gitea.base_ref == 'main') }}
         container:
-            image: node:${{ vars.NODE_VERSION }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
+            image: node:${{ vars.NODE_VERSION || 'lts' }}-${{ vars.BASE_LAYER || 'slim' }}
         steps:
             - uses: actions/checkout@v4
-
+            
             - name: Cache dependencies
               uses: actions/cache@v3
               with:
                   path: node_modules
-                  key: ${{ hashFiles('package-lock.json') }}
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node-
 
             - name: Install dependencies
               run: npm clean-install
@@ -51,15 +55,18 @@ jobs:
         name: Type Check
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
         container:
-            image: node:${{ vars.NODE_VERSION || '22.14' }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
-        continue-on-error: ${{ github.event_name != 'pull_request' || (github.base_ref != 'dev' && github.base_ref != 'main') }}
+            image: node:${{ vars.NODE_VERSION || 'lts' }}-${{ vars.BASE_LAYER || 'slim' }}
+        continue-on-error: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         steps:
             - uses: actions/checkout@v4
+            
             - name: Cache dependencies
               uses: actions/cache@v3
               with:
                   path: node_modules
-                  key: ${{ hashFiles('package-lock.json') }}
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node-
 
             - name: Install dependencies
               run: npm clean-install
