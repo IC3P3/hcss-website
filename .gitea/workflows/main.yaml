@@ -13,8 +13,8 @@ on:
 
 jobs:
   qc:
-    uses: ./.gitea/workflows/qc.yml
+    uses: ./.gitea/workflows/qc.yaml
   
   test:
     needs: qc
-    uses: ./.gitea/workflows/test.yml
+    uses: ./.gitea/workflows/test.yaml
