@@ -1,20 +1,25 @@
-import type { RequestEvent } from '../$types';
+import type { RequestEvent } from '@sveltejs/kit';
 
-export async function GET({ request }: RequestEvent) {
-	// NOTE: Needs to be tested with a real domain
-	// Maybe need to manually add https
-	const host: string = request.headers.get('host') || 'https://hcss-ev.de';
+export function GET({ request }: RequestEvent) {
+	const FIRST_ELEMENT = 0;
+	const LAST_ELEMENT = -1;
+
+	const host = request.headers.get('host') || 'https://hcss-ev.de';
 	const routes = import.meta.glob('/src/routes/**/+page.svelte', {
 		eager: true,
 		import: 'default'
 	});
 
-	const pages: string[] = Object.keys(routes)
+	const pages = Object.keys(routes)
 		.filter((filepath) => {
-			return !(filepath.includes('api') || filepath.includes('admin'));
+			return !filepath.includes('(forbidden)');
 		})
 		.map((filepath) => {
-			return filepath.replace('/src/routes/', '').replace('+page.svelte', '').slice(0, -1);
+			return filepath
+				.replace('/src/routes/', '')
+				.replace('+page.svelte', '')
+				.replaceAll(/\(.*?\)\//g, '')
+				.slice(FIRST_ELEMENT, LAST_ELEMENT);
 		});
 
 	const body = sitemap(pages, host);
@@ -26,7 +31,6 @@ export async function GET({ request }: RequestEvent) {
 	return response;
 }
 
-// NOTE: Possibly could add an dynamic image sitemap in the future
 const sitemap = (pages: string[], host: string) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
   xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
