@@ -1,0 +1,26 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+insert_final_new_line = true
+trim_tailing_whitespace = true
+end_of_line = lf
+charset = UTF-8
+spelling_language = en_US
+
+[*.html]
+indent_size = 2
+
+[.svelte-kit/**]
+indent_style = ignore
+indent_size = ignore
+
+[node_modules/**]
+indent_style = ignore
+indent_size = ignore
+
+[**.min.js]
+indent_style = ignore
+indent_size = ignore
