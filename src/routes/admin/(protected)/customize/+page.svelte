@@ -21,7 +21,7 @@
 		};
 	}
 
-	let { data }: Props = $props();
+	const { data }: Props = $props();
 </script>
 
 <section class="mx-auto max-w-screen-xl p-6 py-8 pt-20">

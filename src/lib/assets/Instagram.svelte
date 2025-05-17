@@ -3,7 +3,7 @@
 		style?: string;
 	}
 
-	let { style = '' }: Props = $props();
+	const { style = '' }: Props = $props();
 </script>
 
 <svg class={style} fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

@@ -1,5 +1,5 @@
 import { db } from '$lib/server/db';
-import { redirect, type Actions } from '@sveltejs/kit';
+import { type Actions, redirect } from '@sveltejs/kit';
 import * as argon2 from 'argon2';
 import { Session, User } from '$lib/server/models/Session';
 import { dev } from '$app/environment';

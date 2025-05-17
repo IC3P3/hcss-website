@@ -1,6 +1,6 @@
 import { db } from '$lib/server/db';
 import { Session } from '$lib/server/models/Session';
-import { redirect, type Actions } from '@sveltejs/kit';
+import { type Actions, redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 
 export const load = () => {
