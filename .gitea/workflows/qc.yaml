@@ -12,6 +12,8 @@ jobs:
         container:
             image: node:${{ vars.NODE_VERSION }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
         steps:
+            - uses: actions/checkout@v4
+
             - name: Cache dependencies
               uses: actions/cache@v3
               with:
@@ -31,6 +33,8 @@ jobs:
         container:
             image: node:${{ vars.NODE_VERSION }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
         steps:
+            - uses: actions/checkout@v4
+
             - name: Cache dependencies
               uses: actions/cache@v3
               with:
@@ -50,6 +54,7 @@ jobs:
             image: node:${{ vars.NODE_VERSION || '22.14' }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
         continue-on-error: ${{ github.event_name != 'pull_request' || (github.base_ref != 'dev' && github.base_ref != 'main') }}
         steps:
+            - uses: actions/checkout@v4
             - name: Cache dependencies
               uses: actions/cache@v3
               with:

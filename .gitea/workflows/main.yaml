@@ -17,4 +17,4 @@ jobs:
   
   test:
     needs: qc
-    uses: ./.gitea/workflows/test.yaml
+    uses: ./.gitea/workflows/tests.yaml
