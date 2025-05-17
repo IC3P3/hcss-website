@@ -7,8 +7,8 @@
         # Project Packages
         # NodeJS 22.14.0
         nodejs_dep.url = "github:NixOS/nixpkgs/eb0e0f21f15c559d2ac7633dc81d079d1caf5f5f";
-        # pnpm 10.8.0
-        pnpm_dep.url = "github:NixOS/nixpkgs/b2b0718004cc9a5bca610326de0a82e6ea75920b";
+        # pnpm 10.10.0
+        pnpm_dep.url = "github:NixOS/nixpkgs/eaeed9530c76ce5f1d2d8232e08bec5e26f18ec1";
         # Sqlite 3.48.0
         sqlite_dep.url = "github:NixOS/nixpkgs/18dd725c29603f582cf1900e0d25f9f1063dbf11";
     };
