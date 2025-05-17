@@ -15,7 +15,7 @@
 
 	const { data }: Props = $props();
 
-	async function handleImageSelection(e: Event) {
+	function handleImageSelection(e: Event) {
 		const file = (e.target as HTMLInputElement)?.files?.[0];
 
 		if (!file) return;
@@ -31,6 +31,9 @@
 		reader.readAsDataURL(file);
 
 		image.onload = function () {
+			const IMAGE_SIZE = 0;
+			const START_INDEX = 0;
+
 			const canvas = document.createElement('canvas');
 			const ctx = canvas.getContext('2d');
 
@@ -39,14 +42,14 @@
 			canvas.width = image.width;
 			canvas.height = image.height;
 
-			ctx.drawImage(image, 0, 0);
+			ctx.drawImage(image, IMAGE_SIZE, IMAGE_SIZE);
 
 			const webpImage = canvas.toDataURL('image/webp');
 			const byteString = atob(webpImage.split(',')[1]);
 			const arrayBuffer = new ArrayBuffer(byteString.length);
 			const uint8Array = new Uint8Array(arrayBuffer);
 
-			for (let i = 0; i < byteString.length; i++) {
+			for (let i = START_INDEX; i < byteString.length; i++) {
 				uint8Array[i] = byteString.charCodeAt(i);
 			}
 

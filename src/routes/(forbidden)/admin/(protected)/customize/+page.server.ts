@@ -1,9 +1,9 @@
-import { db } from '$lib/server/db';
 import { Category, Content } from '$lib/server/models/Content';
-import { Media } from '$lib/server/models/Media';
 import type { Actions } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import { db } from '$lib/server/db';
 import { eq } from 'drizzle-orm';
+import { Media } from '$lib/server/models/Media';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
 	const media = await db
@@ -26,6 +26,9 @@ export const load: PageServerLoad = async () => {
 
 export const actions = {
 	default: async ({ request }) => {
+		const SINGLE_DB_RETURN = 1;
+		const NO_CONTENT = 0;
+
 		const data = await request.formData();
 		const formEntries = Object.fromEntries(data);
 
@@ -38,15 +41,15 @@ export const actions = {
 			.select()
 			.from(Content)
 			.where(eq(Content.id, changedValue.imageId))
-			.limit(1);
+			.limit(SINGLE_DB_RETURN);
 
-		if (content.length === 0) return { success: false };
+		if (content.length === NO_CONTENT) return { success: false };
 
 		await db
 			.update(Content)
-			.set({ media_id: changedValue.imageSelection })
+			.set({ mediaId: changedValue.imageSelection })
 			.where(eq(Content.id, changedValue.imageId))
-			.limit(1)
+			.limit(SINGLE_DB_RETURN)
 			.catch((err) => {
 				console.error(err);
 				return { success: false };

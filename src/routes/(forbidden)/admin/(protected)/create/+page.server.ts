@@ -1,8 +1,8 @@
 import type { Actions } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
 import { Event } from '$lib/server/models/Event';
 import { Media } from '$lib/server/models/Media';
+import type { PageServerLoad } from './$types';
 
 export const actions = {
 	createEvent: async ({ request }: { request: Request }) => {
@@ -33,12 +33,11 @@ export const actions = {
 		const arrayBuffer = await image.arrayBuffer();
 		const buffer = Buffer.from(arrayBuffer);
 
-		// TODO: Errorhandling to prevent server crashes when Foreign Key contraint
 		db.insert(Media)
 			.values({
 				subtitle: String(data.get('subtitle')),
 				image: buffer,
-				event_id: Number(data.get('event_id'))
+				eventId: Number(data.get('eventId'))
 			})
 			.catch((err) => {
 				console.error(err);

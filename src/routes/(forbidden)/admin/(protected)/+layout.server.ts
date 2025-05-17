@@ -1,8 +1,10 @@
-import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
 
-export const load: LayoutServerLoad = async ({ locals }) => {
+export const load: LayoutServerLoad = ({ locals }) => {
+	const HTTP_FOUND = 302;
+
 	if (!locals.user) {
-		redirect(302, '/');
+		redirect(HTTP_FOUND, '/');
 	}
 };

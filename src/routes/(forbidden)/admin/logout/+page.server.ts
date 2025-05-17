@@ -1,17 +1,19 @@
-import { db } from '$lib/server/db';
-import { Session } from '$lib/server/models/Session';
 import { type Actions, redirect } from '@sveltejs/kit';
+import { db } from '$lib/server/db';
 import { eq } from 'drizzle-orm';
+import { Session } from '$lib/server/models/Session';
+
+const HTTP_FOUND = 302;
 
 export const load = () => {
-	redirect(302, '/');
+	redirect(HTTP_FOUND, '/');
 };
 
 export const actions = {
 	default: async ({ cookies }) => {
 		await db
 			.delete(Session)
-			.where(eq(Session.session_key, cookies.get('session') || ''))
+			.where(eq(Session.sessionKey, cookies.get('session') || ''))
 			.catch((err) => {
 				console.error(err);
 			});
@@ -20,6 +22,6 @@ export const actions = {
 			path: '/'
 		});
 
-		redirect(302, '/');
+		redirect(HTTP_FOUND, '/');
 	}
 } satisfies Actions;

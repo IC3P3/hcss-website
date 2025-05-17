@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Facebook from '$lib/assets/Facebook.svelte';
 	import Instagram from '$lib/assets/Instagram.svelte';
-	import Soundcloud from '$lib/assets/Soundcloud.svelte';
 	import logo from '$lib/assets/logo.png';
+	import Soundcloud from '$lib/assets/Soundcloud.svelte';
 </script>
 
 <footer class="mt-4 bg-white">

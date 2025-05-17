@@ -5,7 +5,8 @@
 
 	interface Props {
 		media: {
-			media_id: number;
+			id: number;
+			mediaId: number;
 			subtitle: string;
 		}[];
 	}
@@ -20,9 +21,9 @@
 	<h2 class="text-4xl font-extrabold text-blue-950">Medien</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="flex flex-wrap justify-between">
-		{#each media as item}
+		{#each media as item (item.id)}
 			<div class="group relative w-full overflow-hidden sm:w-1/2 lg:w-1/3">
-				<img class="h-64 w-full object-cover" src="/api/image?id={item.media_id}" alt="" />
+				<img class="h-64 w-full object-cover" src="/api/image?id={item.mediaId}" alt="" />
 				<div
 					class="bg-opacity-75 absolute inset-0 flex items-end bg-blue-700 p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:opacity-100"
 				>

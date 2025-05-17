@@ -1,11 +1,13 @@
+import { eq, gte } from 'drizzle-orm';
+import { Content } from '$lib/server/models/Content';
 import { db } from '$lib/server/db';
 import { Event } from '$lib/server/models/Event';
-import { eq, gte } from 'drizzle-orm';
-import type { PageServerLoad } from './$types';
 import { Media } from '$lib/server/models/Media';
-import { Content } from '$lib/server/models/Content';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
+	const STARTPAGE_ID = 1;
+
 	const events = await db
 		.select()
 		.from(Event)
@@ -14,13 +16,14 @@ export const load: PageServerLoad = async () => {
 
 	const content = await db
 		.select({
-			media_id: Media.id,
+			id: Content.id,
+			mediaId: Media.id,
 			subtitle: Media.subtitle,
-			content_id: Content.id
+			contentId: Content.id
 		})
 		.from(Media)
-		.innerJoin(Content, eq(Content.media_id, Media.id))
-		.where(eq(Content.category_id, 1));
+		.innerJoin(Content, eq(Content.mediaId, Media.id))
+		.where(eq(Content.categoryId, STARTPAGE_ID));
 
 	return {
 		events: events,
