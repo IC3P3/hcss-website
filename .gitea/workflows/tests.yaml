@@ -1,0 +1,25 @@
+name: Project Tests
+
+on: workflow_call
+
+jobs:
+    unit_tests:
+        name: Unit Tests
+        runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
+        container:
+            image: ${{ vars.NODE_VERSION }}-${{ vars.BASE_LAYER || 'bookwork-slim' }}
+        continue-on-error: ${{ github.event_name != 'pull_request' || (github.base_ref != 'dev' && github.base_ref != 'main') }}
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: ${{ hashFiles('package-lock.json') }}
+
+            - name: Install dependencies
+              run: npm clean-install
+
+            - name: Run unit tests
+              run: npm run test:unit

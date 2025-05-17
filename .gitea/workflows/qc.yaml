@@ -1,0 +1,63 @@
+name: QC Stage
+
+on:
+    workflow_call:
+
+jobs:
+    lint:
+        name: Lint
+        runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
+        if: ${{ github.event_name != 'pull_request' || (github.base_ref != 'dev' && github.base_ref != 'main') }}
+        continue-on-error: true
+        container:
+            image: node:${{ vars.NODE_VERSION }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
+        steps:
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: ${{ hashFiles('package-lock.json') }}
+
+            - name: Install dependencies
+              run: npm clean-install
+
+            - name: Run linting
+              run: npm run lint
+
+    lint-strict:
+        name: Strict Linting
+        runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
+        if: ${{ github.event_name == 'pull_request' && (github.base_ref == 'dev' || github.base_ref == 'main') }}
+        container:
+            image: node:${{ vars.NODE_VERSION }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
+        steps:
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: ${{ hashFiles('package-lock.json') }}
+
+            - name: Install dependencies
+              run: npm clean-install
+
+            - name: Run strict linting
+              run: npm run lint:strict
+
+    check:
+        name: Type Check
+        runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
+        container:
+            image: node:${{ vars.NODE_VERSION || '22.14' }}-${{ vars.BASE_LAYER || 'bookworm-slim' }}
+        continue-on-error: ${{ github.event_name != 'pull_request' || (github.base_ref != 'dev' && github.base_ref != 'main') }}
+        steps:
+            - name: Cache dependencies
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: ${{ hashFiles('package-lock.json') }}
+
+            - name: Install dependencies
+              run: npm clean-install
+
+            - name: Run type check
+              run: npm run check
