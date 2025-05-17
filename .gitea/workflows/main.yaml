@@ -11,6 +11,10 @@ on:
       - dev
       - main
 
+env:
+  NODE_VERSION: ${{ vars.NODE_VERSION || 'lts' }}
+  BASE_LAYER: ${{ vars.BASE_LAYER || 'slim' }}
+
 jobs:
   qc:
     uses: ./.gitea/workflows/qc.yaml
@@ -18,3 +22,18 @@ jobs:
   test:
     needs: qc
     uses: ./.gitea/workflows/tests.yaml
+  
+  summary:
+    needs: [qc, test]
+    runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
+    if: always()
+    steps:
+      - name: Workflow Status
+        run: |
+          if [ "${{ needs.qc.result }}" == "success" ] && [ "${{ needs.test.result }}" == "success" ]; then
+            echo "All checks passed successfully!"
+            exit 0
+          else
+            echo "Some checks failed. Please review the pipeline results."
+            exit 1
+          fi
