@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Header from '$lib/components/Header.svelte';
-	import Events from '$lib/components/Events.svelte';
-	import Media from '$lib/components/Media.svelte';
-	import Offerings from '$lib/components/Offerings.svelte';
 	import About from '$lib/components/About.svelte';
 	import Club from '$lib/components/Club.svelte';
 	import CTA from '$lib/components/CTA.svelte';
+	import Events from '$lib/components/Events.svelte';
+	import Header from '$lib/components/Header.svelte';
+	import Media from '$lib/components/Media.svelte';
+	import Offerings from '$lib/components/Offerings.svelte';
 
 	interface Props {
 		data: {
@@ -16,27 +16,24 @@
 				time: number;
 			}[];
 			content: {
-				media_id: number;
+				id: number;
+				mediaId: number;
 				subtitle: string;
-				content_id?: string;
+				contentId?: string;
 			}[];
 		};
 	}
 
 	const { data }: Props = $props();
 
-	// TODO: Make this modular and not hard coded
-	// NOTE: Maybe by adding the id in the db table Content to the id of the element
-	const homeImage = data.content
-		.find((image) => image.content_id === 'home')
-		?.media_id.toString();
+	// NOTE: Maybe it's possible to make this more modular instead of hard coding keywords
+	const homeImage = data.content.find((image) => image.contentId === 'home')?.mediaId.toString();
 
-	// FIX: Typescript typesThe operand of a 'delete' operator must be optional.
 	const media = data.content
-		.filter((image) => image.content_id?.includes('media'))
+		.filter((image) => image.contentId?.includes('media'))
 		.map((image) => {
 			const cleanImage = { ...image };
-			delete cleanImage.content_id;
+			delete cleanImage.contentId;
 			return cleanImage;
 		});
 </script>

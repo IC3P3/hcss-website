@@ -1,10 +1,10 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import { Media } from './models/Media';
-import { Event } from './models/Event';
 import { Category, Content } from './models/Content';
-import { env } from '$env/dynamic/private';
-import Database from 'better-sqlite3';
 import { Session, User } from './models/Session';
+import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
+import { env } from '$env/dynamic/private';
+import { Event } from './models/Event';
+import { Media } from './models/Media';
 
 if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
 

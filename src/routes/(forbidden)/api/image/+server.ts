@@ -1,8 +1,11 @@
 import { db } from '$lib/server/db';
-import { Media } from '$lib/server/models/Media';
 import { eq } from 'drizzle-orm';
+import { Media } from '$lib/server/models/Media';
 
 export async function GET({ url }: { url: URL }) {
+	const SINGLE_DB_RETURN = 1;
+	const NO_IMAGES = 0;
+
 	const id = url.searchParams.get('id');
 
 	if (id === null) {
@@ -16,9 +19,9 @@ export async function GET({ url }: { url: URL }) {
 		.select({ image: Media.image })
 		.from(Media)
 		.where(eq(Media.id, Number(id)))
-		.limit(1);
+		.limit(SINGLE_DB_RETURN);
 
-	if (!image || image.length === 0) {
+	if (!image || image.length === NO_IMAGES) {
 		return {
 			status: 404,
 			body: { error: 'Image not found' }

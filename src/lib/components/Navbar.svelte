@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { page } from '$app/state';
-
 	import logo from '$lib/assets/logo.png';
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
 
 	onMount(() => {
 		const toggleButton = document.querySelector('[data-collapse-toggle="navbar-solid-bg"]');
