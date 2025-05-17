@@ -27,7 +27,9 @@
 
 	// TODO: Make this modular and not hard coded
 	// NOTE: Maybe by adding the id in the db table Content to the id of the element
-	const homeImage = data.content.find((image) => image.content_id === 'home')?.media_id.toString();
+	const homeImage = data.content
+		.find((image) => image.content_id === 'home')
+		?.media_id.toString();
 
 	// FIX: Typescript typesThe operand of a 'delete' operator must be optional.
 	const media = data.content

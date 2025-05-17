@@ -31,7 +31,9 @@
 				<h3 class="mb-2 text-lg font-bold text-blue-950">Konzertchor</h3>
 				<p class="font-semibold text-gray-700">Kinder ab ca. 10 Jahren & Erwachsene</p>
 				<p class="text-gray-700">Di. 19:00 - 21:00 Uhr Männerstimmen</p>
-				<p class="text-gray-700">Do. 17:00 - 19:00 Uhr Knaben-, Mädchen- und Frauenstimmen</p>
+				<p class="text-gray-700">
+					Do. 17:00 - 19:00 Uhr Knaben-, Mädchen- und Frauenstimmen
+				</p>
 				<p class="text-gray-700">Fr. 17:00 - 19:00 Uhr alle Stimmen</p>
 			</div>
 		</div>
@@ -46,8 +48,9 @@
 					Gesangsunterricht, Musiktheorie und Klavierunterricht
 				</h3>
 				<p class="text-gray-700">
-					Für Gesangsunterricht, Musiktheorie und Klavierunterricht passen wir uns gerne an deine
-					Zeitplanung an. Kontaktiere uns einfach und wir finden gemeinsam einen passenden Termin.
+					Für Gesangsunterricht, Musiktheorie und Klavierunterricht passen wir uns gerne
+					an deine Zeitplanung an. Kontaktiere uns einfach und wir finden gemeinsam einen
+					passenden Termin.
 				</p>
 			</div>
 		</div>
@@ -63,8 +66,9 @@
 					Für interessierte SängerInnen nach Anmeldung und eigener Vorbereitung.
 				</p>
 				<p class="text-gray-700">
-					Üblicherweise werden an einem Probenwochenende und einem Konzertwochenende A Capella Werke
-					für Kammerchor oder das große Oratorienrepertoire erarbeitet und aufgeführt.
+					Üblicherweise werden an einem Probenwochenende und einem Konzertwochenende A
+					Capella Werke für Kammerchor oder das große Oratorienrepertoire erarbeitet und
+					aufgeführt.
 				</p>
 			</div>
 		</div>

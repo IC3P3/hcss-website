@@ -20,7 +20,10 @@
 						})}
 					</p>
 					<p class="text-left text-lg text-gray-600">
-						{new Date(event.time).toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' })} Uhr
+						{new Date(event.time).toLocaleTimeString('de', {
+							hour: '2-digit',
+							minute: '2-digit'
+						})} Uhr
 					</p>
 				</div>
 

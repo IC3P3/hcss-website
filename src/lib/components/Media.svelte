@@ -36,7 +36,9 @@
 	</div>
 
 	<div class="mt-8 flex flex-col items-center justify-center gap-6">
-		<p class="mx-auto max-w-screen-xl justify-center text-center text-xl font-bold text-blue-950">
+		<p
+			class="mx-auto max-w-screen-xl justify-center text-center text-xl font-bold text-blue-950"
+		>
 			Entdecke mehr Inhalte auf unseren sozialen Netzwerken!
 		</p>
 

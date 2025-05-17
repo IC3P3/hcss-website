@@ -11,8 +11,14 @@
 			<div class="md:flex md:justify-between">
 				<div class="mb-8">
 					<a href="/" class="flex items-center">
-						<img src={logo} class="mr-3 h-8" alt="Logo der Helmstedter Chor- und Singschule" />
-						<span class="self-center text-2xl font-semibold whitespace-nowrap">HCSS</span>
+						<img
+							src={logo}
+							class="mr-3 h-8"
+							alt="Logo der Helmstedter Chor- und Singschule"
+						/>
+						<span class="self-center text-2xl font-semibold whitespace-nowrap"
+							>HCSS</span
+						>
 					</a>
 				</div>
 			</div>
@@ -80,7 +86,8 @@
 			<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 			<div class="sm:flex sm:items-center sm:justify-between">
 				<span class="text-sm text-gray-500 sm:text-center"
-					><a href="https://hcss-ev.de/" class="hover:underline">Helmstedter Chor- und Singschule</a
+					><a href="https://hcss-ev.de/" class="hover:underline"
+						>Helmstedter Chor- und Singschule</a
 					></span
 				>
 				<div class="mt-4 flex space-x-5 sm:mt-0 sm:justify-center">
