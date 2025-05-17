@@ -18,15 +18,15 @@ and ease of maintenance:
 
 - **Frontend**:
 
-  - [SvelteKit](https://kit.svelte.dev/) - Application framework
-  - [Svelte 5](https://svelte.dev/) - Component framework
-  - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
-  - [TailwindCSS 4](https://tailwindcss.com/) - Utility-first CSS framework
+    - [SvelteKit](https://kit.svelte.dev/) - Application framework
+    - [Svelte 5](https://svelte.dev/) - Component framework
+    - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+    - [TailwindCSS 4](https://tailwindcss.com/) - Utility-first CSS framework
 
 - **Backend**:
-  - [SvelteKit](https://kit.svelte.dev/) - Server-side rendering and API endpoints
-  - [Drizzle ORM](https://orm.drizzle.team/) - SQL toolkit and ORM
-  - [SQLite](https://www.sqlite.org/) (via better-sqlite3) - Database solution
+    - [SvelteKit](https://kit.svelte.dev/) - Server-side rendering and API endpoints
+    - [Drizzle ORM](https://orm.drizzle.team/) - SQL toolkit and ORM
+    - [SQLite](https://www.sqlite.org/) (via better-sqlite3) - Database solution
 
 ## Features
 
@@ -50,30 +50,30 @@ and ease of maintenance:
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://git.eiflerstrom.de/IC3P3/hcss-website.git
-   cd hcss-website
-   ```
+    ```bash
+    git clone https://git.eiflerstrom.de/IC3P3/hcss-website.git
+    cd hcss-website
+    ```
 
 2. Install dependencies:
 
-   ```bash
-   pnpm install
-   ```
+    ```bash
+    pnpm install
+    ```
 
 3. Set up environment variables:
 
-   - Create a `.env` file with the following variables:
+    - Create a `.env` file with the following variables:
 
-     ```txt
-     DATABASE_URL=./data.db
-     ```
+        ```txt
+        DATABASE_URL=./data.db
+        ```
 
 4. Initialize the database:
 
-   ```bash
-   pnpm db:push
-   ```
+    ```bash
+    pnpm db:push
+    ```
 
 ### Development
 
@@ -209,19 +209,19 @@ pnpm check:watch
 
 1. Build the project:
 
-   ```bash
-   pnpm build
-   ```
+    ```bash
+    pnpm build
+    ```
 
 2. Start the server in production mode:
 
-   ```bash
-   NODE_ENV=production node build
-   ```
+    ```bash
+    NODE_ENV=production node build
+    ```
 
 3. For production deployment, consider using a process manager like PM2:
 
-   ```bash
-   npm install -g pm2
-   pm2 start build/index.js --name "hcss-website"
-   ```
+    ```bash
+    npm install -g pm2
+    pm2 start build/index.js --name "hcss-website"
+    ```

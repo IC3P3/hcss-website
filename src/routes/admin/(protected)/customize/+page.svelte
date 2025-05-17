@@ -46,7 +46,10 @@
 										bind:value={content.media_id}
 									>
 										{#each data.media as media (media.id)}
-											<option value={media.id} selected={content.media_id === media.id}>
+											<option
+												value={media.id}
+												selected={content.media_id === media.id}
+											>
 												{media.subtitle}
 											</option>
 										{/each}
@@ -71,7 +74,11 @@
 										class="h-full max-h-64 w-auto rounded-lg shadow-md"
 									/>
 								{:else}
-									<img src={placeholder} alt="" class="h-auto w-full rounded-lg shadow-md" />
+									<img
+										src={placeholder}
+										alt=""
+										class="h-auto w-full rounded-lg shadow-md"
+									/>
 								{/if}
 							</div>
 						</form>

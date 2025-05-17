@@ -16,9 +16,9 @@
 		<h1 class="text-center text-4xl font-bold text-white">Helmsteder Chor- und Singschule</h1>
 		<p class="mx-5 mt-4 max-w-lg px-4 text-center text-white">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-			invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-			justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-			ipsum dolor sit amet.
+			invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+			accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+			sanctus est Lorem ipsum dolor sit amet.
 		</p>
 		<a
 			href="#events"

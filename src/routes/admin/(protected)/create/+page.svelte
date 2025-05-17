@@ -85,7 +85,8 @@
 			</div>
 
 			<div>
-				<label for="subtitle" class="mb-2 block font-medium text-gray-700">Untertitel</label>
+				<label for="subtitle" class="mb-2 block font-medium text-gray-700">Untertitel</label
+				>
 				<input
 					name="subtitle"
 					id="subtitle"
@@ -155,7 +156,8 @@
 				</div>
 
 				<div>
-					<label for="image-subtitle" class="mb-2 block font-medium text-gray-700">Untertitel</label
+					<label for="image-subtitle" class="mb-2 block font-medium text-gray-700"
+						>Untertitel</label
 					>
 					<input
 						name="subtitle"
@@ -166,7 +168,9 @@
 				</div>
 
 				<div>
-					<label for="event_id" class="mb-2 block font-medium text-gray-700">Veranstaltung</label>
+					<label for="event_id" class="mb-2 block font-medium text-gray-700"
+						>Veranstaltung</label
+					>
 					<select
 						name="event_id"
 						id="event_id"
