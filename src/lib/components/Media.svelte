@@ -10,7 +10,7 @@
 		}[];
 	}
 
-	let { media }: Props = $props();
+	const { media }: Props = $props();
 </script>
 
 <section

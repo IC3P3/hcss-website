@@ -13,7 +13,7 @@
 		};
 	}
 
-	let { data }: Props = $props();
+	const { data }: Props = $props();
 
 	async function handleImageSelection(e: Event) {
 		const file = (e.target as HTMLInputElement)?.files?.[0];

@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { events } = $props();
+	const { events } = $props();
 </script>
 
 <section
