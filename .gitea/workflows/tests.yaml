@@ -14,8 +14,6 @@ jobs:
     unit_tests:
         name: Unit Tests
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
-        container:
-            image: node:${{ vars.NODE_VERSION || 'lts' }}-${{ vars.BASE_LAYER || 'slim' }}
         continue-on-error: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         steps:
           - uses: actions/checkout@v4
