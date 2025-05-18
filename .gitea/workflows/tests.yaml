@@ -19,6 +19,10 @@ jobs:
         continue-on-error: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         steps:
           - uses: actions/checkout@v4
+
+          - name: Install pnpm
+            run: npm install --global pnpm@10.10.0
+
           - uses: actions/setup-node@v4
             with:
                 node-version: 22
