@@ -12,7 +12,7 @@ on:
 
 jobs:
     unit_tests:
-        name: Unit Tests
+        name: Vitest Tests
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
         continue-on-error: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         steps:
@@ -26,10 +26,33 @@ jobs:
           - uses: actions/setup-node@v4
             with:
                 node-version: 22
-                cache: pnpm
+                cache: 'pnpm'
 
           - name: Install dependencies
             run: pnpm install
 
           - name: Run unit tests
             run: pnpm run test:unit
+
+    e2e_tests:
+        name: Playwright Tests
+        runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
+        continue-on-error: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
+        steps:
+          - uses: actions/checkout@v4
+
+          - name: Install pnpm
+            uses: pnpm/action-setup@v4
+            with:
+              version: 10
+
+          - uses: actions/setup-node@v4
+            with:
+                node-version: 22
+                cache: 'pnpm'
+
+          - name: Install dependencies
+            run: pnpm install
+
+          - name: Run unit tests
+            run: pnpm run test:e2e
