@@ -18,13 +18,14 @@ jobs:
             image: node:${{ vars.NODE_VERSION || 'lts' }}-${{ vars.BASE_LAYER || 'slim' }}
         continue-on-error: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         steps:
-            - uses: actions/checkout@v4
-            - name: Cache dependencies
-              uses: actions/cache@v3
-              with:
-                  path: node_modules
-                  key: ${{ hashFiles('package-lock.json') }}
-            - name: Install dependencies
-              run: npm clean-install
-            - name: Run unit tests
-              run: npm run test:unit
+          - uses: actions/checkout@v4
+          - uses: actions/setup-node@v4
+            with:
+                node-version: 22
+                cache: pnpm
+
+          - name: Install dependencies
+            run: pnpm clean-install
+
+          - name: Run unit tests
+            run: pnpm run test:unit
