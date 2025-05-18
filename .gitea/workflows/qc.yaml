@@ -17,11 +17,19 @@ jobs:
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
         if: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         continue-on-error: true
-        container:
-            image: node:${{ vars.NODE_VERSION || 'lts' }}-${{ vars.BASE_LAYER || 'slim' }}
         steps:
             - uses: actions/checkout@v4
-            
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 10.10.0
+
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22
+
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
@@ -33,10 +41,18 @@ jobs:
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
         if: ${{ gitea.event_name == 'pull_request' && (gitea.base_ref == 'dev' || gitea.base_ref == 'main') }}
         continue-on-error: false
-        container:
-            image: node:${{ vars.NODE_VERSION || 'lts' }}-${{ vars.BASE_LAYER || 'slim' }}
         steps:
             - uses: actions/checkout@v4
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 10.10.0
+
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
@@ -47,12 +63,20 @@ jobs:
     check:
         name: Type Check
         runs-on: ${{ vars.DEFAULT_RUNNER || 'ubuntu-latest' }}
-        container:
-            image: node:${{ vars.NODE_VERSION || 'lts' }}-${{ vars.BASE_LAYER || 'slim' }}
         continue-on-error: ${{ gitea.event_name != 'pull_request' || (gitea.base_ref != 'dev' && gitea.base_ref != 'main') }}
         steps:
             - uses: actions/checkout@v4
-            
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 10.10.0
+
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22
+
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
