@@ -1,6 +1,6 @@
 name: Build Stage
 
-on: workflow_dispatch
+on: push
 
 jobs:
     node-build:
