@@ -1,7 +1,10 @@
 name: Build Stage
 
 on:
-    workflow_dispatch:
+    push:
+        branches:
+            - 'main'
+            - 'dev'
 
 jobs:
     node-build:
