@@ -1,4 +1,4 @@
-FROM node:22.15.1-slim AS builder
+FROM node:22.16.0-slim AS builder
 
 # Install pnpm globally
 RUN npm install -g pnpm@10.8.0
@@ -22,7 +22,7 @@ RUN pnpm run build
 RUN pnpm prune --production
 
 # --- Final Stage ---
-FROM node:22.15.1-slim
+FROM node:22.16.0-slim
 WORKDIR /app
 COPY --from=builder /app/build build/
 COPY --from=builder /app/node_modules node_modules/
