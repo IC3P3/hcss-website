@@ -11,8 +11,8 @@
 			content: {
 				id: string;
 				displayName: string;
-				category_id: number;
-				media_id: number;
+				categoryId: number;
+				mediaId: number;
 			}[];
 			contentCategories: {
 				id: number;
@@ -33,7 +33,7 @@
 
 			<!-- NOTE: Should move the image further to the right -->
 			{#each data.content as content (content.id)}
-				{#if content.category_id === category.id}
+				{#if content.categoryId === category.id}
 					<div class="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
 						<form method="POST" class="flex items-start space-x-6" use:enhance>
 							<div class="flex w-2/3 max-w-md flex-col space-y-4">
@@ -43,12 +43,12 @@
 										name="imageSelection"
 										id="imageSelection-{content.id}"
 										class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-										bind:value={content.media_id}
+										bind:value={content.mediaId}
 									>
 										{#each data.media as media (media.id)}
 											<option
 												value={media.id}
-												selected={content.media_id === media.id}
+												selected={content.mediaId === media.id}
 											>
 												{media.subtitle}
 											</option>
@@ -67,9 +67,9 @@
 							</div>
 
 							<div class="ml-6 w-1/3">
-								{#if content.media_id}
+								{#if content.mediaId}
 									<img
-										src={`/api/image?id=${content.media_id}`}
+										src={`/api/image?id=${content.mediaId}`}
 										alt=""
 										class="h-full max-h-64 w-auto rounded-lg shadow-md"
 									/>
