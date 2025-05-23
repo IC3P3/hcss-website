@@ -6,7 +6,7 @@ import { Media } from '$lib/server/models/Media';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-	const STARTPAGE_ID = 1;
+	const STARTPAGE_ID = 0;
 
 	const events = await db
 		.select()
