@@ -171,12 +171,12 @@
 				</div>
 
 				<div>
-					<label for="event_id" class="mb-2 block font-medium text-gray-700"
+					<label for="eventId" class="mb-2 block font-medium text-gray-700"
 						>Veranstaltung</label
 					>
 					<select
-						name="event_id"
-						id="event_id"
+						name="eventId"
+						id="eventId"
 						required
 						class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
 					>
