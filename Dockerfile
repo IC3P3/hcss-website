@@ -1,4 +1,4 @@
-FROM node:22.18.0-slim AS builder
+FROM node:22.20.0-slim AS builder
 
 # Install pnpm globally
 RUN npm install -g pnpm@10.8.0
@@ -24,7 +24,7 @@ RUN pnpm run build
 RUN pnpm prune --production
 
 # --- Final Stage ---
-FROM node:22.18.0-slim
+FROM node:22.20.0-slim
 WORKDIR /app
 
 RUN mkdir /database
