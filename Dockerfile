@@ -1,30 +1,26 @@
-FROM node:22.21.1-slim AS builder
+# Builder Stage
+FROM node:24.13.0-slim AS builder
 
-# Install pnpm globally
-RUN npm install -g pnpm@10.8.0
+RUN npm install -g pnpm@10.28.1
 
 WORKDIR /app
 COPY package.json ./
 COPY pnpm-lock.yaml ./
 
-# Install dependencies
 RUN pnpm i
 
 COPY . .
 
 RUN mkdir /database
 ENV DATABASE_URL="/database/website-data.sqlite"
-
 RUN pnpm run db:push --force
 
-# Run the build
 RUN pnpm run build
 
-# Prune development dependencies
 RUN pnpm prune --production
 
-# --- Final Stage ---
-FROM node:22.21.1-slim
+# Runner Stage
+FROM node:24.13.0-slim
 WORKDIR /app
 
 RUN mkdir /database

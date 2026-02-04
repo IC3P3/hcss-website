@@ -1,12 +1,38 @@
 {
-	"extends": ["config:base"],
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:recommended", "docker:pinDigests", ":dependencyDashboard"],
+	"schedule": ["after 11pm every weekday", "before 5am every weekday", "every weekend"],
 	"packageRules": [
 		{
-			"updateTypes": ["minor", "patch", "pin", "digest"],
-			"automerge": true
+			"matchPackageNames": ["d-ptb/ci-components"],
+			"enabled": false
+		},
+		{
+			"groupName": "Non-major updates",
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true,
+			"automergeType": "branch",
+			"minimumReleaseAge": "1 week"
+		},
+		{
+			"groupName": "Major updates",
+			"matchUpdateTypes": ["major"],
+			"dependencyDashboardApproval": true,
+			"minimumReleaseAge": "1 month"
+		},
+		{
+			"groupName": "Critical security updates",
+			"matchUpdateTypes": ["patch"],
+			"vulnerabilityAlerts": {
+				"enabled": true
+			},
+			"schedule": ["at any time"],
+			"automerge": true,
+			"minimumReleaseAge": "0 days"
 		}
 	],
-	"nix": {
+	"vulnerabilityAlerts": {
 		"enabled": true
 	}
 }
+
