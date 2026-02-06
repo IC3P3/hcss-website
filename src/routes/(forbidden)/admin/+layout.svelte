@@ -1,9 +1,5 @@
 <script lang="ts">
-	interface Props {
-		children?: import('svelte').Snippet;
-	}
-
-	const { children }: Props = $props();
+	const { children } = $props();
 </script>
 
 <svelte:head>
