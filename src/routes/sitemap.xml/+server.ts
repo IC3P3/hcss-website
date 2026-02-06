@@ -1,14 +1,9 @@
-import type { RequestEvent } from '@sveltejs/kit';
+import { HOST_URL } from '$env/static/private';
+import { LAST_INDEX, ZERO_INDEX } from '$lib/utils/constants';
+import { escapeXML } from '$lib/utils/xml_functions';
 
-export function GET({ request }: RequestEvent) {
-	const FIRST_ELEMENT = 0;
-	const LAST_ELEMENT = -1;
-
-	const host = request.headers.get('host') || 'https://hcss-ev.de';
-	const routes = import.meta.glob('/src/routes/**/+page.svelte', {
-		eager: true,
-		import: 'default'
-	});
+export function GET() {
+	const routes = import.meta.glob('/src/routes/**/+page.svelte');
 
 	const pages = Object.keys(routes)
 		.filter((filepath) => {
@@ -19,10 +14,10 @@ export function GET({ request }: RequestEvent) {
 				.replace('/src/routes/', '')
 				.replace('+page.svelte', '')
 				.replaceAll(/\(.*?\)\//g, '')
-				.slice(FIRST_ELEMENT, LAST_ELEMENT);
+				.slice(ZERO_INDEX, LAST_INDEX);
 		});
 
-	const body = sitemap(pages, host);
+	const body = sitemap(pages, HOST_URL);
 	const response = new Response(body);
 
 	response.headers.set('Cache-Control', 'max-age=0, s-maxage=3600');
@@ -34,18 +29,12 @@ export function GET({ request }: RequestEvent) {
 const sitemap = (pages: string[], host: string) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
   xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
-  xmlns:xhtml="https://www.w3.org/1999/xhtml"
-  xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0"
-  xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
-  xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
 >
 	${pages
 		.map(
 			(page) => `
 		<url>
-			<loc>${host}/${page}</loc>
-			<changefreq>monthly</changefreq>
+			<loc>${escapeXML(`${host}/${page}`)}</loc>
 		</url>
   `
 		)
