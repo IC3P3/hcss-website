@@ -62,7 +62,6 @@ const baseRules = {
 	'prefer-template': 'warn',
 	radix: 'warn',
 	'require-await': 'warn',
-	'sort-imports': ['warn', { ignoreCase: true }],
 	yoda: 'error'
 };
 
