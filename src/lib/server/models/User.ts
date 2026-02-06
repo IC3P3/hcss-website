@@ -2,11 +2,11 @@ import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const Session = sqliteTable('Session', {
 	id: int().primaryKey({ autoIncrement: true }),
+	sessionKey: text().notNull(),
+	lastSeen: int().notNull(),
 	userId: int()
 		.references(() => User.id, { onDelete: 'cascade' })
-		.notNull(),
-	sessionKey: text().notNull(),
-	lastSeen: int().notNull()
+		.notNull()
 });
 
 export const User = sqliteTable('User', {
