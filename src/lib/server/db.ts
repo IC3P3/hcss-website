@@ -1,5 +1,5 @@
-import { Category, Content } from './models/Content';
-import { Session, User } from './models/Session';
+import { PageContent, Subpage } from './models/PageContent';
+import { Session, User } from './models/User';
 import Database from 'better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { env } from '$env/dynamic/private';
@@ -14,8 +14,8 @@ export const db = drizzle(client, {
 	schema: {
 		Media,
 		Event,
-		Content,
-		Category,
+		PageContent,
+		Subpage,
 		Session,
 		User
 	}
