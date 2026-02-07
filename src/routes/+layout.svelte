@@ -6,6 +6,10 @@
 	const { children } = $props();
 </script>
 
-<Navbar />
-{@render children()}
-<Footer />
+<div class="flex min-h-screen flex-col">
+	<Navbar />
+	<main class="grow">
+		{@render children()}
+	</main>
+	<Footer />
+</div>

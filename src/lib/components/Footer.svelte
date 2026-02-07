@@ -1,107 +1,106 @@
 <script lang="ts">
-	import Facebook from '$lib/assets/Facebook.svelte';
-	import Instagram from '$lib/assets/Instagram.svelte';
+	import SocialMedia from './SocialMedia.svelte';
 	import logo from '$lib/assets/logo.png';
-	import Soundcloud from '$lib/assets/Soundcloud.svelte';
 </script>
 
-<footer class="mt-4 bg-white">
-	<section id="legal">
-		<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-			<div class="md:flex md:justify-between">
-				<div class="mb-8">
-					<a href="/" class="flex items-center">
-						<img
-							src={logo}
-							class="mr-3 h-8"
-							alt="Logo der Helmstedter Chor- und Singschule"
-						/>
-						<span class="self-center text-2xl font-semibold whitespace-nowrap"
-							>HCSS</span
+<footer class="mt-4 flex flex-col">
+	<div class="flex w-full items-center justify-center gap-20 bg-blue-800 p-4 py-6 lg:py-8">
+		<span class="text-2xl font-bold text-gray-50 md:text-3xl">
+			Hier sind wir auch zu finden!
+		</span>
+		<SocialMedia />
+	</div>
+
+	<div class="bg-gray-200 px-8 py-10">
+		<div class="mx-auto max-w-7xl">
+			<div class="w-full">
+				<span class="mb-8 flex items-center text-2xl font-extrabold text-gray-900">
+					<img
+						class="mr-3 h-8"
+						src={logo}
+						alt="Logo der Helmstedter Chor- und Singschule"
+					/>
+					HCSS
+				</span>
+			</div>
+
+			<div class="grid grid-cols-3 gap-8 sm:grid-cols-3 sm:gap-6">
+				<div>
+					<h3 class="text-md mb-5 font-semibold text-gray-900 uppercase">Impressum</h3>
+					<ul class="animated-underline font-medium text-gray-500">
+						<li class="mb-2">
+							<span>Helmstedter Chor- und Singschule e.V.</span>
+						</li>
+						<li class="mb-2">
+							<span>Klosterstraße 12</span>
+						</li>
+						<li class="mb-2">
+							<span>38350 Helmstedt</span>
+						</li>
+						<li class="mb-2">
+							<a href="mailto:HCSS38350@gmx.de">HCSS38350@gmx.de</a>
+						</li>
+					</ul>
+				</div>
+
+				<div>
+					<h3 class="text-md mb-5 font-semibold text-gray-900 uppercase">Navigation</h3>
+					<ul class="animated-underline font-medium text-gray-500">
+						<li class="mb-2">
+							<a href="/"> Startseite </a>
+						</li>
+						<li class="mb-2">
+							<a href="/termine">Veranstaltungen</a>
+						</li>
+						<li class="mb-2">
+							<a href="/medien">Medien</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h3 class="text-md mb-5 font-semibold text-gray-900 uppercase">
+						Ansprechpartner
+					</h3>
+					<div class="space-y-4">
+						<span class="font-medium text-gray-900"
+							>Helmstedter Chor- und Singschule e.V.</span
 						>
-					</a>
-				</div>
-			</div>
-			<div class="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
-				<div>
-					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Navigation</h2>
-					<ul class="text-grey-500 fonz-medium">
-						<li class="mb-4">
-							<a href="/" class="hover:underline">Startseite</a>
-						</li>
-						<li class="mb-4">
-							<a href="/about" class="hover:underline">Über uns</a>
-						</li>
-						<li class="mb-4">
-							<a href="/events" class="hover:underline">Termine</a>
-						</li>
-						<li class="mb-4">
-							<a href="/media" class="hover:underline">Medien</a>
-						</li>
-						<li class="mb-4">
-							<a href="/club" class="hover:underline">Verein</a>
-						</li>
-						<li>
-							<a href="/sponsoring" class="hover:underline">Förderverein</a>
-						</li>
-					</ul>
-				</div>
-				<div>
-					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
-						Ansprechpartner des Vereins
-					</h2>
-					<ul class="font-medium text-gray-500">
-						<li class="mb-4">
-							<span>Person A</span>
-						</li>
-						<li class="mb-4">
-							<span>1. Vorsitzender</span>
-						</li>
-						<li class="mb-4">
-							<a href="mailto:person.a@mustermann.de" class="hover:underline"
-								>person.a@mustermann.de</a
-							>
-						</li>
-					</ul>
-				</div>
-				<div>
-					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
-						Ansprechpartner des Fördervereins
-					</h2>
-					<ul class="font-medium text-gray-500">
-						<li class="mb-4">
-							<span>Person B</span>
-						</li>
-						<li class="mb-4">
-							<span>Vorsitzender</span>
-						</li>
-						<li class="mb-4">
-							<a href="mailto:person.b@mustermann.de" class="hover:underline"
-								>person.b@mustermann.de</a
-							>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-			<div class="sm:flex sm:items-center sm:justify-between">
-				<span class="text-sm text-gray-500 sm:text-center"
-					><a href="https://hcss-ev.de/" class="hover:underline"
-						>Helmstedter Chor- und Singschule</a
-					></span
-				>
-				<div class="mt-4 flex space-x-5 sm:mt-0 sm:justify-center">
-					<a href="https://facebook.com/" class="text-gray-500 hover:text-gray-900">
-						<Facebook style="h-4" />
-					</a>
-					<a href="https://instagram.com/" class="text-gray-500 hover:text-gray-900">
-						<Instagram style="h-4" />
-					</a>
-					<a href="https://soundcloud.com/" class="text-gray-500 hover:text-gray-900">
-						<Soundcloud style="h-4" />
-					</a>
+						<p class="text-sm text-gray-600">Max Mustermann - 1. Vorsitzender</p>
+
+						<span class="font-medium text-gray-900">Föderverein</span>
+						<p class="text-sm text-gray-600">Max Mustermann - Vorsitzender</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+
+	<div class="flex w-full items-center justify-between bg-blue-800 p-16 py-4 lg:py-6">
+		<span class="font-bold text-gray-50">Helmstedter Chor- und Singschule e.V.</span>
+		<a
+			href="/admin/login"
+			class="hover: text-xs font-extralight text-gray-50 underline transition-colors duration-300 select-none hover:text-gray-400"
+		>
+			Login
+		</a>
+	</div>
 </footer>
+
+<style>
+    .animated-underline a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 1px;
+        background: currentColor;
+        transition: width 0.3s ease;
+    }
+
+    .animated-underline a:hover::after {
+        width: 100%;
+    }
+
+    .animated-underline a {
+        display: inline-block;
+    }
+</style>
