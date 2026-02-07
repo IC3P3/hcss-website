@@ -2,3 +2,4 @@ onlyBuiltDependencies:
     - argon2
     - better-sqlite3
     - esbuild
+    - '@tailwindcss/oxide'
