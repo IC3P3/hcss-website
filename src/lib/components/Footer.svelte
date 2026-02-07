@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
+
 	import SocialMedia from './SocialMedia.svelte';
 	import logo from '$lib/assets/logo.png';
 </script>
@@ -49,13 +51,13 @@
 					<h3 class="text-md mb-5 font-semibold text-gray-900 uppercase">Navigation</h3>
 					<ul class="animated-underline font-medium text-gray-500">
 						<li class="mb-2">
-							<a href="/"> Startseite </a>
+							<a href={resolve('/')}> Startseite </a>
 						</li>
 						<li class="mb-2">
-							<a href="/termine">Veranstaltungen</a>
+							<a href={resolve('/termine')}>Veranstaltungen</a>
 						</li>
 						<li class="mb-2">
-							<a href="/medien">Medien</a>
+							<a href={resolve('/medien')}>Medien</a>
 						</li>
 					</ul>
 				</div>
@@ -82,7 +84,7 @@
 			>Helmstedter Chor- und Singschule e.V.</span
 		>
 		<a
-			href="/admin/login"
+			href={resolve('/admin/login')}
 			class="text-xs font-extralight text-gray-50 underline transition-colors duration-300 select-none hover:text-gray-400"
 		>
 			Login
@@ -91,20 +93,20 @@
 </footer>
 
 <style>
-    .animated-underline a::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 1px;
-        background: currentColor;
-        transition: width 0.3s ease;
-    }
+	.animated-underline a::after {
+		content: '';
+		display: block;
+		width: 0;
+		height: 1px;
+		background: currentColor;
+		transition: width 0.3s ease;
+	}
 
-    .animated-underline a:hover::after {
-        width: 100%;
-    }
+	.animated-underline a:hover::after {
+		width: 100%;
+	}
 
-    .animated-underline a {
-        display: inline-block;
-    }
+	.animated-underline a {
+		display: inline-block;
+	}
 </style>
