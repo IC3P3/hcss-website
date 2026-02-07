@@ -17,7 +17,6 @@ This project utilizes modern web technologies to ensure performance, reliability
 and ease of maintenance:
 
 - **Frontend**:
-
     - [SvelteKit](https://kit.svelte.dev/) - Application framework
     - [Svelte 5](https://svelte.dev/) - Component framework
     - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
@@ -62,7 +61,6 @@ and ease of maintenance:
     ```
 
 3. Set up environment variables:
-
     - Create a `.env` file with the following variables:
 
         ```txt
