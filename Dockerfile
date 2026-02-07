@@ -1,5 +1,5 @@
 # Builder Stage
-FROM node:24.13.0-slim AS builder
+FROM node:24.13.0-slim@sha256:4660b1ca8b28d6d1906fd644abe34b2ed81d15434d26d845ef0aced307cf4b6f AS builder
 
 RUN npm install -g pnpm@10.28.1
 
@@ -20,7 +20,7 @@ RUN pnpm run build
 RUN pnpm prune --production
 
 # Runner Stage
-FROM node:24.13.0-slim
+FROM node:24.13.0-slim@sha256:4660b1ca8b28d6d1906fd644abe34b2ed81d15434d26d845ef0aced307cf4b6f
 WORKDIR /app
 
 RUN mkdir /database
