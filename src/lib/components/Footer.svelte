@@ -4,14 +4,16 @@
 </script>
 
 <footer class="mt-4 flex flex-col">
-	<div class="flex w-full items-center justify-center gap-20 bg-blue-800 p-4 py-6 lg:py-8">
+	<div
+		class="flex w-full flex-col items-center justify-center gap-4 bg-blue-800 p-4 py-6 sm:flex-row sm:gap-20 lg:py-8"
+	>
 		<span class="text-2xl font-bold text-gray-50 md:text-3xl">
 			Hier sind wir auch zu finden!
 		</span>
 		<SocialMedia />
 	</div>
 
-	<div class="bg-gray-200 px-8 py-10">
+	<div class="bg-gray-200 px-4 py-10 sm:px-8">
 		<div class="mx-auto max-w-7xl">
 			<div class="w-full">
 				<span class="mb-8 flex items-center text-2xl font-extrabold text-gray-900">
@@ -24,7 +26,7 @@
 				</span>
 			</div>
 
-			<div class="grid grid-cols-3 gap-8 sm:grid-cols-3 sm:gap-6">
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-6">
 				<div>
 					<h3 class="text-md mb-5 font-semibold text-gray-900 uppercase">Impressum</h3>
 					<ul class="animated-underline font-medium text-gray-500">
@@ -75,11 +77,13 @@
 		</div>
 	</div>
 
-	<div class="flex w-full items-center justify-between bg-blue-800 p-16 py-4 lg:py-6">
-		<span class="font-bold text-gray-50">Helmstedter Chor- und Singschule e.V.</span>
+	<div class="flex w-full items-center justify-between bg-blue-800 px-4 py-4 sm:px-16 lg:py-6">
+		<span class="text-sm font-bold text-gray-50 sm:text-base"
+			>Helmstedter Chor- und Singschule e.V.</span
+		>
 		<a
 			href="/admin/login"
-			class="hover: text-xs font-extralight text-gray-50 underline transition-colors duration-300 select-none hover:text-gray-400"
+			class="text-xs font-extralight text-gray-50 underline transition-colors duration-300 select-none hover:text-gray-400"
 		>
 			Login
 		</a>
