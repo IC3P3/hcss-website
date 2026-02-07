@@ -1,5 +1,4 @@
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
-import { Media } from './Media';
 
 export const Event = sqliteTable('Event', {
 	id: int().primaryKey({ autoIncrement: true }),

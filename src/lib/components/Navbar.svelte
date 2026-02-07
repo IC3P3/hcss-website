@@ -19,7 +19,7 @@
 <!-- TODO: Small extend button doesn't extend Navbar -->
 {#if page.url.pathname.includes('admin')}
 	<nav class="fixed z-50 w-full border-gray-200 bg-gray-50">
-		<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between p-4">
 			<a href="/" class="flex items-center">
 				<img src={logo} class="mr-3 h-8" alt="Logo der Helmstedter Chor- und Singschule" />
 				<span class="self-center text-2xl font-semibold whitespace-nowrap">HCSS</span>
