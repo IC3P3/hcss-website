@@ -87,7 +87,10 @@
 			href={resolve('/admin/login')}
 			class="text-xs font-extralight text-gray-50 underline transition-colors duration-300 select-none hover:text-gray-400"
 		>
-			Login
+			<!-- TODO: Change text if logged in -->
+			{#if true}
+				Login
+			{/if}
 		</a>
 	</div>
 </footer>
