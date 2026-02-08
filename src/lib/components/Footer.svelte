@@ -31,20 +31,22 @@
 			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-6">
 				<div>
 					<h3 class="text-md mb-5 font-semibold text-gray-900 uppercase">Impressum</h3>
-					<ul class="animated-underline font-medium text-gray-500">
-						<li class="mb-2">
-							<span>Helmstedter Chor- und Singschule e.V.</span>
-						</li>
-						<li class="mb-2">
-							<span>Klosterstraße 12</span>
-						</li>
-						<li class="mb-2">
-							<span>38350 Helmstedt</span>
-						</li>
-						<li class="mb-2">
-							<a href="mailto:HCSS38350@gmx.de">HCSS38350@gmx.de</a>
-						</li>
-					</ul>
+					<address class="not-italic">
+						<ul class="animated-underline font-medium text-gray-500">
+							<li class="mb-2">
+								<span>Helmstedter Chor- und Singschule e.V.</span>
+							</li>
+							<li class="mb-2">
+								<span>Klosterstraße 12</span>
+							</li>
+							<li class="mb-2">
+								<span>38350 Helmstedt</span>
+							</li>
+							<li class="mb-2">
+								<a href="mailto:HCSS38350@gmx.de">HCSS38350@gmx.de</a>
+							</li>
+						</ul>
+					</address>
 				</div>
 
 				<div>
@@ -66,13 +68,16 @@
 						Ansprechpartner
 					</h3>
 					<div class="space-y-4">
-						<span class="font-medium text-gray-900"
-							>Helmstedter Chor- und Singschule e.V.</span
-						>
-						<p class="text-sm text-gray-600">Max Mustermann - 1. Vorsitzender</p>
-
-						<span class="font-medium text-gray-900">Föderverein</span>
-						<p class="text-sm text-gray-600">Max Mustermann - Vorsitzender</p>
+						<div>
+							<p class="font-medium text-gray-900">
+								Helmstedter Chor- und Singschule e.V.
+							</p>
+							<p class="text-sm text-gray-600">Max Mustermann - 1. Vorsitzender</p>
+						</div>
+						<div>
+							<p class="font-medium text-gray-900">Förderverein</p>
+							<p class="text-sm text-gray-600">Max Mustermann - Vorsitzender</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -105,7 +110,8 @@
 		transition: width 0.3s ease;
 	}
 
-	.animated-underline a:hover::after {
+	.animated-underline a:hover::after,
+    .animated-underline a:focus-visible::after {
 		width: 100%;
 	}
 
