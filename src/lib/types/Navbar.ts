@@ -1,6 +1,6 @@
 import type { ResolvedPathname } from '$app/types';
 
-export type NavbarItems = {
+export type NavbarItem = {
 	title: string;
 	href: string | ResolvedPathname;
 };
