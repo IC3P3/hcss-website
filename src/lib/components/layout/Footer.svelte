@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 
-	import SocialMedia from './SocialMedia.svelte';
+	import SocialMedia from '$lib/components/SocialMedia.svelte';
 	import logo from '$lib/assets/logo.png';
 </script>
 
