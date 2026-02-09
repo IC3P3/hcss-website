@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Footer from '$lib/components/Footer.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import type { NavbarItems } from '$lib/types/Navbar';
+	import type { NavbarItem } from '$lib/types/Navbar';
 
 	const { children } = $props();
 
-	const items: NavbarItems[] = [
+	const items: NavbarItem[] = [
 		{ title: 'Veranstaltungen', href: '#veranstaltungen' },
 		{ title: 'Medien', href: '#medien' },
 		{ title: 'Über uns', href: '#ueberuns' },
