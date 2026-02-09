@@ -24,6 +24,6 @@
 	</a>
 
 	<Navbar {items} />
-	<main class="grow">{@render children()}</main>
+	<main id="main-content" class="grow pt-16">{@render children()}</main>
 	<Footer />
 </div>
