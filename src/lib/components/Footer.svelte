@@ -111,7 +111,7 @@
 	}
 
 	.animated-underline a:hover::after,
-    .animated-underline a:focus-visible::after {
+	.animated-underline a:focus-visible::after {
 		width: 100%;
 	}
 
