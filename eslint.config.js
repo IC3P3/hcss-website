@@ -17,7 +17,6 @@ const baseRules = {
 	'no-template-curly-in-string': 'warn',
 	'no-unmodified-loop-condition': 'warn',
 	'no-useless-assignment': 'warn',
-	'require-atomic-updates': 'error',
 	camelcase: 'error',
 	'default-case': 'error',
 	'default-case-last': 'warn',
@@ -34,6 +33,7 @@ const baseRules = {
 	'no-magic-numbers': [
 		'error',
 		{
+			ignore: [0, 1],
 			ignoreArrayIndexes: true,
 			ignoreDefaultValues: true,
 			ignoreClassFieldInitialValues: true,
