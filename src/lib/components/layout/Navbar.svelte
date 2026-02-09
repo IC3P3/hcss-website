@@ -90,13 +90,16 @@
 					transition:slide={{ duration: 200 }}
 					class="absolute top-16 left-0 w-full bg-gray-200 p-4 shadow-lg"
 				>
-					{#each items as item}
+					<!-- eslint-disable svelte/no-navigation-without-resolve -->
+					{#each items as item (item.id)}
 						<a
 							class="{mobileLink} {isActive(item.href) ? activeClass : inactiveClass}"
 							onclick={() => (menuOpen = false)}
 							href={item.href}>{item.title}</a
 						>
 					{/each}
+					<!-- eslint-enable svelte/no-navigation-without-resolve -->
+
 					<!-- TODO: Check for being logged in -->
 					{#if true}
 						<form action={resolve('/admin/logout')} method="POST" use:enhance>
@@ -108,12 +111,15 @@
 		</div>
 
 		<div class="hidden h-full items-center gap-6 md:flex">
-			{#each items as item}
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
+			{#each items as item (item.id)}
 				<a
 					class="{desktopLink} {isActive(item.href) ? activeClass : inactiveClass}"
 					href={item.href}>{item.title}</a
 				>
 			{/each}
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
+
 			<!-- TODO: Check for being logged in -->
 			{#if true}
 				<form class="h-full" action={resolve('/admin/logout')} method="POST" use:enhance>
