@@ -47,20 +47,25 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	if (user[0].lastSeen + THIRTY_MINUTES_IN_MS < dateNow) {
-		await db
+		const newSessionToken = crypto.randomUUID();
+
+		const result = await db
 			.update(Session)
 			.set({
+				sessionKey: newSessionToken,
 				lastSeen: dateNow
 			})
 			.where(eq(Session.sessionKey, session));
 
-		event.cookies.set('session', session, {
-			path: '/',
-			httpOnly: true,
-			sameSite: 'strict',
-			secure: !dev,
-			maxAge: THREE_DAYS_IN_S
-		});
+		if (result.changes > 0) {
+			event.cookies.set('session', newSessionToken, {
+				path: '/',
+				httpOnly: true,
+				sameSite: 'strict',
+				secure: !dev,
+				maxAge: THREE_DAYS_IN_S
+			});
+		}
 	}
 
 	event.locals.user = userInfo;
