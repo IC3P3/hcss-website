@@ -11,6 +11,6 @@ export const Session = sqliteTable('Session', {
 
 export const User = sqliteTable('User', {
 	id: int().primaryKey({ autoIncrement: true }),
-	username: text().notNull(),
+	username: text().notNull().unique(),
 	passwordHash: text().notNull()
 });
