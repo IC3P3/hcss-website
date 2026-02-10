@@ -3,7 +3,8 @@
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import type { NavbarItem } from '$lib/types/Navbar';
 
-	const { children } = $props();
+	const { children, data } = $props();
+	const isLoggedIn = $derived(!!data.user);
 
 	const items: NavbarItem[] = [
 		{ title: 'Veranstaltungen', href: '#veranstaltungen' },
@@ -23,7 +24,7 @@
 		Zum Inhalt springen
 	</a>
 
-	<Navbar {items} />
+	<Navbar {items} {isLoggedIn} />
 	<main id="main-content" class="grow pt-16">{@render children()}</main>
-	<Footer />
+	<Footer {isLoggedIn} />
 </div>

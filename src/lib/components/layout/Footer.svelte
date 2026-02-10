@@ -3,6 +3,8 @@
 
 	import SocialMedia from '$lib/components/SocialMedia.svelte';
 	import logo from '$lib/assets/logo.png';
+
+	const { isLoggedIn } = $props();
 </script>
 
 <footer class="mt-4 flex flex-col">
@@ -93,8 +95,10 @@
 			class="text-xs font-extralight text-gray-50 underline transition-colors duration-300 select-none hover:text-gray-400"
 		>
 			<!-- TODO: Change text if logged in -->
-			{#if true}
+			{#if !isLoggedIn}
 				Login
+			{:else}
+				Administration
 			{/if}
 		</a>
 	</div>

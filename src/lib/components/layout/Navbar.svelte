@@ -5,9 +5,10 @@
 	import { page } from '$app/state';
 	import { enhance } from '$app/forms';
 	import { slide } from 'svelte/transition';
+
 	import type { NavbarItem } from '$lib/types/Navbar';
 
-	const { items } = $props<{ items: NavbarItem[] }>();
+	const { items, isLoggedIn } = $props<{ items: NavbarItem[]; isLoggedIn: boolean }>();
 
 	let menuOpen = $state(false);
 	let menuRef = $state<HTMLDivElement>();
@@ -101,7 +102,7 @@
 					<!-- eslint-enable svelte/no-navigation-without-resolve -->
 
 					<!-- TODO: Check for being logged in -->
-					{#if true}
+					{#if isLoggedIn}
 						<form action={resolve('/admin/logout')} method="POST" use:enhance>
 							<button type="submit" class={mobileLink}>Abmelden</button>
 						</form>
@@ -120,8 +121,7 @@
 			{/each}
 			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 
-			<!-- TODO: Check for being logged in -->
-			{#if true}
+			{#if isLoggedIn}
 				<form class="h-full" action={resolve('/admin/logout')} method="POST" use:enhance>
 					<button type="submit" class={desktopLink}>Abmelden</button>
 				</form>
