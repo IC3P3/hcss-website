@@ -1,15 +1,25 @@
 import { UPLOAD_PATH } from '$env/static/private';
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
-import {
-	HTTP_BAD_REQUEST,
-	HTTP_UNSUPPORTED_MEDIA_TYPE,
-	ONE_BYTE_IN_BIT
-} from '$lib/server/utils/constants';
+import { HTTP_BAD_REQUEST, HTTP_UNSUPPORTED_MEDIA_TYPE } from '$lib/server/utils/constants';
 import { isWebP } from '$lib/server/utils/file-type_functions';
 import { fail, type Actions } from '@sveltejs/kit';
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
+import type { PageServerLoad } from './$types';
+import { Event } from '$lib/server/models/Event';
+
+export const load: PageServerLoad = async () => {
+	const events = await db
+		.select({
+			id: Event.id,
+			title: Event.title,
+			date: Event.time
+		})
+		.from(Event);
+
+	return { events };
+};
 
 export const actions = {
 	default: async ({ request }: { request: Request }) => {
@@ -26,7 +36,7 @@ export const actions = {
 
 		const file = data.get('media') as File;
 		if (!file) {
-			return fail(HTTP_BAD_REQUEST, { error: 'Kein unterstütztes Format gefunden!' });
+			return fail(HTTP_BAD_REQUEST, { error: 'Kein Medium gefunden!' });
 		}
 		const filepath = await uploadFile(file);
 		if (!filepath) {
