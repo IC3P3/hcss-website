@@ -8,7 +8,8 @@ import {
 	THIRTY_MINUTES_IN_MS,
 	THREE_DAYS_IN_MS,
 	THREE_DAYS_IN_S
-} from '$lib/utils/constants';
+} from '$lib/server/utils/constants';
+import { SvelteDate } from 'svelte/reactivity';
 
 const cleanup = { lastRun: 0 };
 
@@ -17,7 +18,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if (!session) return await resolve(event);
 
-	const dateNow = Date.now();
+	const dateNow = SvelteDate.now();
 	if (cleanup.lastRun < dateNow - ONE_DAY_IN_MS) {
 		cleanup.lastRun = dateNow;
 		db.delete(Session)

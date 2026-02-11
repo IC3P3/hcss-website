@@ -1,5 +1,5 @@
 import { resolve } from '$app/paths';
-import { HTTP_FOUND } from '$lib/utils/constants';
+import { HTTP_FOUND } from '$lib/server/utils/constants';
 import type { LayoutServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 

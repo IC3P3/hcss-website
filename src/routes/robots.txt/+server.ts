@@ -1,5 +1,5 @@
 import { HOST_URL } from '$env/static/private';
-import { NOT_FOUND } from '$lib/utils/constants';
+import { NOT_FOUND } from '$lib/server/utils/constants';
 
 export function GET() {
 	const files = import.meta.glob('/src/routes/**/*');

@@ -1,6 +1,6 @@
 import { HOST_URL } from '$env/static/private';
-import { LAST_INDEX, ZERO_INDEX } from '$lib/utils/constants';
-import { escapeXML } from '$lib/utils/xml_functions';
+import { LAST_INDEX } from '$lib/server/utils/constants';
+import { escapeXML } from '$lib/server/utils/xml_functions';
 
 export function GET() {
 	const routes = import.meta.glob('/src/routes/**/+page.svelte');
@@ -14,7 +14,7 @@ export function GET() {
 				.replace('/src/routes/', '')
 				.replace('+page.svelte', '')
 				.replaceAll(/\(.*?\)\//g, '')
-				.slice(ZERO_INDEX, LAST_INDEX);
+				.slice(0, LAST_INDEX);
 		});
 
 	const body = sitemap(pages, HOST_URL);

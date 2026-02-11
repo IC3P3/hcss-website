@@ -2,7 +2,7 @@ import { type Actions, redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
 import { eq } from 'drizzle-orm';
 import { Session } from '$lib/server/models/User';
-import { HTTP_FOUND } from '$lib/utils/constants';
+import { HTTP_FOUND } from '$lib/server/utils/constants';
 import { resolve } from '$app/paths';
 
 export const load = () => {
