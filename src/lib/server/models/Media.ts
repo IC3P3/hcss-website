@@ -7,7 +7,6 @@ export const Media = sqliteTable('Media', {
 	description: text(),
 	slug: text().unique(),
 	path: text().notNull(),
-	displayed: int().notNull(),
-	role: int(),
+	role: int().default(0),
 	eventId: int().references(() => Event.id, { onDelete: 'set null' })
 });

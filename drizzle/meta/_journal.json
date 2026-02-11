@@ -15,6 +15,13 @@
       "when": 1770757766939,
       "tag": "0001_regular_pestilence",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1770836098083,
+      "tag": "0002_tired_master_chief",
+      "breakpoints": true
     }
   ]
 }
