@@ -25,6 +25,9 @@ export const actions = {
 		const slug = `${Date.now()}-${crypto.randomUUID().slice(0, NUMBER_OF_UUID_CHARS)}`;
 
 		const file = data.get('media') as File;
+		if (!file) {
+			return fail(HTTP_BAD_REQUEST, { error: 'Kein unterstütztes Format gefunden!' });
+		}
 		const filepath = await uploadFile(file);
 		if (!filepath) {
 			return fail(HTTP_UNSUPPORTED_MEDIA_TYPE, {
