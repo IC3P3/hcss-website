@@ -1,0 +1,1 @@
+ALTER TABLE `Media` RENAME COLUMN "titel" TO "title";
