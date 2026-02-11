@@ -1,11 +1,15 @@
 import { UPLOAD_PATH } from '$env/static/private';
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
-import { HTTP_BAD_REQUEST, ONE_BYTE_IN_BIT } from '$lib/server/utils/constants';
+import {
+	HTTP_BAD_REQUEST,
+	HTTP_UNSUPPORTED_MEDIA_TYPE,
+	ONE_BYTE_IN_BIT
+} from '$lib/server/utils/constants';
+import { isWebP } from '$lib/server/utils/file-type_functions';
 import { fail, type Actions } from '@sveltejs/kit';
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
-import { SvelteDate } from 'svelte/reactivity';
 
 export const actions = {
 	default: async ({ request }: { request: Request }) => {
@@ -17,35 +21,48 @@ export const actions = {
 
 		const description = data.get('description')?.toString();
 
-		const slug = `${SvelteDate.now()}-${crypto.randomUUID().slice(0, ONE_BYTE_IN_BIT)}`;
+		const NUMBER_OF_UUID_CHARS = 8;
+		const slug = `${Date.now()}-${crypto.randomUUID().slice(0, NUMBER_OF_UUID_CHARS)}`;
 
 		const file = data.get('media') as File;
 		const filepath = await uploadFile(file);
+		if (!filepath) {
+			return fail(HTTP_UNSUPPORTED_MEDIA_TYPE, {
+				error: 'Das Bild hat den falschen Datentypen!'
+			});
+		}
 
 		const eventId = data.get('event')?.toString();
 		let eventInt: number | null = null;
 		if (eventId) {
 			eventInt = parseInt(eventId, 10);
-			if (!eventInt) {
+			if (Number.isNaN(eventInt)) {
 				return fail(HTTP_BAD_REQUEST, {
 					error: 'Veranstaltung konnte nicht erkannt werden!'
 				});
 			}
 		}
 
-		db.insert(Media).values({
+		await db.insert(Media).values({
 			title: title,
 			description: description ?? null,
 			slug: slug,
 			path: filepath,
 			eventId: eventInt
 		});
+
+		return { success: true };
 	}
 } satisfies Actions;
 
-async function uploadFile(file: File): Promise<string> {
+async function uploadFile(file: File): Promise<string | null> {
 	const buffer = Buffer.from(await file.arrayBuffer());
-	const filename = `${SvelteDate.now()}-${file.name}`;
+
+	if (!isWebP(buffer)) {
+		return null;
+	}
+
+	const filename = `${Date.now()}-${file.name}`;
 
 	const uploadDir = join(process.cwd(), UPLOAD_PATH);
 	await mkdir(uploadDir, { recursive: true });
@@ -53,5 +70,5 @@ async function uploadFile(file: File): Promise<string> {
 	const filepath = join(uploadDir, filename);
 	await writeFile(filepath, buffer);
 
-	return filepath;
+	return join(UPLOAD_PATH, filename);
 }
