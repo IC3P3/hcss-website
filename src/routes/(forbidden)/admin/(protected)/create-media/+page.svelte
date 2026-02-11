@@ -18,6 +18,9 @@
 	function onFileChange(e: Event) {
 		const input = e.target as HTMLInputElement;
 		const file = input.files?.[0];
+
+		if (previewImg) URL.revokeObjectURL(previewImg);
+
 		if (file) {
 			previewImg = URL.createObjectURL(file);
 		} else {
@@ -34,9 +37,10 @@
 			enctype="multipart/form-data"
 			use:enhance={() => {
 				submitting = true;
-				return async ({ update }) => {
+				return async ({ update, result }) => {
 					submitting = false;
-					return update();
+					if (result.type === 'success') previewImg = null;
+					return update({ reset: result.type === 'success' });
 				};
 			}}
 		>
@@ -91,11 +95,15 @@
 					<option value="">Keine</option>
 					{#each data.events as event}
 						<option value={event.id}
-							>{`${event.title} - ${new Intl.DateTimeFormat('de-DE', {
-								day: '2-digit',
-								month: '2-digit',
-								year: 'numeric'
-							}).format(event.date)}`}</option
+							>{`${event.title}${
+								event.date
+									? ` - ${new Intl.DateTimeFormat('de-DE', {
+											day: '2-digit',
+											month: '2-digit',
+											year: 'numeric'
+										}).format(event.date)}`
+									: ''
+							}`}</option
 						>
 					{/each}
 				</select>
