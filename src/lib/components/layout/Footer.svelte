@@ -91,10 +91,9 @@
 			>Helmstedter Chor- und Singschule e.V.</span
 		>
 		<a
-			href={resolve('/admin/login')}
+			href={resolve(`/admin${isLoggedIn ? '' : '/login'}`)}
 			class="text-xs font-extralight text-gray-50 underline transition-colors duration-300 select-none hover:text-gray-400"
 		>
-			<!-- TODO: Change text if logged in -->
 			{#if !isLoggedIn}
 				Login
 			{:else}
