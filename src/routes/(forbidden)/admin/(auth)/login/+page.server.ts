@@ -6,10 +6,11 @@ import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { HTTP_FOUND, THREE_DAYS_IN_S } from '$lib/utils/constants';
 import { verify } from 'argon2';
+import { resolve } from '$app/paths';
 
 export const load: PageServerLoad = ({ locals }) => {
 	if (locals.user) {
-		redirect(HTTP_FOUND, '/');
+		redirect(HTTP_FOUND, resolve('/admin'));
 	}
 };
 
@@ -62,6 +63,6 @@ export const actions = {
 			maxAge: THREE_DAYS_IN_S
 		});
 
-		redirect(HTTP_FOUND, '/admin');
+		redirect(HTTP_FOUND, resolve('/admin'));
 	}
 } satisfies Actions;
