@@ -3,7 +3,7 @@ import { Event } from './Event';
 
 export const Media = sqliteTable('Media', {
 	id: int().primaryKey({ autoIncrement: true }),
-	titel: text().notNull(),
+	title: text().notNull(),
 	description: text(),
 	slug: text().unique(),
 	path: text().notNull(),

@@ -9,3 +9,5 @@ export const THREE_DAYS_IN_S = 259200;
 
 export const HTTP_FOUND = 302;
 export const HTTP_BAD_REQUEST = 400;
+
+export const ONE_BYTE_IN_BIT = 8;
