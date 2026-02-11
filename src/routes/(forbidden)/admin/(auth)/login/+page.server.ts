@@ -4,7 +4,7 @@ import { db } from '$lib/server/db';
 import { dev } from '$app/environment';
 import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
-import { HTTP_FOUND, THREE_DAYS_IN_S } from '$lib/utils/constants';
+import { HTTP_FOUND, THREE_DAYS_IN_S } from '$lib/server/utils/constants';
 import { verify } from 'argon2';
 import { resolve } from '$app/paths';
 
