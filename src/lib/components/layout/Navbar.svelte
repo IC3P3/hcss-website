@@ -103,7 +103,7 @@
 
 					<!-- TODO: Check for being logged in -->
 					{#if isLoggedIn}
-						<form action={resolve('/admin/logout')} method="POST" use:enhance>
+						<form action={resolve('/admin/logout')} method="POST">
 							<button type="submit" class={mobileLink}>Abmelden</button>
 						</form>
 					{/if}
@@ -122,7 +122,7 @@
 			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 
 			{#if isLoggedIn}
-				<form class="h-full" action={resolve('/admin/logout')} method="POST" use:enhance>
+				<form class="h-full" action={resolve('/admin/logout')} method="POST">
 					<button type="submit" class={desktopLink}>Abmelden</button>
 				</form>
 			{/if}
