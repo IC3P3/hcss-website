@@ -10,12 +10,16 @@
 
 <svelte:head>
 	<title>Helmstedter Chor- und Singschule</title>
+	<meta
+		name="description"
+		content="Helmstedter Chor- und Singschule e.V. — Placeholder description"
+	/>
 </svelte:head>
 
 <Hero img={data.heroImg} />
-<div class="mx-auto max-w-5xl space-y-12 p-8">
+<div class="mx-auto max-w-7xl space-y-12 p-8">
 	<Events events={data.events} />
 </div>
 <Media media={data.media} />
 <About />
-<Offerings />
+<Offerings offeringImages={data.offeringImages} />

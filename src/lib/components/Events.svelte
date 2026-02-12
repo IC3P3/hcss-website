@@ -2,7 +2,7 @@
 	import type { Event } from '$lib/types/Event';
 	import SocialMedia from '$lib/components/SocialMedia.svelte';
 
-	let { events }: { events: Event[] } = $props();
+	const { events }: { events: Event[] } = $props();
 </script>
 
 <section
@@ -45,7 +45,9 @@
 								{/if}
 							</div>
 
-							<address class="mt-4 not-italic lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:text-right">
+							<address
+								class="mt-4 not-italic lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:text-right"
+							>
 								{#each event.address.split(', ') as part, index (index)}
 									<p class="text-lg text-gray-700">{part}</p>
 								{/each}

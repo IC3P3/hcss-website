@@ -4,12 +4,15 @@
 
 	const { media }: { media: Media[] } = $props();
 
-	const placeholders: Media[] = Array.from({ length: Math.max(0, 6 - media.length) }, (_, i) => ({
-		id: -(i + 1),
-		title: null,
-		description: null,
-		path: null
-	}));
+	const FULL_SIZE = 6;
+	const placeholders: Media[] = $derived(
+		Array.from({ length: Math.max(0, FULL_SIZE - media.length) }, (_, i) => ({
+			id: -(i + 1),
+			title: null,
+			description: null,
+			path: null
+		}))
+	);
 
 	const items = $derived([...media, ...placeholders]);
 </script>

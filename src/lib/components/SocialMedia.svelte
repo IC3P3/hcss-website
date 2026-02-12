@@ -4,7 +4,10 @@
 	import Whatapp from '$lib/assets/WhatsApp.svelte';
 	import Youtube from '$lib/assets/YouTube.svelte';
 
-	let { color = 'text-gray-50', hoverColor = 'hover:text-gray-400' }: { color?: string; hoverColor?: string } = $props();
+	let {
+		color = 'text-gray-50',
+		hoverColor = 'hover:text-gray-400'
+	}: { color?: string; hoverColor?: string } = $props();
 </script>
 
 <div class="flex items-center gap-4 {color}">

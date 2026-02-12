@@ -3,9 +3,9 @@
 	import placeholderImg from '$lib/assets/placeholder-image.webp';
 	import SocialMedia from '$lib/components/SocialMedia.svelte';
 
-	let { img }: { img: HeroImage | null } = $props();
+	const { img }: { img: HeroImage | null } = $props();
 
-	let bgImg = $derived(img?.path || placeholderImg);
+	const bgImg = $derived(img?.path || placeholderImg);
 </script>
 
 <section

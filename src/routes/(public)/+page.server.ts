@@ -6,7 +6,9 @@ import type { PageServerLoad } from './$types';
 import {
 	FRONT_PAGE_MEDIA_END,
 	FRONT_PAGE_MEDIA_START,
-	HERO_IMAGE
+	HERO_IMAGE,
+	OFFERING_START,
+	OFFERING_END
 } from '$lib/server/utils/pagecontent_constants';
 import { join } from 'path';
 import { UPLOAD_PATH } from '$env/static/private';
@@ -57,5 +59,19 @@ export const load: PageServerLoad = async () => {
 		path: item.path ? join(UPLOAD_PATH, item.path) : null
 	}));
 
-	return { heroImg, events, media };
+	const offeringResults = await db
+		.select({
+			id: PageContent.id,
+			path: Media.path
+		})
+		.from(PageContent)
+		.leftJoin(Media, eq(Media.id, PageContent.mediaId))
+		.where(between(PageContent.id, OFFERING_START, OFFERING_END));
+
+	const offeringImages = offeringResults.map((item) => ({
+		...item,
+		path: item.path ? join(UPLOAD_PATH, item.path) : null
+	}));
+
+	return { heroImg, events, media, offeringImages };
 };
