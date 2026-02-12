@@ -1,11 +1,12 @@
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
 import { PageContent } from '$lib/server/models/PageContent';
-import { eq } from 'drizzle-orm';
+import { eq, gt } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { HERO_IMAGE } from '$lib/server/utils/pagecontent_constants';
 import { join } from 'path';
 import { UPLOAD_PATH } from '$env/static/private';
+import { Event } from '$lib/server/models/Event';
 
 export const load: PageServerLoad = async () => {
 	const [heroImgResult] = await db
@@ -24,5 +25,18 @@ export const load: PageServerLoad = async () => {
 			}
 		: null;
 
-	return { heroImg };
+	const MAX_NUMBER_EVENTS = 4;
+	const events = await db
+		.select({
+			id: Event.id,
+			title: Event.title,
+			shortDescription: Event.shortDescription,
+			time: Event.time,
+			address: Event.address
+		})
+		.from(Event)
+		.where(gt(Event.time, Date.now()))
+		.limit(MAX_NUMBER_EVENTS);
+
+	return { heroImg, events };
 };

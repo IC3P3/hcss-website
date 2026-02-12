@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Events from '$lib/components/Events.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 
 	const { data } = $props();
@@ -9,4 +10,6 @@
 </svelte:head>
 
 <Hero img={data.heroImg} />
-<div class="mx-auto max-w-5xl space-y-12 p-8"></div>
+<div class="mx-auto max-w-5xl space-y-12 p-8">
+	<Events events={data.events} />
+</div>

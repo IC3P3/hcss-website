@@ -7,11 +7,11 @@
 	const isLoggedIn = $derived(Boolean(data.user));
 
 	const items: NavbarItem[] = [
-		{ title: 'Veranstaltungen', href: '#veranstaltungen' },
-		{ title: 'Medien', href: '#medien' },
-		{ title: 'Über uns', href: '#ueberuns' },
-		{ title: 'Angebote', href: '#angebote' },
-		{ title: 'Vereine', href: '#vereine' }
+		{ id: 1, title: 'Veranstaltungen', href: '#veranstaltungen' },
+		{ id: 2, title: 'Medien', href: '#medien' },
+		{ id: 3, title: 'Über uns', href: '#ueberuns' },
+		{ id: 4, title: 'Angebote', href: '#angebote' },
+		{ id: 5, title: 'Vereine', href: '#vereine' }
 	];
 </script>
 
