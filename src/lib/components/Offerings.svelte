@@ -1,8 +1,5 @@
 <!-- TODO: Replace placeholder images, at first with a static image as it won't be changed often -->
-<section
-	id="offering"
-	class="mx-auto w-full max-w-screen-xl justify-center p-4 py-6 text-center lg:py-8"
->
+<section id="offering" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
 	<h2 class="text-4xl font-extrabold text-blue-950">Unsere Angebote</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
