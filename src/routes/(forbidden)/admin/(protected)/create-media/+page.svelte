@@ -7,10 +7,12 @@
 	let showMessage = $state(false);
 	let previewImg = $state<string | null>(null);
 
+	const FIVE_SECONDS_IN_MS = 5000;
+
 	$effect(() => {
 		if (form) {
 			showMessage = true;
-			const timeout = setTimeout(() => (showMessage = false), 5000);
+			const timeout = setTimeout(() => (showMessage = false), FIVE_SECONDS_IN_MS);
 			return () => clearTimeout(timeout);
 		}
 	});
@@ -37,7 +39,7 @@
 			enctype="multipart/form-data"
 			use:enhance={() => {
 				submitting = true;
-				return async ({ update, result }) => {
+				return ({ update, result }) => {
 					submitting = false;
 					if (result.type === 'success') previewImg = null;
 					return update({ reset: result.type === 'success' });
@@ -93,7 +95,7 @@
 					class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
 				>
 					<option value="">Keine</option>
-					{#each data.events as event}
+					{#each data.events as event (event.id)}
 						<option value={event.id}
 							>{`${event.title}${
 								event.date

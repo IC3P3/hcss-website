@@ -32,7 +32,7 @@
 				name="username"
 				autocomplete="username"
 				required
-				class="rounded border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700"
+				class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
 			/>
 		</div>
 
@@ -44,7 +44,7 @@
 				name="password"
 				autocomplete="current-password"
 				required
-				class="rounded border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700"
+				class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
 			/>
 		</div>
 
