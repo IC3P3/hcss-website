@@ -1,75 +1,47 @@
 <script lang="ts">
-	import Facebook from '$lib/assets/Facebook.svelte';
-	import Instagram from '$lib/assets/Instagram.svelte';
-	import Soundcloud from '$lib/assets/Soundcloud.svelte';
+	import placeholderImg from '$lib/assets/placeholder-image.webp';
+	import type { Media } from '$lib/types/Media';
 
-	interface Props {
-		media: {
-			id: number;
-			mediaId: number;
-			subtitle: string;
-		}[];
-	}
+	const { media }: { media: Media[] } = $props();
 
-	const { media }: Props = $props();
+	const placeholders: Media[] = Array.from({ length: Math.max(0, 6 - media.length) }, (_, i) => ({
+		id: -(i + 1),
+		title: null,
+		description: null,
+		path: null
+	}));
+
+	const items = $derived([...media, ...placeholders]);
 </script>
 
-<section
-	id="media"
-	class="mx-auto w-screen max-w-screen-xl justify-center p-4 py-6 text-center lg:py-8"
->
+<section id="medien" class="mx-auto w-screen max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
 	<h2 class="text-4xl font-extrabold text-blue-950">Medien</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-	<div class="flex flex-wrap justify-between">
-		{#each media as item (item.id)}
-			<div class="group relative w-full overflow-hidden sm:w-1/2 lg:w-1/3">
-				<img class="h-64 w-full object-cover" src="/api/image?id={item.mediaId}" alt="" />
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+		{#each items as item (item.id)}
+			<button type="button" class="group relative overflow-hidden">
+				<img
+					class="aspect-4/3 w-full object-cover"
+					loading="lazy"
+					src={item.path ?? placeholderImg}
+					alt={item.description ?? 'Bild der HCSS'}
+					onerror={(e: Event) => {
+						(e.currentTarget as HTMLImageElement).src = placeholderImg;
+					}}
+				/>
 				<div
-					class="bg-opacity-75 absolute inset-0 flex items-end bg-blue-700 p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:opacity-100"
+					class="absolute inset-0 flex items-end bg-blue-700/75 p-8 opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-focus-within:opacity-100 sm:group-hover:opacity-100"
 				>
 					<div class="flex w-full flex-col items-start">
-						<h3 class="mb-2 text-2xl font-semibold text-white">Placeholder</h3>
-						<span class="text-sm text-white">{item.subtitle}</span>
+						<h3 class="mb-2 w-full text-center text-2xl font-semibold text-white">
+							{item.title ?? 'Bild der HCSS'}
+						</h3>
+						{#if item.description}
+							<span class="text-start text-sm text-white">{item.description}</span>
+						{/if}
 					</div>
 				</div>
-			</div>
+			</button>
 		{/each}
-	</div>
-
-	<div class="mt-8 flex flex-col items-center justify-center gap-6">
-		<p
-			class="mx-auto max-w-screen-xl justify-center text-center text-xl font-bold text-blue-950"
-		>
-			Entdecke mehr Inhalte auf unseren sozialen Netzwerken!
-		</p>
-
-		<div class="flex gap-6">
-			<a
-				href="https://facebook.com/"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-blue-950 hover:text-blue-600"
-			>
-				<Facebook style="h-8" />
-			</a>
-
-			<a
-				href="https://instagram.com/"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-blue-950 hover:text-blue-600"
-			>
-				<Instagram style="h-8" />
-			</a>
-
-			<a
-				href="https://soundcloud.com/"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-blue-950 hover:text-blue-600"
-			>
-				<Soundcloud style="h-8" />
-			</a>
-		</div>
 	</div>
 </section>

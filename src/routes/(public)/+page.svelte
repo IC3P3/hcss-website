@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Events from '$lib/components/Events.svelte';
 	import Hero from '$lib/components/Hero.svelte';
+	import Media from '$lib/components/Media.svelte';
 
 	const { data } = $props();
 </script>
@@ -13,3 +14,4 @@
 <div class="mx-auto max-w-5xl space-y-12 p-8">
 	<Events events={data.events} />
 </div>
+<Media media={data.media} />
