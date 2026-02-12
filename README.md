@@ -27,10 +27,26 @@ and ease of maintenance:
     - [Drizzle ORM](https://orm.drizzle.team/) - SQL toolkit and ORM
     - [SQLite](https://www.sqlite.org/) (via better-sqlite3) - Database solution
 
+## TODO
+
+- [ ] Redesign the About component
+- [ ] Add Event creation
+- [ ] Add Media, Event and Content customizations
+- [ ] Add videos and audio to media types
+- [ ] Fill in the placeholder texts
+- [ ] Add Event page with past and future events
+- [ ] Add Media page with all the uploaded media
+- [ ] Create Docker image/compose file
+- [ ] Create CI/CD pipeline
+- [ ] Implement image optimization (instead of only accepting webp)
+- [ ] Add Open Graph tags
+- [ ] Get Datenschutzerklären and Impressum and add it
+- [ ] Add custom error page
+
 ## Features
 
 - Responsive design that works across desktop and mobile devices
-- Content management system for easily updating website sections
+- Simple content management system for easily updating website sections
 - Event announcement management
 - Media gallery for photos
 - Admin panel for content management
@@ -42,8 +58,6 @@ and ease of maintenance:
 
 - [Node.js](https://nodejs.org/) (v22.10 is recommended)
 - [pnpm](https://pnpm.io/) (recommended package manager)
-- [Nix](https://nixos.org/) (optional, for reproducable a dev environment)
-- [Podman](https://podman.io/) (optional, works with Docker aswell)
 
 ### Installation
 
@@ -70,7 +84,7 @@ and ease of maintenance:
 4. Initialize the database:
 
     ```bash
-    pnpm db:push
+    pnpm db:migrate
     ```
 
 ### Development
@@ -78,7 +92,7 @@ and ease of maintenance:
 Start the development server:
 
 ```bash
-pnpm dev
+pnpm run dev
 ```
 
 This will start the development server at `http://localhost:5173`.
@@ -88,27 +102,13 @@ This will start the development server at `http://localhost:5173`.
 Build the project for production:
 
 ```bash
-pnpm build
+pnpm run build
 ```
 
 Preview the production build:
 
 ```bash
-pnpm preview
-```
-
-### Building an image for Production
-
-Build with Podman:
-
-```bash
-podman build .
-```
-
-Copy the hash of the image and run the image:
-
-```bash
-podman run -p 3000:3000 -e DATABASE_URL=/app/data.db <IMAGE HASH>
+pnpm run preview
 ```
 
 ## Database Management
@@ -119,7 +119,8 @@ using Drizzle Kit.
 Apply schema changes to the database:
 
 ```bash
-pnpm db:push
+pnpm run db:generate
+pnpm run db:migrate
 ```
 
 Explore and manage your database with Drizzle Studio:
@@ -137,15 +138,6 @@ The admin panel can be accessed at `/admin` (login required). From here, you can
 - Update site content by changing images in different sections
 - Link media items to events
 
-## Data Models
-
-The application uses the following main data models:
-
-- **Events**: Performances and activities with dates, times, and locations
-- **Media**: Images with subtitles that can be linked to events
-- **Content**: Website content sections that can reference media items
-- **Users & Sessions**: Authentication system for admin access
-
 ## Testing
 
 The project includes both unit and end-to-end testing:
@@ -153,19 +145,19 @@ The project includes both unit and end-to-end testing:
 Run unit tests:
 
 ```bash
-pnpm test:unit
+pnpm run test:unit
 ```
 
 Run end-to-end tests:
 
 ```bash
-pnpm test:e2e
+pnpm run test:e2e
 ```
 
 Run all tests:
 
 ```bash
-pnpm test
+pnpm run test
 ```
 
 ## Code Quality
@@ -175,13 +167,16 @@ Maintain code quality with the following commands:
 Format code:
 
 ```bash
-pnpm format
+pnpm run format
 ```
 
 Lint code:
 
 ```bash
-pnpm lint
+pnpm run lint
+
+# For checking some more rules
+pnpm run lint:strict
 ```
 
 Svelte diagnostics:
@@ -190,36 +185,5 @@ Svelte diagnostics:
 pnpm check
 
 # OR to run it constantly
-
 pnpm check:watch
 ```
-
-## Deployment
-
-### Server Requirements
-
-- Node.js (v18 or newer, recommended is v22)
-- Alternatively to Node.js is docker or podman recommended
-- Minimum 1GB RAM
-- 10GB disk space (adjust based on media storage needs)
-
-### Traditional Deployment Steps
-
-1. Build the project:
-
-    ```bash
-    pnpm build
-    ```
-
-2. Start the server in production mode:
-
-    ```bash
-    NODE_ENV=production node build
-    ```
-
-3. For production deployment, consider using a process manager like PM2:
-
-    ```bash
-    npm install -g pm2
-    pm2 start build/index.js --name "hcss-website"
-    ```
