@@ -1,4 +1,4 @@
 export type HeroImage = {
-	path: string;
+	path: string | null;
 	description: string | null;
 };
