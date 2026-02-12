@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 import Database from 'better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { env } from 'process';
@@ -131,7 +133,7 @@ async function main() {
 				title: 'Sommerkonzert 2025 - Gruppenfoto',
 				description: 'Gruppenfoto des Orchesters nach dem Sommerkonzert 2025.',
 				slug: 'sommerkonzert-2025-gruppenfoto',
-				path: '/uploads/sommerkonzert-2025.webp',
+				path: '/uploads/sommerkonzert-2025.jpg',
 				role: 0,
 				eventId: 1
 			},
