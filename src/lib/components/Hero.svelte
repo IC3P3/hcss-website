@@ -9,9 +9,9 @@
 
 <section
 	id="home"
-	class="-mt-16 items-center bg-cover bg-fixed bg-center"
+	class="items-center bg-cover bg-fixed bg-center"
 	style="background-image: url({bgImg})"
-	aria-label={img?.description}
+	aria-label={img?.description || 'Platzhalter'}
 >
 	<div
 		class="bg-image flex h-dvh flex-col items-center justify-center bg-[rgba(110,112,116,0.5)] bg-cover bg-center"
@@ -28,10 +28,8 @@
 			class="mt-4 rounded-none bg-blue-700 px-7 py-3 text-xs font-bold text-white uppercase hover:bg-blue-900"
 			>Unsere Termine</a
 		>
-		{#if img?.description}
-			<span class="absolute right-3 bottom-2 text-xs text-white/40">
-				{img.description}
-			</span>
-		{/if}
+		<!-- {#if img?.description} -->
+		<span class="absolute right-3 bottom-2 text-xs text-white/40"> TEST TEST 123 </span>
+		<!-- {/if} -->
 	</div>
 </section>
