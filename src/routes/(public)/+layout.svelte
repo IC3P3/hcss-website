@@ -25,6 +25,6 @@
 	</a>
 
 	<Navbar {items} {isLoggedIn} />
-	<main id="main-content" class="grow pt-16">{@render children()}</main>
+	<main id="main-content" class="grow">{@render children()}</main>
 	<Footer {isLoggedIn} />
 </div>
