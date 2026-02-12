@@ -1,43 +1,69 @@
 <script lang="ts">
-	const { events } = $props();
+	import type { Event } from '$lib/types/Event';
+	import SocialMedia from '$lib/components/SocialMedia.svelte';
+
+	let { events }: { events: Event[] } = $props();
 </script>
 
 <section
-	id="events"
-	class="mx-auto w-full max-w-screen-xl justify-center p-4 py-6 text-center lg:py-8"
+	id="veranstaltungen"
+	aria-labelledby="events-heading"
+	class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8"
 >
-	<h2 class="mb-8 text-4xl font-extrabold text-blue-950">Termine</h2>
+	<h2 id="events-heading" class="mb-8 text-4xl font-extrabold text-blue-950">Konzerte</h2>
 
-	{#each events as event (event.id)}
-		<div class="my-8 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
-			<div class="gap-8 lg:grid lg:grid-cols-4">
-				<div class="mt-1 align-middle">
-					<p class="text-left text-xl font-semibold text-blue-950">
-						{new Date(event.time).toLocaleDateString('de', {
-							day: '2-digit',
-							month: 'long',
-							year: 'numeric'
-						})}
-					</p>
-					<p class="text-left text-lg text-gray-600">
-						{new Date(event.time).toLocaleTimeString('de', {
-							hour: '2-digit',
-							minute: '2-digit'
-						})} Uhr
-					</p>
-				</div>
+	{#if events.length !== 0}
+		<ul aria-label="Liste der Konzerte" class="list-none p-0">
+			{#each events as event (event.id)}
+				{@const date = new Date(event.time)}
+				<li>
+					<article class="my-4 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+						<div class="gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
+							<div class="mt-1 lg:flex lg:flex-col lg:justify-center">
+								<time
+									datetime={date.toISOString()}
+									class="block text-left text-xl font-semibold text-blue-950"
+								>
+									{date.toLocaleDateString('de', {
+										day: '2-digit',
+										month: 'long',
+										year: 'numeric'
+									})}
+								</time>
+								<p class="text-left text-lg text-gray-600">
+									{date.toLocaleTimeString('de', {
+										hour: '2-digit',
+										minute: '2-digit'
+									})} Uhr
+								</p>
+							</div>
 
-				<div class="lg:col-span-2 lg:text-center">
-					<h3 class="mb-2 text-2xl font-bold text-blue-950">{event.title}</h3>
-					<p class="text-lg text-gray-700">{event.subtitle}</p>
-				</div>
+							<div class="mt-4 lg:col-span-2 lg:mt-0 lg:text-center">
+								<h3 class="mb-2 text-2xl font-bold text-blue-950">{event.title}</h3>
+								{#if event.shortDescription}
+									<p class="text-lg text-gray-700">{event.shortDescription}</p>
+								{/if}
+							</div>
 
-				<div class="align-middle lg:text-left">
-					{#each event.address.split(', ') as part, index (index)}
-						<p class="align-right text-right text-lg text-gray-700">{part}</p>
-					{/each}
-				</div>
+							<address class="mt-4 not-italic lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:text-right">
+								{#each event.address.split(', ') as part, index (index)}
+									<p class="text-lg text-gray-700">{part}</p>
+								{/each}
+							</address>
+						</div>
+					</article>
+				</li>
+			{/each}
+		</ul>
+	{:else}
+		<div class="my-4 rounded-lg border border-gray-200 bg-white p-10 shadow-md">
+			<p class="text-xl text-gray-700">Momentan sind keine Konzerte geplant.</p>
+			<p class="mt-2 text-lg text-gray-500">
+				Folgt uns auf Social Media, um keine Neuigkeiten zu verpassen!
+			</p>
+			<div class="mt-6 flex justify-center">
+				<SocialMedia color="text-blue-950" hoverColor="hover:text-blue-700" />
 			</div>
 		</div>
-	{/each}
+	{/if}
 </section>
