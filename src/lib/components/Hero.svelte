@@ -15,7 +15,7 @@
 	aria-label={img?.description || 'Platzhalter'}
 >
 	<div
-		class="bg-image flex h-dvh flex-col items-center justify-center bg-[rgba(110,112,116,0.5)] bg-cover bg-center"
+		class="bg-image relative flex h-dvh flex-col items-center justify-center bg-[rgba(110,112,116,0.5)] bg-cover bg-center"
 	>
 		<h1 class="text-center text-4xl font-bold text-white text-shadow-lg">
 			Helmstedter Chor- und Singschule
