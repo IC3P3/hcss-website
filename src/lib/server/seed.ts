@@ -133,7 +133,7 @@ async function main() {
 				title: 'Sommerkonzert 2025 - Gruppenfoto',
 				description: 'Gruppenfoto des Orchesters nach dem Sommerkonzert 2025.',
 				slug: 'sommerkonzert-2025-gruppenfoto',
-				path: '/uploads/sommerkonzert-2025.jpg',
+				path: 'sommerkonzert-2025.jpg',
 				role: 0,
 				eventId: 1
 			},
@@ -141,7 +141,7 @@ async function main() {
 				title: 'Probenwochenende',
 				description: 'Impressionen vom Probenwochenende in der Jugendherberge.',
 				slug: 'probenwochenende',
-				path: '/uploads/probenwochenende.webp',
+				path: 'probenwochenende.webp',
 				role: 0,
 				eventId: null
 			},
@@ -149,7 +149,7 @@ async function main() {
 				title: 'Weihnachtskonzert Plakat',
 				description: 'Plakat für das Weihnachtskonzert 2026.',
 				slug: 'weihnachtskonzert-plakat-2026',
-				path: '/uploads/weihnachtskonzert-plakat.webp',
+				path: 'weihnachtskonzert-plakat.webp',
 				role: 0,
 				eventId: 2
 			}

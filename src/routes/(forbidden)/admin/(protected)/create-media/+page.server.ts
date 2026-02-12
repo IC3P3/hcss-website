@@ -90,5 +90,5 @@ async function uploadFile(file: File): Promise<string | null> {
 	const filepath = join(uploadDir, filename);
 	await writeFile(filepath, buffer);
 
-	return join(UPLOAD_PATH, filename);
+	return filename;
 }
