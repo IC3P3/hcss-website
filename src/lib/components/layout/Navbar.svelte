@@ -3,7 +3,6 @@
 
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { enhance } from '$app/forms';
 	import { slide } from 'svelte/transition';
 
 	import type { NavbarItem } from '$lib/types/Navbar';
