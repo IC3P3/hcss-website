@@ -11,22 +11,6 @@ reduce maintenance overhead, particularly when adding new media content or
 events. The website features a clean, responsive design with an intuitive admin
 interface for content management.
 
-## Technology Stack
-
-This project utilizes modern web technologies to ensure performance, reliability,
-and ease of maintenance:
-
-- **Frontend**:
-    - [SvelteKit](https://kit.svelte.dev/) - Application framework
-    - [Svelte 5](https://svelte.dev/) - Component framework
-    - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
-    - [TailwindCSS 4](https://tailwindcss.com/) - Utility-first CSS framework
-
-- **Backend**:
-    - [SvelteKit](https://kit.svelte.dev/) - Server-side rendering and API endpoints
-    - [Drizzle ORM](https://orm.drizzle.team/) - SQL toolkit and ORM
-    - [SQLite](https://www.sqlite.org/) (via better-sqlite3) - Database solution
-
 ## TODO
 
 - [ ] Redesign the About component
