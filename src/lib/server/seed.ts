@@ -53,7 +53,7 @@ async function main() {
 				shortDescription: 'Unser jährliches Sommerkonzert im Park.',
 				description:
 					'Genießen Sie einen musikalischen Abend unter freiem Himmel mit unserem Orchester. Eintritt frei!',
-				time: Math.floor(new Date('2026-07-15T19:00:00').getTime() / 1000),
+				time: Math.floor(new Date('2026-07-15T19:00:00').getTime()),
 				address: 'Stadtpark, Hauptstraße 1',
 				songs: 'Beethoven - Sinfonie Nr. 5, Mozart - Eine kleine Nachtmusik',
 				participants: 'HCSS Orchester, Gastchor Harmonie'
@@ -63,7 +63,7 @@ async function main() {
 				shortDescription: 'Festliche Klänge zur Weihnachtszeit.',
 				description:
 					'Lassen Sie sich von weihnachtlichen Melodien verzaubern. Konzert in der Stadtkirche.',
-				time: Math.floor(new Date('2026-12-20T18:00:00').getTime() / 1000),
+				time: Math.floor(new Date('2026-12-20T18:00:00').getTime()),
 				address: 'Stadtkirche, Kirchplatz 3',
 				songs: 'Stille Nacht, O Tannenbaum, Weihnachtsoratorium',
 				participants: 'HCSS Chor, HCSS Orchester'
@@ -73,7 +73,7 @@ async function main() {
 				shortDescription: 'Musikalischer Sonntagmorgen im Frühling.',
 				description:
 					'Ein entspannter Sonntagmorgen mit Kammermusik und Kaffee im Gemeindehaus.',
-				time: Math.floor(new Date('2026-04-19T11:00:00').getTime() / 1000),
+				time: Math.floor(new Date('2026-04-19T11:00:00').getTime()),
 				address: 'Gemeindehaus, Lindenweg 5',
 				songs: 'Vivaldi - Frühling, Schubert - Forellen-Quintett',
 				participants: 'HCSS Kammerensemble'
@@ -84,16 +84,16 @@ async function main() {
 	db.insert(Subpage)
 		.values([
 			{
-				title: 'Über uns',
-				description: 'Informationen über unseren Verein und unsere Geschichte.'
+				title: 'Startseite',
+				description: 'Die erste Seite auf welcher man beim öffnen der Website landet.'
 			},
 			{
-				title: 'Ensembles',
-				description: 'Unsere verschiedenen musikalischen Ensembles im Überblick.'
+				title: 'Veranstaltungen',
+				description: 'Eine Übersicht an allen vergangenen und zukünftigen Veranstaltungen.'
 			},
 			{
-				title: 'Kontakt',
-				description: 'So erreichen Sie uns.'
+				title: 'Media',
+				description: 'Eine Übersicht an allen hochgeladenen Medien.'
 			}
 		])
 		.run();
@@ -101,28 +101,59 @@ async function main() {
 	db.insert(PageContent)
 		.values([
 			{
-				title: 'Willkommen beim HCSS',
-				description:
-					'Der HCSS ist ein traditionsreicher Musikverein mit einer langen Geschichte. Seit über 50 Jahren begeistern wir unser Publikum mit Konzerten und Aufführungen.',
+				title: 'Hero Image',
+				description: 'Das Bild, welches man als erstes auf der Startseite sieht.',
 				subpageId: 1
 			},
 			{
-				title: 'Unser Orchester',
-				description:
-					'Das HCSS Orchester besteht aus über 40 engagierten Musikerinnen und Musikern, die regelmäßig proben und auftreten.',
-				subpageId: 2
+				title: 'Media Bild 1',
+				description: 'Bild 1 aus der Medien Übersicht.',
+				subpageId: 1
 			},
 			{
-				title: 'Der Chor',
-				description:
-					'Unser gemischter Chor umfasst rund 30 Sängerinnen und Sänger. Neue Mitglieder sind jederzeit willkommen!',
-				subpageId: 2
+				title: 'Media Bild 2',
+				description: 'Bild 2 aus der Medien Übersicht.',
+				subpageId: 1
 			},
 			{
-				title: 'Kontaktinformationen',
-				description:
-					'Schreiben Sie uns eine E-Mail an info@hcss-musik.de oder besuchen Sie uns bei einer unserer Proben.',
-				subpageId: 3
+				title: 'Media Bild 3',
+				description: 'Bild 3 aus der Medien Übersicht.',
+				subpageId: 1
+			},
+			{
+				title: 'Media Bild 4',
+				description: 'Bild 4 aus der Medien Übersicht.',
+				subpageId: 1
+			},
+			{
+				title: 'Media Bild 5',
+				description: 'Bild 5 aus der Medien Übersicht.',
+				subpageId: 1
+			},
+			{
+				title: 'Media Bild 6',
+				description: 'Bild 6 aus der Medien Übersicht.',
+				subpageId: 1
+			},
+			{
+				title: 'Bild der Vorgruppen',
+				description: 'Darstellung der Vorgruppe im Angebot unserer Einrichtung',
+				subpageId: 1
+			},
+			{
+				title: 'Bild des Konzertchor',
+				description: 'Darstellung des Konzertchors im Angebot unserer Einrichtung',
+				subpageId: 1
+			},
+			{
+				title: 'Unterrichtsbild',
+				description: 'Darstellung des Konzertchors im Angebot unserer Einrichtung',
+				subpageId: 1
+			},
+			{
+				title: 'Bild des Projektchors',
+				description: 'Darstellung des Projektchors im Angebot unserer Einrichtung',
+				subpageId: 1
 			}
 		])
 		.run();
