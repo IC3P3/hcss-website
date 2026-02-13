@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 
 	import SocialMedia from '$lib/components/SocialMedia.svelte';
-	import logo from '$lib/assets/logo.png';
+	import logo from '$lib/assets/logo.webp';
 
 	const { isLoggedIn } = $props();
 </script>
