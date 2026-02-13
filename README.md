@@ -41,8 +41,8 @@ interface for content management.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v22.10 is recommended)
-- [pnpm](https://pnpm.io/) (recommended package manager)
+- [Node.js 24](https://nodejs.org/)
+- [pnpm](https://pnpm.io/)
 
 ### Installation
 
