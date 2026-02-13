@@ -11,13 +11,14 @@
 	class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8"
 >
 	<h2 id="events-heading" class="mb-8 text-4xl font-extrabold text-blue-950">Konzerte</h2>
+	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 
 	{#if events.length !== 0}
-		<ul aria-label="Liste der Konzerte" class="list-none p-0">
+		<ul aria-label="Liste der Konzerte" class="list-none divide-y divide-gray-200 p-0">
 			{#each events as event (event.id)}
 				{@const date = new Date(event.time)}
-				<li>
-					<article class="my-4 rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+				<li class="py-4">
+					<article class="my-4 rounded-lg bg-white p-6">
 						<div class="gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
 							<div class="mt-1 lg:flex lg:flex-col lg:justify-center">
 								<time
