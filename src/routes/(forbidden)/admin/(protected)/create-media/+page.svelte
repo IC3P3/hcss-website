@@ -124,7 +124,7 @@
 				<img
 					src={previewImg}
 					alt="Vorschau"
-					class="h-full w-full rounded-lg object-contain shadow"
+					class="max-h-[80vh] w-full rounded-lg object-contain shadow"
 				/>
 			</div>
 		{/if}
