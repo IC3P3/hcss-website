@@ -38,10 +38,11 @@ and ease of maintenance:
 - [ ] Add Media page with all the uploaded media
 - [ ] Create Docker image/compose file
 - [ ] Create CI/CD pipeline
-- [ ] Implement image optimization (instead of only accepting webp)
+- [ ] Implement image optimization (instead of only accepting webp, maybe sharp)
 - [ ] Add Open Graph tags
 - [ ] Get Datenschutzerklären and Impressum and add it
 - [ ] Add custom error page
+- [ ] Add logging (winston)
 
 ## Features
 
