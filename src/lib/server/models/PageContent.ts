@@ -3,6 +3,7 @@ import { Media } from './Media';
 
 export const PageContent = sqliteTable('PageContent', {
 	id: int().primaryKey({ autoIncrement: true }),
+	tag: text().notNull(),
 	title: text(),
 	description: text(),
 	subpageId: int()

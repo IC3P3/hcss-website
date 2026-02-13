@@ -1,0 +1,1 @@
+ALTER TABLE `PageContent` ADD `tag` text NOT NULL;

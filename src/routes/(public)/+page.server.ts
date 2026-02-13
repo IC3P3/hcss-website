@@ -1,15 +1,9 @@
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
 import { PageContent } from '$lib/server/models/PageContent';
-import { between, eq, gt } from 'drizzle-orm';
+import { asc, between, eq, gt, like } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
-import {
-	FRONT_PAGE_MEDIA_END,
-	FRONT_PAGE_MEDIA_START,
-	HERO_IMAGE,
-	OFFERING_START,
-	OFFERING_END
-} from '$lib/server/utils/pagecontent_constants';
+import { FRONT_PAGE_MEDIA, HERO_IMAGE, OFFERINGS } from '$lib/server/utils/pagecontent_constants';
 import { join } from 'path';
 import { UPLOAD_PATH } from '$env/static/private';
 import { Event } from '$lib/server/models/Event';
@@ -22,7 +16,7 @@ export const load: PageServerLoad = async () => {
 		})
 		.from(PageContent)
 		.leftJoin(Media, eq(Media.id, PageContent.mediaId))
-		.where(eq(PageContent.id, HERO_IMAGE));
+		.where(eq(PageContent.tag, HERO_IMAGE));
 	const heroImg = heroImgResult
 		? {
 				...heroImgResult,
@@ -41,6 +35,7 @@ export const load: PageServerLoad = async () => {
 		})
 		.from(Event)
 		.where(gt(Event.time, Date.now()))
+		.orderBy(asc(Event.time))
 		.limit(MAX_NUMBER_EVENTS);
 
 	const mediaResults = await db
@@ -52,7 +47,7 @@ export const load: PageServerLoad = async () => {
 		})
 		.from(PageContent)
 		.leftJoin(Media, eq(Media.id, PageContent.mediaId))
-		.where(between(PageContent.id, FRONT_PAGE_MEDIA_START, FRONT_PAGE_MEDIA_END));
+		.where(eq(PageContent.tag, FRONT_PAGE_MEDIA));
 
 	const media = mediaResults.map((item) => ({
 		...item,
@@ -66,7 +61,8 @@ export const load: PageServerLoad = async () => {
 		})
 		.from(PageContent)
 		.leftJoin(Media, eq(Media.id, PageContent.mediaId))
-		.where(between(PageContent.id, OFFERING_START, OFFERING_END));
+		.where(like(PageContent.tag, `${OFFERINGS}%`))
+		.orderBy(asc(PageContent.tag));
 
 	const offeringImages = offeringResults.map((item) => ({
 		...item,

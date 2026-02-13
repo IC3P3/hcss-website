@@ -101,56 +101,67 @@ async function main() {
 	db.insert(PageContent)
 		.values([
 			{
+				tag: 'hero',
 				title: 'Hero Image',
 				description: 'Das Bild, welches man als erstes auf der Startseite sieht.',
 				subpageId: 1
 			},
 			{
+				tag: 'media',
 				title: 'Media Bild 1',
 				description: 'Bild 1 aus der Medien Übersicht.',
 				subpageId: 1
 			},
 			{
+				tag: 'media',
 				title: 'Media Bild 2',
 				description: 'Bild 2 aus der Medien Übersicht.',
 				subpageId: 1
 			},
 			{
+				tag: 'media',
 				title: 'Media Bild 3',
 				description: 'Bild 3 aus der Medien Übersicht.',
 				subpageId: 1
 			},
 			{
+				tag: 'media',
 				title: 'Media Bild 4',
 				description: 'Bild 4 aus der Medien Übersicht.',
 				subpageId: 1
 			},
 			{
+				tag: 'media',
 				title: 'Media Bild 5',
 				description: 'Bild 5 aus der Medien Übersicht.',
 				subpageId: 1
 			},
 			{
+				tag: 'media',
 				title: 'Media Bild 6',
 				description: 'Bild 6 aus der Medien Übersicht.',
 				subpageId: 1
 			},
 			{
+				tag: 'offer-1',
 				title: 'Bild der Vorgruppen',
 				description: 'Darstellung der Vorgruppe im Angebot unserer Einrichtung',
 				subpageId: 1
 			},
 			{
+				tag: 'offer-2',
 				title: 'Bild des Konzertchor',
 				description: 'Darstellung des Konzertchors im Angebot unserer Einrichtung',
 				subpageId: 1
 			},
 			{
+				tag: 'offer-3',
 				title: 'Unterrichtsbild',
 				description: 'Darstellung des Konzertchors im Angebot unserer Einrichtung',
 				subpageId: 1
 			},
 			{
+				tag: 'offer-4',
 				title: 'Bild des Projektchors',
 				description: 'Darstellung des Projektchors im Angebot unserer Einrichtung',
 				subpageId: 1
