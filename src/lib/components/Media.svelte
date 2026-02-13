@@ -15,6 +15,8 @@
 	);
 
 	const items = $derived([...media, ...placeholders]);
+
+	let hoveredId = $state<number | null>(null);
 </script>
 
 <section id="medien" class="mx-auto w-screen max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
@@ -22,7 +24,15 @@
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 		{#each items as item (item.id)}
-			<button type="button" class="group relative overflow-hidden">
+			<div
+				class="relative overflow-hidden focus-within:outline focus-within:outline-2 focus-within:outline-blue-500"
+				tabindex="0"
+				role="button"
+				onmouseenter={() => (hoveredId = item.id)}
+				onmouseleave={() => (hoveredId = null)}
+				onfocus={() => (hoveredId = item.id)}
+				onblur={() => (hoveredId = null)}
+			>
 				<img
 					class="aspect-4/3 w-full object-cover"
 					loading="lazy"
@@ -33,7 +43,9 @@
 					}}
 				/>
 				<div
-					class="absolute inset-0 flex items-end bg-blue-700/75 p-8 opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-focus-within:opacity-100 sm:group-hover:opacity-100"
+					class="pointer-events-none absolute inset-0 flex items-end bg-blue-700/75 p-8 opacity-100 transition-opacity duration-300"
+					class:sm:opacity-0={hoveredId !== item.id}
+					class:sm:opacity-100={hoveredId === item.id}
 				>
 					<div class="flex w-full flex-col items-start">
 						<h3 class="mb-2 w-full text-center text-2xl font-semibold text-white">
@@ -44,7 +56,7 @@
 						{/if}
 					</div>
 				</div>
-			</button>
+			</div>
 		{/each}
 	</div>
 </section>
