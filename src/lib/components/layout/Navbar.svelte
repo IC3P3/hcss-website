@@ -100,7 +100,6 @@
 					{/each}
 					<!-- eslint-enable svelte/no-navigation-without-resolve -->
 
-					<!-- TODO: Check for being logged in -->
 					{#if isLoggedIn}
 						<form action={resolve('/admin/logout')} method="POST">
 							<button type="submit" class={mobileLink}>Abmelden</button>
