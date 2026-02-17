@@ -1,7 +1,7 @@
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
 import { PageContent } from '$lib/server/models/PageContent';
-import { asc, between, eq, gt, like } from 'drizzle-orm';
+import { asc, eq, gt, like } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { FRONT_PAGE_MEDIA, HERO_IMAGE, OFFERINGS } from '$lib/server/utils/pagecontent_constants';
 import { join } from 'path';
