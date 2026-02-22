@@ -17,11 +17,11 @@
 	<div
 		class="relative flex h-dvh flex-col items-center justify-center bg-black/30 bg-cover bg-center"
 	>
-		<div class="flex flex-col items-center pt-16">
-			<h1 class="text-center text-6xl font-bold text-white">
+		<div class="flex flex-col items-center pt-navbar">
+			<h1 class="text-center text-6xl font-bold text-white text-shadow-lg">
 				Helmstedter Chor- und Singschule
 			</h1>
-			<p class="mx-5 mt-4 max-w-2xl px-2 text-center text-xl text-white">
+			<p class="mx-5 mt-4 max-w-2xl px-2 text-center text-xl text-white text-shadow-lg">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
 				tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 			</p>

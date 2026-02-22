@@ -76,7 +76,7 @@
 />
 
 <nav class="fixed z-50 w-full bg-gray-200 text-gray-900">
-	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+	<div class="mx-auto flex h-navbar max-w-7xl items-center justify-between px-4">
 		<a
 			href={resolve('/')}
 			class="relative flex items-center gap-3 self-stretch overflow-visible"

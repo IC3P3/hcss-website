@@ -20,6 +20,7 @@
 		in:fade={{ duration: 300 }}
 		out:fade={{ duration: 150 }}
 		onclick={scrollTop}
+		aria-label="Nach oben scrollen"
 	>
 		↑
 	</button>
