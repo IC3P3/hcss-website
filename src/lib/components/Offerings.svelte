@@ -39,14 +39,14 @@
 	];
 </script>
 
-<section id="offering" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
+<section id="angebote" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
 	<h2 class="text-4xl font-extrabold text-blue-950">Unsere Angebote</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 		{#each offerings as offering (offering.id)}
 			<div class="rounded-lg bg-white shadow-lg">
 				<img
-					class="aspect-4/3 w-full rounded-t-lg object-cover"
+					class="aspect-3/2 w-full rounded-t-lg object-cover"
 					loading="lazy"
 					src={offeringImages[offering.id]?.path ?? placeholderImg}
 					alt={offering.title}
