@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
+	import Up from '$lib/components/layout/Up.svelte';
 	import type { NavbarItem } from '$lib/types/Navbar';
 
 	const { children, data } = $props();
@@ -26,4 +27,5 @@
 	<Navbar {items} {isLoggedIn} />
 	<main id="main-content" class="grow">{@render children()}</main>
 	<Footer {isLoggedIn} />
+	<Up />
 </div>
