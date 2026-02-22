@@ -25,7 +25,7 @@
 			</p>
 			<a
 				href="#veranstaltungen"
-				class="mt-4 rounded-md bg-hcss-primary-700 px-7 py-3 text-xs font-bold text-white uppercase hover:bg-hcss-primary-900"
+				class="mt-4 rounded-md bg-hcss-primary-700 px-7 py-3 text-xs font-bold text-white uppercase transition-colors duration-200 hover:bg-hcss-primary-900"
 				>Unsere Termine</a
 			>
 		</div>
