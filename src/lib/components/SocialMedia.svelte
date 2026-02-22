@@ -6,7 +6,7 @@
 
 	let {
 		color = 'text-gray-50',
-		hoverColor = 'hover:text-gray-400'
+		hoverColor = 'hover:text-hcss-secondary'
 	}: { color?: string; hoverColor?: string } = $props();
 </script>
 
