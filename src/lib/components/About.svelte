@@ -45,7 +45,7 @@
 			</p>
 		</div>
 		<div class="rounded-lg bg-white p-6 shadow-lg">
-			<h3 class="mb-2 text-lg font-bold text-blue-950">Föderverein</h3>
+			<h3 class="mb-2 text-lg font-bold text-blue-950">Förderverein</h3>
 			<p class="text-gray-700">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
 				tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
