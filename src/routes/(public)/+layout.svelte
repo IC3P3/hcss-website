@@ -9,7 +9,7 @@
 
 	const items: NavbarItem[] = [
 		{ id: 1, title: 'Über uns', href: '#ueberuns' },
-		{ id: 2, title: 'Medien', href: '#medien' },
+		{ id: 2, title: 'Impressionen', href: '#impressionen' },
 		{ id: 3, title: 'Veranstaltungen', href: '#veranstaltungen' },
 		{ id: 4, title: 'Angebote', href: '#angebote' }
 	];

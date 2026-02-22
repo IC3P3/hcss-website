@@ -19,13 +19,16 @@
 	let hoveredId = $state<number | null>(null);
 </script>
 
-<section id="medien" class="mx-auto w-screen max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
+<section
+	id="impressionen"
+	class="mx-auto w-screen max-w-7xl justify-center p-4 py-6 text-center lg:py-8"
+>
 	<h2 class="text-4xl font-extrabold text-blue-950">Medien</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 		{#each items as item (item.id)}
 			<div
-				class="relative overflow-hidden focus-within:outline focus-within:outline-2 focus-within:outline-blue-500"
+				class="relative overflow-hidden focus-within:outline-2 focus-within:outline-blue-500"
 				tabindex="0"
 				role="button"
 				onmouseenter={() => (hoveredId = item.id)}
