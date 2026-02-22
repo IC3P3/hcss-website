@@ -14,10 +14,10 @@
 	let menuDropdown = $state<HTMLDivElement>();
 
 	const mobileLink =
-		'flex items-center px-4 py-3 transition-colors duration-200 hover:bg-blue-800 hover:text-gray-50';
+		'flex items-center px-4 py-3 transition-colors duration-200 hover:bg-hcss-primary-800 hover:text-gray-50';
 	const desktopLink =
-		'flex h-full items-center px-4 transition-colors duration-200 hover:bg-blue-800 hover:text-gray-50';
-	const activeClass = 'bg-blue-800 text-gray-50';
+		'flex h-full items-center px-4 transition-colors duration-200 hover:bg-hcss-primary-800 hover:text-gray-50';
+	const activeClass = 'bg-hcss-primary-800 text-gray-50';
 	const inactiveClass = 'text-gray-900';
 
 	function trapFocus(e: KeyboardEvent) {
@@ -64,7 +64,7 @@
 			class="relative flex items-center gap-3 self-stretch overflow-visible"
 		>
 			<img src={logo} alt="Logo der Helmstedter Chor- und Singschule" class="mt-8 h-20" />
-			<span class="text-xl font-semibold text-blue-950">HCSS</span>
+			<span class="text-xl font-semibold text-hcss-primary-950">HCSS</span>
 		</a>
 
 		<div bind:this={menuRef} class="md:hidden">
