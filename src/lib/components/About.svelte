@@ -3,7 +3,7 @@
 
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<!-- TODO: Talk about the design to implement -->
-	<p class="columns-1 text-justify font-light text-gray-600 lg:columns-2">
+	<p class="columns-1 text-justify font-light text-gray-600 lg:columns-3">
 		Die Helmstedter Chor- und Singschule wurde als Helmstedter Chorknaben im Jahre 1970 von
 		Helfrid Israel gegründet. Dieser übergab im Jahr 1995 die Leitung des Chores an Stefan PD
 		Runge. Seit dem ersten Auftritt im Rahmen einer Vesper in St. Marienberg ist der Chor nicht
