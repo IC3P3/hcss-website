@@ -8,9 +8,9 @@
 	const isLoggedIn = $derived(Boolean(data.user));
 
 	const items: NavbarItem[] = [
-		{ id: 1, title: 'Veranstaltungen', href: '#veranstaltungen' },
+		{ id: 1, title: 'Über uns', href: '#ueberuns' },
 		{ id: 2, title: 'Medien', href: '#medien' },
-		{ id: 3, title: 'Über uns', href: '#ueberuns' },
+		{ id: 3, title: 'Veranstaltungen', href: '#veranstaltungen' },
 		{ id: 4, title: 'Angebote', href: '#angebote' }
 	];
 </script>
