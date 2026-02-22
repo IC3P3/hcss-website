@@ -81,7 +81,11 @@
 			href={resolve('/')}
 			class="relative flex items-center gap-3 self-stretch overflow-visible"
 		>
-			<img src={logo} alt="Logo der Helmstedter Chor- und Singschule" class="mt-8 h-20" />
+			<img
+				src={logo}
+				alt="Logo der Helmstedter Chor- und Singschule"
+				class="h-12 lg:mt-8 lg:h-20"
+			/>
 			<span class="text-xl font-semibold text-hcss-primary-950">HCSS</span>
 		</a>
 
