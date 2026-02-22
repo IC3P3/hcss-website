@@ -14,12 +14,14 @@
 	style="background-image: url({bgImg})"
 	aria-label={img?.description || 'Platzhalter'}
 >
-	<div class="relative flex h-dvh flex-col items-center justify-center bg-cover bg-center">
+	<div
+		class="relative inset-0 flex h-dvh flex-col items-center justify-center bg-black/30 bg-cover bg-center"
+	>
 		<div class="mt-44 flex flex-col items-center">
-			<h1 class="text-center text-6xl font-bold text-white text-shadow-lg">
+			<h1 class="text-center text-6xl font-bold text-white">
 				Helmstedter Chor- und Singschule
 			</h1>
-			<p class="mx-5 mt-4 max-w-lg px-2 text-center text-xl text-white text-shadow-lg">
+			<p class="mx-5 mt-4 max-w-2xl px-2 text-center text-xl text-white">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
 				tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 			</p>
