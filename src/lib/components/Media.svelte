@@ -46,7 +46,7 @@
 					}}
 				/>
 				<div
-					class="pointer-events-none absolute inset-0 flex items-end bg-blue-700/75 p-8 opacity-100 transition-opacity duration-300"
+					class="pointer-events-none absolute inset-0 flex items-end bg-blue-700/75 p-8 opacity-0 transition-opacity duration-300"
 					class:sm:opacity-0={hoveredId !== item.id}
 					class:sm:opacity-100={hoveredId === item.id}
 				>
