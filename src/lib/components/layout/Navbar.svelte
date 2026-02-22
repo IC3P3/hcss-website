@@ -59,8 +59,11 @@
 
 <nav class="fixed z-50 w-full bg-gray-200 text-gray-900">
 	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-		<a href={resolve('/')} class="flex items-center gap-3">
-			<img src={logo} alt="Logo der Helmstedter Chor- und Singschule" class="h-10" />
+		<a
+			href={resolve('/')}
+			class="relative flex items-center gap-3 self-stretch overflow-visible"
+		>
+			<img src={logo} alt="Logo der Helmstedter Chor- und Singschule" class="mt-8 h-20" />
 			<span class="text-xl font-semibold text-blue-950">HCSS</span>
 		</a>
 
