@@ -16,7 +16,7 @@
 
 {#if showButton}
 	<button
-		class="fixed right-8 bottom-6 z-50 h-14 w-14 cursor-pointer rounded-full bg-gray-200 text-3xl text-hcss-primary-700"
+		class="fixed right-8 bottom-6 z-50 h-14 w-14 cursor-pointer rounded-full bg-gray-200 text-3xl text-hcss-primary-700 shadow-lg"
 		in:fade={{ duration: 300 }}
 		out:fade={{ duration: 150 }}
 		onclick={scrollTop}
