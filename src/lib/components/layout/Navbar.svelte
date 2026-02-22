@@ -6,6 +6,7 @@
 	import { slide } from 'svelte/transition';
 
 	import type { NavbarItem } from '$lib/types/Navbar';
+	import { onMount } from 'svelte';
 
 	const { items, isLoggedIn } = $props<{ items: NavbarItem[]; isLoggedIn: boolean }>();
 
@@ -44,6 +45,23 @@
 		}
 		return page.url.pathname === href;
 	}
+
+	onMount(() => {
+		const sections = document.querySelectorAll('section[id]');
+
+		const observer = new IntersectionObserver(
+			(entries: IntersectionObserverEntry[]) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) currentHash = `#${entry.target.id}`;
+				}
+			},
+			{ threshold: 0.5 }
+		);
+
+		sections.forEach((s) => observer.observe(s));
+
+		return () => observer.disconnect();
+	});
 </script>
 
 <svelte:window
