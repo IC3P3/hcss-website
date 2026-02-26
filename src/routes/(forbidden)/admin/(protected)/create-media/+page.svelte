@@ -31,10 +31,10 @@
 	}
 </script>
 
-<div class="mx-auto max-w-5xl px-4 py-10">
+<div class="mx-auto max-w-7xl px-4 py-10">
 	<div class="flex gap-8">
 		<form
-			class="flex w-full max-w-md flex-col gap-4 rounded-lg bg-white p-8 shadow"
+			class="flex w-1/2 flex-col gap-4 p-8"
 			method="POST"
 			enctype="multipart/form-data"
 			use:enhance={() => {
@@ -119,14 +119,22 @@
 				{submitting ? 'Erstellen...' : 'Erstellen'}
 			</button>
 		</form>
-		{#if previewImg}
-			<div class="hidden shrink-0 lg:block">
+
+		<div class="flex w-1/2 items-center justify-center self-stretch rounded-lg border-2 border-dashed border-gray-300 bg-gray-50">
+			{#if previewImg}
 				<img
 					src={previewImg}
 					alt="Vorschau"
-					class="max-h-[80vh] w-full rounded-lg object-contain shadow"
+					class="max-h-[80vh] w-full rounded-lg object-contain"
 				/>
-			</div>
-		{/if}
+			{:else}
+				<div class="flex flex-col items-center gap-3 text-gray-400">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+					</svg>
+					<span class="text-sm">Vorschau</span>
+				</div>
+			{/if}
+		</div>
 	</div>
 </div>
