@@ -24,9 +24,9 @@ interface for content management.
 - [ ] Create CI/CD pipeline
 - [ ] Implement image optimization (instead of only accepting webp, maybe sharp)
 - [ ] Add Open Graph tags
-- [ ] Get Datenschutzerklären and Impressum and add it
 - [ ] Add custom error page
 - [ ] Add logging (winston)
+- [x] ~Get Datenschutzerklären and Impressum and add it~
 
 ## Features
 
