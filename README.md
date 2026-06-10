@@ -11,23 +11,6 @@ reduce maintenance overhead, particularly when adding new media content or
 events. The website features a clean, responsive design with an intuitive admin
 interface for content management.
 
-## TODO
-
-- [ ] Redesign the About component
-- [ ] Add Event creation
-- [ ] Add Media, Event and Content customizations
-- [ ] Add videos and audio to media types
-- [ ] Fill in the placeholder texts
-- [ ] Add Event page with past and future events
-- [ ] Add Media page with all the uploaded media
-- [ ] Create Docker image/compose file
-- [ ] Create CI/CD pipeline
-- [ ] Implement image optimization (instead of only accepting webp, maybe sharp)
-- [ ] Add Open Graph tags
-- [ ] Add custom error page
-- [ ] Add logging (winston)
-- [x] ~Get Datenschutzerklären and Impressum and add it~
-
 ## Features
 
 - Responsive design that works across desktop and mobile devices
