@@ -1,4 +1,4 @@
 [tools]
-node = "24.14.0"
-pnpm = "10.30.3"
+"npm:pnpm" = "11.6.0"
+node = "24.16.0"
 sqlite = "latest"
