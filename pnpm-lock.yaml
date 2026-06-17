@@ -54,6 +54,9 @@ importers:
       drizzle-orm:
         specifier: 0.45.2
         version: 0.45.2(@types/better-sqlite3@7.6.13)(better-sqlite3@12.10.1)(gel@2.1.0)
+      esbuild:
+        specifier: ^0.28.1
+        version: 0.28.1
       eslint:
         specifier: 10.4.1
         version: 10.4.1(jiti@2.6.1)

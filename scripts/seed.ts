@@ -1,15 +1,16 @@
-/* eslint-disable no-magic-numbers */
-
 import Database from 'better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { env } from 'process';
-import { Media } from './models/Media';
-import { Event } from './models/Event';
-import { PageContent, Subpage } from './models/PageContent';
-import { Session, User } from './models/User';
+import { Media } from '../src/lib/server/models/Media';
+import { Event } from '../src/lib/server/models/Event';
+import { PageContent, Subpage } from '../src/lib/server/models/PageContent';
+import { Session, User } from '../src/lib/server/models/User';
 import { hash } from 'argon2';
 
 if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
+
+const ADMIN_USERNAME = env.ADMIN_USERNAME ?? 'admin';
+const ADMIN_PASSWORD = env.ADMIN_PASSWORD ?? '123456aA!';
 
 const client = new Database(env.DATABASE_URL);
 
@@ -30,7 +31,7 @@ async function hashPassword(password: string) {
 }
 
 async function main() {
-	console.log('Seeding database...');
+	console.log('Seeding database (development)...');
 
 	db.delete(PageContent).run();
 	db.delete(Session).run();
@@ -41,8 +42,8 @@ async function main() {
 
 	db.insert(User)
 		.values({
-			username: 'admin',
-			passwordHash: await hashPassword('123456aA!')
+			username: ADMIN_USERNAME,
+			passwordHash: await hashPassword(ADMIN_PASSWORD)
 		})
 		.run();
 
