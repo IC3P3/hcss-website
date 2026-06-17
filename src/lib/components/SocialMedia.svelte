@@ -4,7 +4,7 @@
 	import Whatapp from '$lib/assets/WhatsApp.svelte';
 	import Youtube from '$lib/assets/YouTube.svelte';
 
-	let {
+	const {
 		color = 'text-gray-50',
 		hoverColor = 'hover:text-hcss-secondary'
 	}: { color?: string; hoverColor?: string } = $props();

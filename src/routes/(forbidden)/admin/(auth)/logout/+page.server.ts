@@ -2,11 +2,11 @@ import { type Actions, redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
 import { eq } from 'drizzle-orm';
 import { Session } from '$lib/server/models/User';
-import { HTTP_FOUND } from '$lib/server/utils/constants';
+import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
 import { resolve } from '$app/paths';
 
 export const load = () => {
-	redirect(HTTP_FOUND, resolve('/'));
+	redirect(HTTP_STATUS_CODES.found, resolve('/'));
 };
 
 export const actions = {
@@ -25,6 +25,6 @@ export const actions = {
 			});
 		}
 
-		redirect(HTTP_FOUND, resolve('/'));
+		redirect(HTTP_STATUS_CODES.found, resolve('/'));
 	}
 } satisfies Actions;

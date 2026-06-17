@@ -4,8 +4,7 @@ import { PageContent } from '$lib/server/models/PageContent';
 import { asc, eq, gt, like } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { FRONT_PAGE_MEDIA, HERO_IMAGE, OFFERINGS } from '$lib/server/utils/pagecontent_constants';
-import { join } from 'path';
-import { UPLOAD_PATH } from '$env/static/private';
+import { mediaUrl } from '$lib/server/utils/media';
 import { Event } from '$lib/server/models/Event';
 
 export const load: PageServerLoad = async () => {
@@ -20,7 +19,7 @@ export const load: PageServerLoad = async () => {
 	const heroImg = heroImgResult
 		? {
 				...heroImgResult,
-				path: heroImgResult.path ? join(UPLOAD_PATH, heroImgResult.path) : null
+				path: mediaUrl(heroImgResult.path)
 			}
 		: null;
 
@@ -51,7 +50,7 @@ export const load: PageServerLoad = async () => {
 
 	const media = mediaResults.map((item) => ({
 		...item,
-		path: item.path ? join(UPLOAD_PATH, item.path) : null
+		path: mediaUrl(item.path)
 	}));
 
 	const offeringResults = await db
@@ -66,7 +65,7 @@ export const load: PageServerLoad = async () => {
 
 	const offeringImages = offeringResults.map((item) => ({
 		...item,
-		path: item.path ? join(UPLOAD_PATH, item.path) : null
+		path: mediaUrl(item.path)
 	}));
 
 	return { heroImg, events, media, offeringImages };

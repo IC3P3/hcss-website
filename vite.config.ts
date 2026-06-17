@@ -32,10 +32,5 @@ export default defineConfig({
 				}
 			}
 		]
-	},
-	server: {
-		fs: {
-			allow: ['upload']
-		}
 	}
 });

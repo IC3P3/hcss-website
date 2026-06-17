@@ -1,7 +1,7 @@
 import { UPLOAD_PATH } from '$env/static/private';
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
-import { HTTP_BAD_REQUEST, HTTP_UNSUPPORTED_MEDIA_TYPE } from '$lib/server/utils/constants';
+import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
 import { isWebP } from '$lib/server/utils/file-type_functions';
 import { fail, type Actions } from '@sveltejs/kit';
 import { mkdir, unlink, writeFile } from 'fs/promises';
@@ -26,7 +26,7 @@ export const actions = {
 		const data = await request.formData();
 		const title = data.get('title')?.toString();
 		if (!title) {
-			return fail(HTTP_BAD_REQUEST, { error: 'Kein Titel angegeben!' });
+			return fail(HTTP_STATUS_CODES.badRequest, { error: 'Kein Titel angegeben!' });
 		}
 
 		const description = data.get('description')?.toString() || null;
@@ -36,11 +36,11 @@ export const actions = {
 
 		const file = data.get('media') as File;
 		if (!file) {
-			return fail(HTTP_BAD_REQUEST, { error: 'Kein Medium gefunden!' });
+			return fail(HTTP_STATUS_CODES.notFound, { error: 'Kein Medium gefunden!' });
 		}
 		const filepath = await uploadFile(file);
 		if (!filepath) {
-			return fail(HTTP_UNSUPPORTED_MEDIA_TYPE, {
+			return fail(HTTP_STATUS_CODES.unsupportedMediaType, {
 				error: 'Das Bild hat den falschen Datentypen!'
 			});
 		}
@@ -50,7 +50,7 @@ export const actions = {
 		if (eventId) {
 			eventInt = parseInt(eventId, 10);
 			if (Number.isNaN(eventInt)) {
-				return fail(HTTP_BAD_REQUEST, {
+				return fail(HTTP_STATUS_CODES.notFound, {
 					error: 'Veranstaltung konnte nicht erkannt werden!'
 				});
 			}
