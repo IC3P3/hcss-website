@@ -4,8 +4,7 @@
 	let showButton = $state(false);
 
 	function onScroll() {
-		const atBottom =
-			window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
+		const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
 		showButton = window.scrollY > 300 && !atBottom;
 	}
 
