@@ -1,5 +1,5 @@
 import { UPLOAD_PATH } from '$env/static/private';
-import { HTTP_NOT_FOUND, ONE_YEAR_IN_S } from '$lib/server/utils/constants';
+import { HTTP_STATUS_CODES, ONE_YEAR_IN_S } from '$lib/server/utils/constants';
 import { error } from '@sveltejs/kit';
 import { createReadStream } from 'node:fs';
 import { stat } from 'node:fs/promises';
@@ -20,21 +20,20 @@ const MIME_TYPES: Record<string, string> = {
 export const GET: RequestHandler = async ({ params }) => {
 	const { filename } = params;
 
-	// Only allow a bare filename — reject any path traversal (`..`, slashes, etc.).
 	if (!filename || basename(filename) !== filename) {
-		error(HTTP_NOT_FOUND, 'Not found');
+		error(HTTP_STATUS_CODES.notFound, 'Not found');
 	}
 
 	const filepath = join(process.cwd(), UPLOAD_PATH, filename);
 
-	let fileStat;
+	let fileStat = null;
 	try {
 		fileStat = await stat(filepath);
 	} catch {
-		error(HTTP_NOT_FOUND, 'Not found');
+		error(HTTP_STATUS_CODES.notFound, 'Not found');
 	}
 	if (!fileStat.isFile()) {
-		error(HTTP_NOT_FOUND, 'Not found');
+		error(HTTP_STATUS_CODES.notFound, 'Not found');
 	}
 
 	const contentType = MIME_TYPES[extname(filename).toLowerCase()] ?? 'application/octet-stream';
@@ -44,7 +43,6 @@ export const GET: RequestHandler = async ({ params }) => {
 		headers: {
 			'Content-Type': contentType,
 			'Content-Length': String(fileStat.size),
-			// Filenames are unique (timestamp + uuid), so served files never change.
 			'Cache-Control': `public, max-age=${ONE_YEAR_IN_S}, immutable`
 		}
 	});
