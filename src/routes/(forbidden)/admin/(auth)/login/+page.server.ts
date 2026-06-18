@@ -25,6 +25,8 @@ export const actions = {
 
 		const user = await db.select().from(User).where(eq(User.username, username)).limit(1);
 		if (user.length === 0) {
+			// Verify against a dummy hash so response time doesn't reveal whether a
+			// username exists (defends against timing-based user enumeration).
 			await verify(
 				'$argon2id$v=19$m=512,t=8,p=2$TWNJcE5rbUlTZEdTRTN4VQ$7UYi+J7HKfNyIKjiuW2SttAvRlhb8Fy5gH2rkFUNPMg',
 				'no'

@@ -18,6 +18,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if (!session) return await resolve(event);
 
 	const dateNow = Date.now();
+	// Sweep expired sessions at most once per day (not on every request);
+	// reset lastRun on failure so the next request retries.
 	if (cleanup.lastRun < dateNow - ONE_DAY_IN_MS) {
 		cleanup.lastRun = dateNow;
 		db.delete(Session)
