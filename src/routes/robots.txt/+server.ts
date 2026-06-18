@@ -1,5 +1,7 @@
-import { HOST_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { NOT_FOUND } from '$lib/server/utils/constants';
+
+const HOST_URL = env.HOST_URL ?? '';
 
 export function GET() {
 	const files = import.meta.glob('/src/routes/**/*');

@@ -1,4 +1,4 @@
-import { UPLOAD_PATH } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { HTTP_STATUS_CODES, ONE_YEAR_IN_S } from '$lib/server/utils/constants';
 import { error } from '@sveltejs/kit';
 import { createReadStream } from 'node:fs';
@@ -6,6 +6,8 @@ import { stat } from 'node:fs/promises';
 import { basename, extname, join } from 'node:path';
 import { Readable } from 'node:stream';
 import type { RequestHandler } from './$types';
+
+const UPLOAD_PATH = env.UPLOAD_PATH ?? 'upload';
 
 const MIME_TYPES: Record<string, string> = {
 	'.webp': 'image/webp',

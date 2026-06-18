@@ -1,30 +1,35 @@
 # Builder Stage
-FROM node:26.3.0-slim@sha256:95a34da32a840bd9b3b09a5b773591c16923e350174b1c50e1200c75bf15eaa9 AS builder
+FROM node:24.16.0-slim@sha256:2c87ef9bd3c6a3bd4b472b4bec2ce9d16354b0c574f736c476489d09f560a203 AS builder
 
-RUN npm install -g pnpm@10.28.1
+RUN npm install -g pnpm@11.6.0
 
 WORKDIR /app
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
 
 RUN pnpm i
 
 COPY . .
 
 # Bundle to JS so these still run after dev deps are pruned; native modules stay external.
-RUN pnpm exec esbuild scripts/migrate.ts seed/seed-production.ts \
+RUN pnpm exec esbuild scripts/migrate.ts scripts/seed-production.ts \
     --bundle --platform=node --format=esm --outdir=. --out-extension:.js=.mjs \
     --external:argon2 --external:better-sqlite3
 
+# Throwaway value
+ENV DATABASE_URL="/tmp/build.sqlite"
 RUN pnpm run build && \
     pnpm prune --production
 
 # Runner Stage
-FROM node:26.3.0-slim@sha256:95a34da32a840bd9b3b09a5b773591c16923e350174b1c50e1200c75bf15eaa9
+FROM node:24.16.0-slim@sha256:2c87ef9bd3c6a3bd4b472b4bec2ce9d16354b0c574f736c476489d09f560a203
 WORKDIR /app
 
-# No DB is baked into the image; the migrator builds the schema on the /data volume at startup.
+# DB and uploads both live on the persistent volume mounted at /data; the
+# migrator builds the schema there at startup (no DB baked into the image).
 ENV DATABASE_URL="/data/website-data.sqlite"
+ENV UPLOAD_PATH="/data/upload"
 
 COPY --from=builder /app/build .
 COPY --from=builder /app/node_modules node_modules/

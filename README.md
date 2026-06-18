@@ -42,17 +42,18 @@ interface for content management.
     pnpm install
     ```
 
-3. Set up environment variables:
-    - Create a `.env` file with the following variables:
+3. Set up environment variables — copy `.env.example` to `.env` and adjust the
+   values (see [Configuration](#configuration)):
 
-        ```txt
-        DATABASE_URL=./data.db
-        ```
+    ```bash
+    cp .env.example .env
+    ```
 
-4. Initialize the database:
+4. Initialize the database and seed development data:
 
     ```bash
     pnpm db:migrate
+    pnpm db:seed
     ```
 
 ### Development
@@ -77,6 +78,62 @@ Preview the production build:
 
 ```bash
 pnpm run preview
+```
+
+## Configuration
+
+All settings are provided through environment variables — copy `.env.example`
+to `.env` for local development, or pass them at runtime in Docker.
+
+| Variable          | Required | Default (Docker image)      | Description                                                             |
+| ----------------- | -------- | --------------------------- | ----------------------------------------------------------------------- |
+| `ADMIN_PASSWORD`  | yes      | —                           | Admin password used by the seed. The container aborts on boot if unset. |
+| `HOST_URL`        | yes      | —                           | Public base URL, used for `sitemap.xml`/`robots.txt`.                   |
+| `ADMIN_USERNAME`  | no       | `admin`                     | Admin username used by the seed.                                        |
+| `DATABASE_URL`    | no       | `/data/website-data.sqlite` | SQLite path. Keep it on the `/data` volume.                             |
+| `UPLOAD_PATH`     | no       | `/data/upload`              | Upload directory. Keep it on the `/data` volume.                        |
+| `BODY_SIZE_LIMIT` | no       | `Infinity`                  | Node request body cap; left disabled so the reverse proxy is the limit. |
+
+> `ADMIN_PASSWORD` must stay set on every start — the seed validates it before
+> checking whether the admin already exists.
+
+## Deployment with Docker
+
+The included `Dockerfile` produces a self-contained image. On startup the
+container applies database migrations and runs an idempotent production seed
+(creating the admin user and base page content if missing), then starts the
+server on port `3000`.
+
+### Build
+
+```bash
+docker build -t hcss-website .
+```
+
+### Run
+
+The database **and** uploaded media are stored under `/data`, so mount a
+persistent volume there. The admin password is injected at runtime:
+
+```bash
+docker run -d \
+  --name hcss-website \
+  -p 3000:3000 \
+  -v hcss-data:/data \
+  -e ADMIN_PASSWORD='your-strong-password' \
+  -e HOST_URL='https://your-domain.example' \
+  hcss-website
+```
+
+See [Configuration](#configuration) for all available variables.
+
+### Reverse proxy
+
+Since `BODY_SIZE_LIMIT` is disabled in the container, the upload size cap lives
+at the reverse proxy. For nginx, set a limit that allows your media uploads, e.g.:
+
+```nginx
+client_max_body_size 10M;
 ```
 
 ## Database Management

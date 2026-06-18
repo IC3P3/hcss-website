@@ -1,6 +1,8 @@
-import { HOST_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { LAST_INDEX } from '$lib/server/utils/constants';
 import { escapeXML } from '$lib/server/utils/xml_functions';
+
+const HOST_URL = env.HOST_URL ?? '';
 
 export function GET() {
 	const routes = import.meta.glob('/src/routes/**/+page.svelte');
