@@ -1,4 +1,4 @@
-import { UPLOAD_PATH } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
@@ -8,6 +8,8 @@ import { mkdir, unlink, writeFile } from 'fs/promises';
 import { join } from 'path';
 import type { PageServerLoad } from './$types';
 import { Event } from '$lib/server/models/Event';
+
+const UPLOAD_PATH = env.UPLOAD_PATH ?? 'upload';
 
 export const load: PageServerLoad = async () => {
 	const events = await db
@@ -34,8 +36,8 @@ export const actions = {
 		const NUMBER_OF_UUID_CHARS = 8;
 		const slug = `${Date.now()}-${crypto.randomUUID().slice(0, NUMBER_OF_UUID_CHARS)}`;
 
-		const file = data.get('media') as File;
-		if (!file) {
+		const file = data.get('media');
+		if (!(file instanceof File) || file.size === 0) {
 			return fail(HTTP_STATUS_CODES.notFound, { error: 'Kein Medium gefunden!' });
 		}
 		const filepath = await uploadFile(file);
@@ -65,7 +67,7 @@ export const actions = {
 				eventId: eventInt
 			});
 		} catch (e) {
-			await unlink(join(process.cwd(), filepath)).catch(() => {
+			await unlink(join(process.cwd(), UPLOAD_PATH, filepath)).catch(() => {
 				// TODO: Add logging
 			});
 			throw e;
