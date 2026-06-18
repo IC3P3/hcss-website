@@ -15,6 +15,7 @@ export const HTTP_STATUS_CODES = {
 	unautherized: 401,
 	forbidden: 403,
 	notFound: 404,
+	payloadTooLarge: 413,
 	unsupportedMediaType: 415
 };
 
