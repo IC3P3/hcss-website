@@ -1,5 +1,5 @@
 # Builder Stage
-FROM node:24.16.0-slim@sha256:2c87ef9bd3c6a3bd4b472b4bec2ce9d16354b0c574f736c476489d09f560a203 AS builder
+FROM node:24.17.0-slim@sha256:c2d5ade763cacfb03fe9cb8e8af5d1be5041ff331921fa26a9b231ca3a4f780a AS builder
 
 RUN npm install -g pnpm@11.6.0
 
@@ -23,7 +23,7 @@ RUN pnpm run build && \
     pnpm prune --production
 
 # Runner Stage
-FROM node:24.16.0-slim@sha256:2c87ef9bd3c6a3bd4b472b4bec2ce9d16354b0c574f736c476489d09f560a203
+FROM node:24.17.0-slim@sha256:c2d5ade763cacfb03fe9cb8e8af5d1be5041ff331921fa26a9b231ca3a4f780a
 WORKDIR /app
 
 # DB and uploads both live on the persistent volume mounted at /data; the
