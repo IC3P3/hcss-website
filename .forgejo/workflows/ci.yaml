@@ -1,0 +1,52 @@
+name: CI
+
+on:
+    push:
+        branches: [main, dev]
+    pull_request:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        env:
+            DATABASE_URL: e2e-test.db
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 11.6.0
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 24.13.2
+                  cache: pnpm
+
+            - run: pnpm install --frozen-lockfile
+
+            - run: pnpm lint
+            - run: pnpm check
+
+            - run: pnpm build
+
+            - run: pnpm exec playwright install --with-deps chromium
+            - run: pnpm test:unit -- --run
+            - run: pnpm test:e2e
+
+    deploy-dev:
+        needs: test
+        if: github.ref == 'refs/heads/dev'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            # TODO: deploy to the dev server (e.g. build+push image, ssh + docker compose up).
+            - run: echo "Deploying to DEV server..."
+
+    deploy-prod:
+        needs: test
+        if: github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            # TODO: deploy to the production server.
+            - run: echo "Deploying to PRODUCTION server..."
