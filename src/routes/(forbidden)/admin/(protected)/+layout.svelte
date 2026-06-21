@@ -5,7 +5,7 @@
 
 	const { children, data } = $props();
 
-	const items: NavbarItem[] = [{ title: 'Administration', href: resolve('/admin') }];
+	const items: NavbarItem[] = [{ id: 0, title: 'Administration', href: resolve('/admin') }];
 
 	const isLoggedIn = $derived(Boolean(data.user));
 </script>

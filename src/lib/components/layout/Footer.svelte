@@ -58,10 +58,14 @@
 							<a href={resolve('/')}> Startseite </a>
 						</li>
 						<li class="mb-2">
-							<a href={resolve('/termine')}>Veranstaltungen</a>
+							<!-- TODO: route not built yet, restore resolve('/termine') once it exists -->
+							<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+							<a href="/termine">Veranstaltungen</a>
 						</li>
 						<li class="mb-2">
-							<a href={resolve('/medien')}>Medien</a>
+							<!-- TODO: route not built yet, restore resolve('/medien') once it exists -->
+							<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+							<a href="/medien">Medien</a>
 						</li>
 					</ul>
 				</div>

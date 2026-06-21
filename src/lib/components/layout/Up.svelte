@@ -3,9 +3,14 @@
 
 	let showButton = $state(false);
 
+	const NEAR_BOTTOM_OFFSET_PX = 50;
+	const SHOW_AFTER_SCROLL_PX = 300;
+
 	function onScroll() {
-		const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
-		showButton = window.scrollY > 300 && !atBottom;
+		const atBottom =
+			window.innerHeight + window.scrollY >=
+			document.body.scrollHeight - NEAR_BOTTOM_OFFSET_PX;
+		showButton = window.scrollY > SHOW_AFTER_SCROLL_PX && !atBottom;
 	}
 
 	function scrollTop() {
