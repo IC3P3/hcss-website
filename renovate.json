@@ -1,11 +1,17 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:recommended", "docker:pinDigests", ":dependencyDashboard"],
+	"extends": ["config:recommended", "docker:pinDigests"],
+	"timezone": "Europe/Berlin",
 	"schedule": ["after 11pm every weekday", "before 5am every weekday", "every weekend"],
 	"packageRules": [
 		{
 			"matchPackageNames": ["d-ptb/ci-components"],
 			"enabled": false
+		},
+		{
+			"matchDatasources": ["docker"],
+			"matchPackageNames": ["node"],
+			"versioning": "node"
 		},
 		{
 			"groupName": "Non-major updates",
@@ -15,23 +21,20 @@
 			"minimumReleaseAge": "1 week"
 		},
 		{
-			"groupName": "Major updates",
 			"matchUpdateTypes": ["major"],
 			"dependencyDashboardApproval": true,
 			"minimumReleaseAge": "1 month"
-		},
-		{
-			"groupName": "Critical security updates",
-			"matchUpdateTypes": ["patch"],
-			"vulnerabilityAlerts": {
-				"enabled": true
-			},
-			"schedule": ["at any time"],
-			"automerge": true,
-			"minimumReleaseAge": "0 days"
 		}
 	],
+	"lockFileMaintenance": {
+		"enabled": true,
+		"schedule": ["before 5am on monday"]
+	},
+	"osvVulnerabilityAlerts": true,
 	"vulnerabilityAlerts": {
-		"enabled": true
+		"enabled": true,
+		"schedule": ["at any time"],
+		"automerge": true,
+		"minimumReleaseAge": "0 days"
 	}
 }
