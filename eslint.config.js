@@ -56,7 +56,7 @@ const baseRules = {
 	'no-useless-concat': 'warn',
 	'no-useless-return': 'warn',
 	'no-var': 'error',
-	'prefer-const': 'error',
+	'prefer-const': ['error', { destructuring: 'all' }],
 	'prefer-numeric-literals': 'warn',
 	'prefer-promise-reject-errors': 'warn',
 	'prefer-template': 'warn',
