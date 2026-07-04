@@ -33,7 +33,7 @@
 			<h2 class="mb-4 text-xl font-semibold text-gray-900">Erscheinungsbild</h2>
 			<a
 				class="rounded border border-blue-700 px-4 py-2 text-center text-sm text-blue-700 transition-colors duration-200 hover:bg-blue-700 hover:text-white"
-				href="/admin/change-design">Design-Elemente bearbeiten</a
+				href={resolve('/admin/change-design')}>Design-Elemente bearbeiten</a
 			>
 		</div>
 	</div>
