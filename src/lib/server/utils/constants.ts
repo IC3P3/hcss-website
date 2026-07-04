@@ -16,7 +16,8 @@ export const HTTP_STATUS_CODES = {
 	forbidden: 403,
 	notFound: 404,
 	payloadTooLarge: 413,
-	unsupportedMediaType: 415
+	unsupportedMediaType: 415,
+	internalServerError: 500
 };
 
 export const ONE_YEAR_IN_S = 31536000;

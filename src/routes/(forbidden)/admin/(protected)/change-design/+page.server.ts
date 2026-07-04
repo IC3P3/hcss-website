@@ -43,7 +43,9 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals }) => {
+		if (!locals.user) return fail(HTTP_STATUS_CODES.unautherized, 'Kein angemeldeter Nutzer.');
+
 		const data = await request.formData();
 
 		// Field names are `slot-<PageContent.id>`, emitted by the <select>s in +page.svelte.
@@ -69,14 +71,21 @@ export const actions = {
 			updates.push({ id, mediaId });
 		}
 
-		db.transaction((tx) => {
-			for (const u of updates) {
-				tx.update(PageContent)
-					.set({ mediaId: u.mediaId })
-					.where(eq(PageContent.id, u.id))
-					.run();
-			}
-		});
+		try {
+			db.transaction((tx) => {
+				for (const u of updates) {
+					tx.update(PageContent)
+						.set({ mediaId: u.mediaId })
+						.where(eq(PageContent.id, u.id))
+						.run();
+				}
+			});
+		} catch {
+			return fail(
+				HTTP_STATUS_CODES.internalServerError,
+				'Es kam zu einem Fehler. Bitte laden Sie die Seite neu.'
+			);
+		}
 
 		return { success: 'Änderungen gespeichert.' };
 	}

@@ -48,8 +48,27 @@
 	let listEl = $state<HTMLUListElement>();
 	let searchEl = $state<HTMLInputElement>();
 
+	// Reorder so options sharing a group are contiguous (first-appearance order,
+	// stable within a group). `rows` emits one header per group change, so this
+	// guarantees a single header per group regardless of the caller's ordering.
+	const orderedOptions = $derived.by(() => {
+		const order: string[] = [];
+		const buckets = new Map<string, DropdownOption[]>();
+		for (const opt of options) {
+			const key = opt.group ?? '';
+			if (!buckets.has(key)) {
+				buckets.set(key, []);
+				order.push(key);
+			}
+			buckets.get(key)!.push(opt);
+		}
+		return order.flatMap((key) => buckets.get(key)!);
+	});
+
 	const items = $derived(
-		placeholder == null ? options : [{ value: '', label: placeholder }, ...options]
+		placeholder == null
+			? orderedOptions
+			: [{ value: '', label: placeholder }, ...orderedOptions]
 	);
 
 	const selectedLabel = $derived(
@@ -96,9 +115,11 @@
 		if (disabled) return;
 		open = true;
 		query = '';
+		// query is now empty, so `matches` equals `items`; index against `items`
+		// directly rather than depending on the derived recomputing in time.
 		activeIndex = Math.max(
 			0,
-			matches.findIndex((item) => item.value === value)
+			items.findIndex((item) => item.value === value)
 		);
 		focusInside();
 	}
@@ -116,7 +137,8 @@
 
 	function selectIndex(index: number) {
 		const item = matches[index];
-		if (item) value = item.value;
+		if (!item) return;
+		value = item.value;
 		closeList();
 	}
 
