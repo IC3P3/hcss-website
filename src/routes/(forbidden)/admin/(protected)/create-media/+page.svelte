@@ -46,7 +46,7 @@
 				};
 			}}
 		>
-			<h1 class="text-2xl font-semibold">Medium erstellen</h1>
+			<h1 class="text-2xl font-semibold">Impression erstellen</h1>
 
 			{#if showMessage && form?.error}
 				<p class="text-sm text-red-600">{form.error}</p>
