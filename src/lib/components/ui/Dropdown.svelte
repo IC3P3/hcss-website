@@ -12,6 +12,7 @@
 
 <script lang="ts">
 	import { tick } from 'svelte';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	interface Props {
 		options: DropdownOption[];
@@ -53,7 +54,7 @@
 	// guarantees a single header per group regardless of the caller's ordering.
 	const orderedOptions = $derived.by(() => {
 		const order: string[] = [];
-		const buckets = new Map<string, DropdownOption[]>();
+		const buckets = new SvelteMap<string, DropdownOption[]>();
 		for (const opt of options) {
 			const key = opt.group ?? '';
 			if (!buckets.has(key)) {
