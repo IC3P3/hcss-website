@@ -44,7 +44,8 @@ export const load: PageServerLoad = async () => {
 
 export const actions = {
 	default: async ({ request, locals }) => {
-		if (!locals.user) return fail(HTTP_STATUS_CODES.unautherized, 'Kein angemeldeter Nutzer.');
+		if (!locals.user)
+			return fail(HTTP_STATUS_CODES.unautherized, { error: 'Kein angemeldeter Nutzer.' });
 
 		const data = await request.formData();
 
@@ -81,10 +82,9 @@ export const actions = {
 				}
 			});
 		} catch {
-			return fail(
-				HTTP_STATUS_CODES.internalServerError,
-				'Es kam zu einem Fehler. Bitte laden Sie die Seite neu.'
-			);
+			return fail(HTTP_STATUS_CODES.internalServerError, {
+				error: 'Es kam zu einem Fehler. Bitte laden Sie die Seite neu.'
+			});
 		}
 
 		return { success: 'Änderungen gespeichert.' };
