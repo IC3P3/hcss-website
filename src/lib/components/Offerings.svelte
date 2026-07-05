@@ -40,7 +40,7 @@
 </script>
 
 <section id="angebote" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
-	<h2 class="text-4xl font-extrabold text-blue-950">Unsere Angebote</h2>
+	<h2 class="text-4xl font-extrabold text-hcss-primary-950">Unsere Angebote</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 		{#each offerings as offering (offering.id)}
@@ -55,7 +55,7 @@
 					}}
 				/>
 				<div class="p-6">
-					<h3 class="mb-2 text-lg font-bold text-blue-950">{offering.title}</h3>
+					<h3 class="mb-2 text-lg font-bold text-hcss-primary-950">{offering.title}</h3>
 					<p
 						class={offering.times.length > 0
 							? 'font-semibold text-gray-700'

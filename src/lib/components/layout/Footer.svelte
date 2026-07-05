@@ -9,7 +9,7 @@
 
 <footer class="mt-4 flex flex-col">
 	<div
-		class="flex w-full flex-col items-center justify-center gap-4 bg-blue-800 p-4 py-6 sm:flex-row sm:gap-20 lg:py-8"
+		class="flex w-full flex-col items-center justify-center gap-4 bg-hcss-primary-800 p-4 py-6 sm:flex-row sm:gap-20 lg:py-8"
 	>
 		<span class="text-2xl font-bold text-gray-50 md:text-3xl">
 			Hier sind wir auch zu finden!
@@ -90,7 +90,7 @@
 		</div>
 	</div>
 
-	<div class="flex w-full items-center justify-between bg-blue-800 px-4 py-4 sm:px-16 lg:py-6">
+	<div class="flex w-full items-center justify-between bg-hcss-primary-800 px-4 py-4 sm:px-16 lg:py-6">
 		<span class="text-sm font-bold text-gray-50 sm:text-base"
 			>Helmstedter Chor- und Singschule e.V.</span
 		>

@@ -32,7 +32,7 @@
 				name="username"
 				autocomplete="username"
 				required
-				class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+				class="rounded border px-3 py-2 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
 			/>
 		</div>
 
@@ -44,14 +44,14 @@
 				name="password"
 				autocomplete="current-password"
 				required
-				class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+				class="rounded border px-3 py-2 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
 			/>
 		</div>
 
 		<button
 			type="submit"
 			disabled={submitting}
-			class="rounded bg-blue-700 py-2 text-white hover:bg-blue-800 disabled:opacity-50"
+			class="rounded bg-hcss-primaty-700 py-2 text-white hover:bg-hcss-primary-800 disabled:opacity-50"
 		>
 			{submitting ? 'Anmelden...' : 'Anmelden'}
 		</button>

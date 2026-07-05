@@ -61,7 +61,7 @@
 					id="title"
 					name="title"
 					required
-					class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+					class="rounded border px-3 py-2 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
 				/>
 			</div>
 
@@ -70,7 +70,7 @@
 				<textarea
 					id="description"
 					name="description"
-					class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+					class="rounded border px-3 py-2 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
 				></textarea>
 			</div>
 
@@ -92,7 +92,7 @@
 				<select
 					id="event"
 					name="event"
-					class="rounded border px-3 py-2 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+					class="rounded border px-3 py-2 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
 				>
 					<option value="">Keine</option>
 					{#each data.events as event (event.id)}
@@ -114,7 +114,7 @@
 			<button
 				type="submit"
 				disabled={submitting}
-				class="rounded bg-blue-700 py-2 text-white hover:bg-blue-800 disabled:opacity-50"
+				class="rounded bg-hcss-primary-700 py-2 text-white hover:bg-hcss-primary-800 disabled:opacity-50"
 			>
 				{submitting ? 'Erstellen...' : 'Erstellen'}
 			</button>

@@ -10,7 +10,7 @@
 	aria-labelledby="events-heading"
 	class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8"
 >
-	<h2 id="events-heading" class="mb-8 text-4xl font-extrabold text-blue-950">Konzerte</h2>
+	<h2 id="events-heading" class="mb-8 text-4xl font-extrabold text-hcss-primary-950">Konzerte</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 
 	{#if events.length !== 0}
@@ -23,7 +23,7 @@
 							<div class="mt-1 lg:flex lg:flex-col lg:justify-center">
 								<time
 									datetime={date.toISOString()}
-									class="block text-left text-xl font-semibold text-blue-950"
+									class="block text-left text-xl font-semibold text-hcss-primary-950"
 								>
 									{date.toLocaleDateString('de', {
 										day: '2-digit',
@@ -40,7 +40,7 @@
 							</div>
 
 							<div class="mt-4 lg:col-span-2 lg:mt-0 lg:text-center">
-								<h3 class="mb-2 text-2xl font-bold text-blue-950">{event.title}</h3>
+								<h3 class="mb-2 text-2xl font-bold text-hcss-primary-950">{event.title}</h3>
 								{#if event.shortDescription}
 									<p class="text-lg text-gray-700">{event.shortDescription}</p>
 								{/if}
@@ -65,7 +65,7 @@
 				Folgt uns auf Social Media, um keine Neuigkeiten zu verpassen!
 			</p>
 			<div class="mt-6 flex justify-center">
-				<SocialMedia color="text-blue-950" hoverColor="hover:text-blue-700" />
+				<SocialMedia color="text-hcss-primary-950" hoverColor="hover:text-hcss-primary-700" />
 			</div>
 		</div>
 	{/if}

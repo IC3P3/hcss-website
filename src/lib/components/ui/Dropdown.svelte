@@ -224,7 +224,7 @@
 		aria-haspopup="listbox"
 		aria-expanded={open}
 		aria-controls={listId}
-		class="flex w-full items-center justify-between gap-2 rounded border bg-white px-3 py-2 text-left focus:ring-2 focus:ring-blue-700 focus:outline-none disabled:opacity-50"
+		class="flex w-full items-center justify-between gap-2 rounded border bg-white px-3 py-2 text-left focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none disabled:opacity-50"
 	>
 		<span class={isPlaceholder ? 'text-gray-400' : 'text-gray-900'}>{selectedLabel}</span>
 		<svg
@@ -262,7 +262,7 @@
 						aria-activedescendant={activeIndex >= 0 ? optionId(activeIndex) : undefined}
 						aria-autocomplete="list"
 						placeholder={searchPlaceholder ?? 'Suchen...'}
-						class="w-full rounded border px-3 py-1.5 text-sm text-gray-900 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+						class="w-full rounded border px-3 py-1.5 text-sm text-gray-900 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
 					/>
 				</div>
 			{/if}
@@ -295,13 +295,13 @@
 								onclick={() => selectIndex(row.index)}
 								onpointerover={() => (activeIndex = row.index)}
 								class="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2 text-left text-gray-900 focus:outline-none"
-								class:bg-blue-100={row.index === activeIndex}
+								class:bg-hcss-primary-100={row.index === activeIndex}
 								class:font-semibold={row.item.value === value}
 							>
 								<span>{row.item.label}</span>
 								{#if row.item.value === value}
 									<svg
-										class="h-4 w-4 shrink-0 text-blue-700"
+										class="h-4 w-4 shrink-0 text-hcss-primary-700"
 										viewBox="0 0 20 20"
 										fill="currentColor"
 										aria-hidden="true"

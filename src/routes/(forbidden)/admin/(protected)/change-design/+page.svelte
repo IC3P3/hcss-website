@@ -76,7 +76,7 @@
 	}}
 >
 	<div class="mb-8 flex items-center justify-between gap-4">
-		<h1 class="text-3xl font-bold text-blue-950">Erscheinungsbild</h1>
+		<h1 class="text-3xl font-bold text-hcss-primary-950">Erscheinungsbild</h1>
 
 		{#if showMessage && form?.error}
 			<p class="ml-auto text-sm text-red-600">{form.error}</p>
@@ -89,7 +89,7 @@
 		<button
 			type="submit"
 			disabled={submitting || !dirty}
-			class="rounded bg-blue-700 px-6 py-2 text-white hover:bg-blue-800 disabled:opacity-50"
+			class="rounded bg-hcss-primary-700 px-6 py-2 text-white hover:bg-hcss-primary-800 disabled:opacity-50"
 		>
 			{submitting ? 'Speichern...' : 'Speichern'}
 		</button>
