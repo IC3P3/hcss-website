@@ -1,56 +1,150 @@
-<section id="ueberuns" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
-	<h2 class="text-4xl font-extrabold text-hcss-primary-950">Das sind wir</h2>
+<script lang="ts">
+	import Logo from '$lib/assets/logo.webp';
+</script>
 
+<section id="ueberuns" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
+	<h2 class="text-4xl font-extrabold text-hcss-primary-950">
+		Das sind wir - ein kleiner Rückblick
+	</h2>
+
+	<!-- TODO: Add images -->
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-	<!-- TODO: Talk about the design to implement -->
 	<p class="columns-1 text-justify font-light text-gray-600 lg:columns-2 xl:columns-3">
-		Die Helmstedter Chor- und Singschule wurde als Helmstedter Chorknaben im Jahre 1970 von
-		Helfrid Israel gegründet. Dieser übergab im Jahr 1995 die Leitung des Chores an Stefan PD
-		Runge. Seit dem ersten Auftritt im Rahmen einer Vesper in St. Marienberg ist der Chor nicht
-		mehr aus dem kulturellen Leben Helmstedts wegzudenken. Trotz der regionalen Verwurzelung ist
-		der Wirkungskreis des Chores nahezu unbegrenzt, wie zahlreiche Konzertreisen auch ins
-		europäische Ausland eindrucksvoll beweisen.<br />Im Vordergrund steht die musikalische
+		Sie ist eine Institution in Helmstedt, die Helmstedter Chor- und Singschule mit ihrem
+		Konzertchor. Ihren Ursprung hat sie in den Helmstedter Chorknaben, 1970 vom Kinderarzt
+		Helfrid Israel gegründet. Israel sah den gesanglich-musikalischen Erfolg eng mit einem
+		jugendpflegerischen Auftrag verbunden. Musik als Gesundheitsaspekt - mit diesem Ansatz war
+		der Kinderarzt aus Helmstedt seiner Zeit weit voraus.<img
+			class="rounded-lg my-2"
+			src="http://localhost:5173/upload/1783247466883-Test.webp"
+			alt="Placeholder"
+		/>Generationen von Jungen, ganz unabhängig von einem möglichen gesellschaftlichen Status,
+		durchliefen seine Schule, sangen und entwickelten sich zu mündigen Erwachsenen mit Werten.
+		Jahre lang leitete Helfrid Israel den Helmstedter Knabenchor äußerst erfolgreich, führte ihn
+		von Konzert zu Konzert, und das weit über die Stadt- und Kreisgrenzen hinaus.Doch die Zeit
+		reiner Knabenchöre neigte sich gerade im ländlichen Bereich ihrem Ende zu. In dieser Zeit
+		übernahm Stefan PD Runge 1995 die Leitung des Chores. Ein neues Kapitel der
+		Erfolgsgeschichte begann. Der Neue, ein ausgewiesener Chorexperte, baute den Knabenchor um,
+		ließ Mädchen, Frauen und Männer zu. So entstand ein gemischter und
+		generationenübergreifender Chor, dessen Repertoire sich allein aus seiner Besetzung und
+		einem sich verändertem Anspruch heraus erweiterte.<img
+			class="rounded-lg my-2"
+			src="http://localhost:5173/upload/1783247466883-Test.webp"
+			alt="Placeholder"
+		/>Fortan ergaben sich neue Möglichkeiten. Und die zeigten sich dann auch schnell: Seit dem
+		ersten Auftritt im Rahmen einer Vesper in St. Marienberg ist der Chor nicht mehr aus dem
+		kulturellen Leben Helmstedts wegzudenken. Trotz der regionalen Verwurzelung ist der
+		Wirkungskreis des Chores nahezu unbegrenzt, wie zahlreiche Konzertreisen auch ins
+		europäische Ausland eindrucksvoll beweisen. Im Vordergrund stand und steht die musikalische
 		Ausgestaltung von Konzerten, Abendmusiken, Feiern und Gottesdiensten. Dabei reicht das
 		Repertoire vom schlichten Volkslied über weltliche und geistliche Werke aus verschiedenen
-		Jahrhunderten und Stilrichtungen bis zu den großen Oratorien. (siehe Repertoireliste) Neben
-		den traditionellen Werken wird das Repertoire seit einigen Jahren immer wieder um Stücke
-		erweitert, die für eine Chor & Singschule ungewöhnlich sind. So die Operette " Im weißen
-		Rössel", die Opern " Dido and Aeneas", " Brundibar" und " Amahl and the nightvisitors". Auch
-		mehrere LP und CD Aufnahmen sind in über 35 Jahren entstanden.<br />Die Proben des Chores
-		und die musikalisch-sängerische Ausbildung im Rahmen der Singschule erfolgen heute im
-		Pförtnerhaus St. Marienberg . Seit der Erweiterung des reinen Knabenchores zur „Chor &
-		Singschule“ hat sich das musikalische Angebot durch die Einbeziehung der
-		Mädchen-/Frauenstimmen sehr vergrößert, auch wurde eine Gesangsklasse gegründet. Weitere
-		Erweiterungen der Aktivitäten sind geplant.<br />Die Helmstedter Chor & Singschule
-		finanziert sich hauptsächlich durch die Beiträge ihrer Mitglieder, aber auch durch Zuschüsse
-		von Stadt und Landkreis Helmstedt und nicht zuletzt durch Spenden. Größere Projekte werden
-		zudem durch Mittel aus verschiedenen Stiftungen finanziell abgesichert.<br />Die einmalige
-		Lage des Chorstudios macht es möglich, dass alle Mitglieder der Chor & Singschule, sich auch
-		außerhalb der Proben zu verschiedensten Aktivitäten treffen können. Das Spektrum reicht von
-		Ausflügen, über Radtouren und Probenfreizeiten bis zu Zeltübernachtungen. Das
-		jugendpflegerische Konzept der Chorleitung ist um eine ganzheitliche Wertevermittlung sehr
-		bemüht.
+		Jahrhunderten und Stilrichtungen bis zu den großen Oratorien. Neben den traditionellen
+		Werken wird das Repertoire seit einigen Jahren immer wieder um diverse zeitlose Stücke
+		erweitert.<img
+			class="rounded-lg my-2"
+			src="http://localhost:5173/upload/1783247466883-Test.webp"
+			alt="Placeholder"
+		/>So die Operette "Im weißen Rössl", die Opern "Dido and Aeneas", "Brundibar" und "Amahl and
+		the nightvisitors". Inzwischen widmet sich der Chor auch Musicals und zeitlosen Pop- wie
+		Rocksongs. Übrigens: Mit der Zeit sind diverse LP, das waren mal Langspeilplatten, wie auchb
+		CD-Aufnahmen entstanden.
 	</p>
 
+	<h2 class="text-4xl font-extrabold text-hcss-primary-950 pt-6 lg:pt-8">Das sind wir - heute</h2>
+	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+	<div class="grid grid-cols-1 items-start gap-8 xl:grid-cols-3">
+		<p class="text-justify font-light text-gray-600">
+			Heute sind wir ein gemischter Chor mit allen üblichen Stimmen. Unsere Gemeinschaft
+			basiert auf den Bindegliedern Musik, Gesang und Respekt. Wir sind etwa 34 Sängerinnen
+			und Sänger im Alter zwischen 10 und 80 Jahren. Jeder Charakter ist akzeptierter Teil des
+			Chores, jeder Mensch darf und soll so sein, wie er nunmal ist, denn letztlich geht es
+			die Stimmen. Niemand spürt Missgunst oder Konkurrenz, jeder darf und soll sich
+			entfalten. Und wenn dich das jetzt anspricht, dann komm doch einfach mal dazu. Wir
+			freuen uns auf dich. Die Lage des Chorstudios in Helmstedt ist geradezu als
+			Ausgangspunkt für außerchorische Aktivitäten prädestiniert.
+		</p>
+		<img
+			class="mx-auto self-center rounded-lg"
+			src="http://localhost:5173/upload/1783247466883-Test.webp"
+			alt="Placeholder"
+		/>
+		<p class="text-justify font-light text-gray-600">
+			Choristenleben ist vielfältig und voller Abenteuer. Im Vordergrund steht aber immer das
+			gemeinsame Singen. So sind wir eben. Die Proben des Chores und die
+			musikalisch-sängerische Ausbildung im Rahmen der Singschule finden übrigens unabhängig
+			voneinander statt. Einzelunterrichte gibt es im Pförtnerhaus St. Marienberg Helmstedt
+			satt. Der Chor probt im Gemeindehaus St. Marienberg. Männer sowie Frauen und Kinder
+			proben zudem separat. Alle Zeiten findest du in unseren Angeboten. Selbstverständlich
+			darfst du auch am Gesangsunterricht teilnehmen, ohne Mitglied im Chor zu sein. Dafür
+			haben wir eine Gesangsklasse eingerichtet.
+		</p>
+	</div>
 	<div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-		<div class="rounded-lg bg-white p-6 shadow-lg">
+		<div class="flex flex-col rounded-lg bg-white p-6 shadow-lg">
 			<h3 class="mb-2 text-lg font-bold text-hcss-primary-950">
 				Helmstedter Chor- und Singschule e.V.
 			</h3>
-			<p class="text-gray-700">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-				tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-				eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-				takimata sanctus est Lorem ipsum dolor sit amet.
+			<p class="text-gray-700 text-justify">
+				Der Verein Helmstedter Chor- und Singschule e.V. ist der Trägerverein des
+				Singschulangebote und des Konzertchores. Auch die Gesangsklasse ist letztlich ein
+				Angebot des Vereins. Die Funktionsträger des Vereins sind:
 			</p>
+			<ul class="text-gray-900 ml-7 my-4 text-start list-disc">
+				<li>1. Vorsitzender: Stefan PD Runge</li>
+				<li>2. Vorsitzende: Marina Golombeck</li>
+				<li>Kassiererin: Gesa von Rützen-Kositzkau</li>
+				<li>Beisitzer: Lucas Schwaiger und Helena Wedekind</li>
+			</ul>
+			<p class="text-gray-700 text-justify">
+				Den Verein erreichst du am besten per <a
+					href="mailto:HCSS38350@gmx.de"
+					class="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-100 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-0"
+					>E-Mail</a
+				>. Du musst nicht zwingend Mitglied im Verein sein, um zum Beispiel Gesangs- oder
+				Klavierunterricht zu nehmen. Wenn du eintreten möchtest: Hier gibt es den Antrag.
+			</p>
+			<img
+				src={Logo}
+				alt="Logo der Helmstedter Chor- und Singschule"
+				class="mx-auto my-auto hidden w-48 md:block"
+			/>
 		</div>
 		<div class="rounded-lg bg-white p-6 shadow-lg">
 			<h3 class="mb-2 text-lg font-bold text-hcss-primary-950">Förderverein</h3>
-			<p class="text-gray-700">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-				tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-				eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-				takimata sanctus est Lorem ipsum dolor sit amet.
+			<p class="text-gray-700 text-justify">
+				Die Helmstedter Chor- und Singschule finanziert sich hauptsächlich durch die
+				Beiträge ihrer Mitglieder, aber auch durch Zuschüsse von Stadt und Landkreis
+				Helmstedt und nicht zuletzt durch Spenden. Größere Projekte werden zudem durch
+				Mittel aus verschiedenen Stiftungen finanziell abgesichert. Außerdem kannst du die
+				Arbeit der Singschule über den Förderverein Helmstedter Chorknaben e.V.
+				unterstützen. <br /><br />
+				Zweck des Verein ist die Unterstützung der musikalisch, jugendpflegerischen und sozialen
+				Arbeit der Helmstedter Chor- und Singschule. Konkret:
+			</p>
+			<ul class="text-gray-900 ml-7 my-4 text-start list-disc">
+				<li>
+					Erhaltung der Helmstedter Chor- und Singschule für ein vielfältiges
+					Kulturangebot im Landkreis Helmstedt.
+				</li>
+				<li>
+					Bewahrung eines "singenden Botschafters" - Die Region wird durch den Chor bei
+					jedem Auftritt repräsentiert.
+				</li>
+				<li>
+					Weiterführung der musikalischen Ausbildung von Jungen und Mädchen aus Helmstedt
+					und Umgebung.
+				</li>
+				<li>Förderung von Toleranz, Teamwork und sozialer Kompetenz.</li>
+				<li>
+					Bewahrung des Chores als Anlaufpunkt für Kinder und Jugendliche auch über die
+					Musik hinaus.
+				</li>
+			</ul>
+			<p class="text-gray-700 text-justify">
+				Wenn du einen dieser Zwecke für wichtig hälst, dann sei einfach dabei. Hier findest
+				du ein Anmeldeformular. Für alle, die einfach spenden wollen, hier die
+				Bankverbindung:<br /><br />Förderverein Helmstedter Chorknaben e.V.<br />
+				IBAN: DE 21270925553026710200<br />BIC: GENODEF1WFV
 			</p>
 		</div>
 	</div>
