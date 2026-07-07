@@ -46,7 +46,7 @@
 		{#each offerings as offering (offering.id)}
 			<div class="rounded-lg bg-white shadow-lg">
 				<img
-					class="aspect-3/2 w-full rounded-t-lg object-cover"
+					class="aspect-video w-full rounded-t-lg object-cover"
 					loading="lazy"
 					src={offeringImages[offering.id]?.path ?? placeholderImg}
 					alt={offering.title}
