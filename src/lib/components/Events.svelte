@@ -40,7 +40,9 @@
 							</div>
 
 							<div class="mt-4 lg:col-span-2 lg:mt-0 lg:text-center">
-								<h3 class="mb-2 text-2xl font-bold text-hcss-primary-950">{event.title}</h3>
+								<h3 class="mb-2 text-2xl font-bold text-hcss-primary-950">
+									{event.title}
+								</h3>
 								{#if event.shortDescription}
 									<p class="text-lg text-gray-700">{event.shortDescription}</p>
 								{/if}
@@ -65,7 +67,10 @@
 				Folgt uns auf Social Media, um keine Neuigkeiten zu verpassen!
 			</p>
 			<div class="mt-6 flex justify-center">
-				<SocialMedia color="text-hcss-primary-950" hoverColor="hover:text-hcss-primary-700" />
+				<SocialMedia
+					color="text-hcss-primary-950"
+					hoverColor="hover:text-hcss-primary-700"
+				/>
 			</div>
 		</div>
 	{/if}

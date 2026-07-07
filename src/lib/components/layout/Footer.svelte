@@ -90,7 +90,9 @@
 		</div>
 	</div>
 
-	<div class="flex w-full items-center justify-between bg-hcss-primary-800 px-4 py-4 sm:px-16 lg:py-6">
+	<div
+		class="flex w-full items-center justify-between bg-hcss-primary-800 px-4 py-4 sm:px-16 lg:py-6"
+	>
 		<span class="text-sm font-bold text-gray-50 sm:text-base"
 			>Helmstedter Chor- und Singschule e.V.</span
 		>

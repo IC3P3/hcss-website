@@ -18,7 +18,9 @@
 		class="relative flex h-dvh flex-col items-center justify-start bg-linear-to-b from-black/70 via-black/40 to-transparent bg-cover bg-center pt-navbar"
 	>
 		<div class="flex flex-col items-center px-4 pt-navbar">
-			<h1 class="text-center text-4xl font-bold text-white text-shadow-lg sm:text-5xl md:text-6xl">
+			<h1
+				class="text-center text-4xl font-bold text-white text-shadow-lg sm:text-5xl md:text-6xl"
+			>
 				Helmstedter Chor- und Singschule
 			</h1>
 			<p

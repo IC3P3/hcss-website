@@ -6,8 +6,7 @@
 	};
 
 	type Row =
-		| { type: 'header'; label: string }
-		| { type: 'option'; item: DropdownOption; index: number };
+		{ type: 'header'; label: string } | { type: 'option'; item: DropdownOption; index: number };
 </script>
 
 <script lang="ts">
