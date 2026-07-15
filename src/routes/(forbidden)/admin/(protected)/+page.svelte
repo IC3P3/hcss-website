@@ -26,7 +26,7 @@
 			>
 			<a
 				class="rounded border border-hcss-primary-700 px-4 py-2 text-center text-sm text-hcss-primary-700 transition-colors duration-200 hover:bg-hcss-primary-700 hover:text-white"
-				href={resolve("/admin/change-event"}>Veranstaltungen bearbeiten</a
+				href={resolve('/admin/change-event')}>Veranstaltungen bearbeiten</a
 			>
 		</div>
 		<div class="flex flex-col gap-2 rounded-lg bg-white p-6 shadow">
