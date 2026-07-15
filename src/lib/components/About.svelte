@@ -15,8 +15,8 @@
 		Helfrid Israel gegründet. Israel sah den gesanglich-musikalischen Erfolg eng mit einem
 		jugendpflegerischen Auftrag verbunden. Musik als Gesundheitsaspekt - mit diesem Ansatz war
 		der Kinderarzt aus Helmstedt seiner Zeit weit voraus.<img
-			class="rounded-lg my-2"
-			src="http://localhost:5173/upload/1783247466883-Test.webp"
+			class="rounded-lg my-2 aspect-video"
+			src="http://localhost:5173/upload/1783444895191-Der_Antrag.webp"
 			alt="Placeholder"
 		/>Generationen von Jungen, ganz unabhängig von einem möglichen gesellschaftlichen Status,
 		durchliefen seine Schule, sangen und entwickelten sich zu mündigen Erwachsenen mit Werten.
@@ -28,7 +28,7 @@
 		ließ Mädchen, Frauen und Männer zu. So entstand ein gemischter und
 		generationenübergreifender Chor, dessen Repertoire sich allein aus seiner Besetzung und
 		einem sich verändertem Anspruch heraus erweiterte.<img
-			class="rounded-lg my-2"
+			class="rounded-lg my-2 aspect-video"
 			src="http://localhost:5173/upload/1783247466883-Test.webp"
 			alt="Placeholder"
 		/>Fortan ergaben sich neue Möglichkeiten. Und die zeigten sich dann auch schnell: Seit dem
@@ -41,7 +41,7 @@
 		Jahrhunderten und Stilrichtungen bis zu den großen Oratorien. Neben den traditionellen
 		Werken wird das Repertoire seit einigen Jahren immer wieder um diverse zeitlose Stücke
 		erweitert.<img
-			class="rounded-lg my-2"
+			class="rounded-lg my-2 aspect-video"
 			src="http://localhost:5173/upload/1783247466883-Test.webp"
 			alt="Placeholder"
 		/>So die Operette "Im weißen Rössl", die Opern "Dido and Aeneas", "Brundibar" und "Amahl and
