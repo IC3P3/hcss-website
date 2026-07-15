@@ -20,6 +20,4 @@
 <About />
 <Offerings offeringImages={data.offeringImages} />
 <Media media={data.media} />
-<div class="mx-auto max-w-7xl space-y-12 p-8">
-	<Events events={data.events} />
-</div>
+<Events events={data.events} />
