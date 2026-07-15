@@ -9,13 +9,13 @@
 
 	<!-- TODO: Add images -->
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-	<p class="columns-1 text-justify font-light text-gray-600 lg:columns-2 xl:columns-3">
+	<p class="mx-auto max-w-3xl text-justify font-light text-gray-600">
 		Sie ist eine Institution in Helmstedt, die Helmstedter Chor- und Singschule mit ihrem
 		Konzertchor. Ihren Ursprung hat sie in den Helmstedter Chorknaben, 1970 vom Kinderarzt
 		Helfrid Israel gegründet. Israel sah den gesanglich-musikalischen Erfolg eng mit einem
 		jugendpflegerischen Auftrag verbunden. Musik als Gesundheitsaspekt - mit diesem Ansatz war
 		der Kinderarzt aus Helmstedt seiner Zeit weit voraus.<img
-			class="rounded-lg my-2 aspect-video"
+			class="my-4 aspect-video w-full rounded-lg object-cover md:float-right md:my-2 md:ml-8 md:w-2/5"
 			src="http://localhost:5173/upload/1783444895191-Der_Antrag.webp"
 			alt="Placeholder"
 		/>Generationen von Jungen, ganz unabhängig von einem möglichen gesellschaftlichen Status,
@@ -28,7 +28,7 @@
 		ließ Mädchen, Frauen und Männer zu. So entstand ein gemischter und
 		generationenübergreifender Chor, dessen Repertoire sich allein aus seiner Besetzung und
 		einem sich verändertem Anspruch heraus erweiterte.<img
-			class="rounded-lg my-2 aspect-video"
+			class="my-4 aspect-video w-full rounded-lg object-cover md:float-left md:my-2 md:mr-8 md:w-2/5"
 			src="http://localhost:5173/upload/1783247466883-Test.webp"
 			alt="Placeholder"
 		/>Fortan ergaben sich neue Möglichkeiten. Und die zeigten sich dann auch schnell: Seit dem
@@ -41,23 +41,25 @@
 		Jahrhunderten und Stilrichtungen bis zu den großen Oratorien. Neben den traditionellen
 		Werken wird das Repertoire seit einigen Jahren immer wieder um diverse zeitlose Stücke
 		erweitert.<img
-			class="rounded-lg my-2 aspect-video"
+			class="my-4 aspect-video w-full rounded-lg object-cover md:float-right md:my-2 md:ml-8 md:w-2/5"
 			src="http://localhost:5173/upload/1783247466883-Test.webp"
 			alt="Placeholder"
 		/>So die Operette "Im weißen Rössl", die Opern "Dido and Aeneas", "Brundibar" und "Amahl and
 		the nightvisitors". Inzwischen widmet sich der Chor auch Musicals und zeitlosen Pop- wie
-		Rocksongs. Übrigens: Mit der Zeit sind diverse LP, das waren mal Langspeilplatten, wie auchb
+		Rocksongs. Übrigens: Mit der Zeit sind diverse LP, das waren mal Langspielplatten, wie auch
 		CD-Aufnahmen entstanden.
 	</p>
 
-	<h2 class="text-4xl font-extrabold text-hcss-primary-950 pt-6 lg:pt-8">Das sind wir - heute</h2>
+	<h2 class="clear-both text-4xl font-extrabold text-hcss-primary-950 pt-6 lg:pt-8">
+		Das sind wir - heute
+	</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="grid grid-cols-1 items-start gap-8 xl:grid-cols-3">
 		<p class="text-justify font-light text-gray-600">
 			Heute sind wir ein gemischter Chor mit allen üblichen Stimmen. Unsere Gemeinschaft
 			basiert auf den Bindegliedern Musik, Gesang und Respekt. Wir sind etwa 34 Sängerinnen
 			und Sänger im Alter zwischen 10 und 80 Jahren. Jeder Charakter ist akzeptierter Teil des
-			Chores, jeder Mensch darf und soll so sein, wie er nunmal ist, denn letztlich geht es
+			Chores, jeder Mensch darf und soll so sein, wie er nunmal ist, denn letztlich geht es um
 			die Stimmen. Niemand spürt Missgunst oder Konkurrenz, jeder darf und soll sich
 			entfalten. Und wenn dich das jetzt anspricht, dann komm doch einfach mal dazu. Wir
 			freuen uns auf dich. Die Lage des Chorstudios in Helmstedt ist geradezu als
@@ -141,7 +143,7 @@
 				</li>
 			</ul>
 			<p class="text-gray-700 text-justify">
-				Wenn du einen dieser Zwecke für wichtig hälst, dann sei einfach dabei. Hier findest
+				Wenn du einen dieser Zwecke für wichtig hältst, dann sei einfach dabei. Hier findest
 				du ein Anmeldeformular. Für alle, die einfach spenden wollen, hier die
 				Bankverbindung:<br /><br />Förderverein Helmstedter Chorknaben e.V.<br />
 				IBAN: DE 21270925553026710200<br />BIC: GENODEF1WFV
