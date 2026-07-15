@@ -15,7 +15,7 @@
 			id: 1,
 			title: 'Vorgruppe 2, Kinder ab etwa 8 Jahren',
 			subtitle: 'Kindgerechter Gesangsunterricht und Musiktheorie in der Gruppe',
-			times: ['Mittwoch von 61:00 bis 16:45 Uhr']
+			times: ['Mittwoch von 16:00 bis 16:45 Uhr']
 		},
 		{
 			id: 2,
@@ -51,35 +51,39 @@
 	];
 </script>
 
-<section id="angebote" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
-	<h2 class="text-4xl font-extrabold text-hcss-primary-950">Unsere Angebote</h2>
-	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-	<div class="grid grid-cols-2 gap-8 md:grid-cols-3">
-		{#each offerings as offering (offering.id)}
-			<div class="rounded-lg bg-white shadow-lg">
-				<img
-					class="aspect-video w-full rounded-t-lg object-cover"
-					loading="lazy"
-					src={offeringImages[offering.id]?.path ?? placeholderImg}
-					alt={offering.title}
-					onerror={(e: Event) => {
-						(e.currentTarget as HTMLImageElement).src = placeholderImg;
-					}}
-				/>
-				<div class="p-6">
-					<h3 class="mb-2 text-lg font-bold text-hcss-primary-950">{offering.title}</h3>
-					<p
-						class={offering.times.length > 0
-							? 'font-semibold text-gray-700 text-justify'
-							: 'text-gray-700 text-justify'}
-					>
-						{offering.subtitle}
-					</p>
-					{#each offering.times as time, j (j)}
-						<p class="text-gray-700 my-2 text-justify">{time}</p>
-					{/each}
+<section id="angebote" class="w-full bg-linear-to-b from-white via-hcss-primary-100 to-white">
+	<div class="mx-auto w-full max-w-7xl p-4 py-6 text-center lg:py-8">
+		<h2 class="text-4xl font-extrabold text-hcss-primary-950">Unsere Angebote</h2>
+		<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+		<div class="grid grid-cols-2 gap-8 md:grid-cols-3">
+			{#each offerings as offering (offering.id)}
+				<div class="rounded-lg bg-white shadow-lg">
+					<img
+						class="aspect-video w-full rounded-t-lg object-cover"
+						loading="lazy"
+						src={offeringImages[offering.id]?.path ?? placeholderImg}
+						alt={offering.title}
+						onerror={(e: Event) => {
+							(e.currentTarget as HTMLImageElement).src = placeholderImg;
+						}}
+					/>
+					<div class="p-6">
+						<h3 class="mb-2 text-lg font-bold text-hcss-primary-950">
+							{offering.title}
+						</h3>
+						<p
+							class={offering.times.length > 0
+								? 'font-semibold text-gray-700 text-left'
+								: 'text-gray-700 text-left'}
+						>
+							{offering.subtitle}
+						</p>
+						{#each offering.times as time, j (j)}
+							<p class="text-gray-700 my-2 text-left">{time}</p>
+						{/each}
+					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </section>
