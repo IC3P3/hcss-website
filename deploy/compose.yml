@@ -1,0 +1,12 @@
+# App stack for one environment. Committed template — no secrets live here.
+# Real values come from a .env file that sits next to this one on the server
+# only (gitignored). Compose reads that same .env for ${...} interpolation.
+services:
+    app:
+        image: ${IMAGE_NAME}:${IMAGE_TAG}
+        restart: unless-stopped
+        env_file: .env
+        ports:
+            - '${APP_PORT}:3000'
+        volumes:
+            - ${DATA_DIR}:/data

@@ -1,0 +1,11 @@
+- id: deploy
+  execute-command: /srv/hcss/deploy.sh
+  command-working-directory: /srv/hcss
+  response-message: Deploy triggered.
+  trigger-rule:
+      match:
+          type: value
+          value: '{{ getenv "DEPLOY_TOKEN" }}'
+          parameter:
+              source: header
+              name: X-Deploy-Token
