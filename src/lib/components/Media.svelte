@@ -21,11 +21,13 @@
 
 <section
 	id="impressionen"
-	class="mx-auto w-screen max-w-7xl justify-center p-4 py-6 text-center lg:py-8"
+	class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8"
 >
 	<h2 class="text-4xl font-extrabold text-hcss-primary-950">Impressionen</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+	<div
+		class="grid grid-cols-1 overflow-hidden rounded-lg shadow-lg sm:grid-cols-2 lg:grid-cols-3"
+	>
 		{#each items as item (item.id)}
 			<div
 				class="relative overflow-hidden focus-within:outline-2 focus-within:outline-hcss-primary-500"
@@ -46,7 +48,7 @@
 					}}
 				/>
 				<div
-					class="pointer-events-none absolute inset-0 flex items-end bg-hcss-primary-700/75 p-8 opacity-0 transition-opacity duration-300"
+					class="pointer-events-none absolute inset-0 hidden items-end bg-hcss-primary-700/75 p-8 opacity-0 transition-opacity duration-300 sm:flex"
 					class:sm:opacity-0={hoveredId !== item.id}
 					class:sm:opacity-100={hoveredId === item.id}
 				>
@@ -59,6 +61,21 @@
 						{/if}
 					</div>
 				</div>
+
+				{#if item.title || item.description}
+					<div
+						class="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-start bg-linear-to-t from-black/75 via-black/40 to-transparent p-4 sm:hidden"
+					>
+						<h3 class="w-full text-center text-lg font-semibold text-white">
+							{item.title ?? 'Bild der HCSS'}
+						</h3>
+						{#if item.description}
+							<span class="mt-1 text-start text-sm text-white/90"
+								>{item.description}</span
+							>
+						{/if}
+					</div>
+				{/if}
 			</div>
 		{/each}
 	</div>
