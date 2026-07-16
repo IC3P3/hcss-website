@@ -1,7 +1,9 @@
 - id: deploy
   execute-command: /srv/hcss/deploy.sh
   command-working-directory: /srv/hcss
-  response-message: Deploy triggered.
+  include-command-output-in-response: true
+  include-command-output-in-response-on-error: true
+  trigger-rule-mismatch-http-response-code: 403
   trigger-rule:
       match:
           type: value

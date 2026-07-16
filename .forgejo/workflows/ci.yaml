@@ -34,7 +34,7 @@ jobs:
 
     build:
         needs: test
-        if: forgejo.event_name == 'push'
+        if: github.event_name == 'push'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -42,21 +42,21 @@ jobs:
             - name: Resolve registry, image and tag
               id: img
               run: |
-                  host="${FORGEJO_SERVER_URL#*://}"
-                  repo=$(echo "$FORGEJO_REPOSITORY" | tr '[:upper:]' '[:lower:]')
-                  echo "registry=$host" >> "$FORGEJO_OUTPUT"
-                  echo "image=$host/$repo" >> "$FORGEJO_OUTPUT"
-                  if [ "$FORGEJO_REF" = "refs/heads/main" ]; then
-                      echo "tag=prod" >> "$FORGEJO_OUTPUT"
+                  host="${GITHUB_SERVER_URL#*://}"
+                  repo=$(echo "$GITHUB_REPOSITORY" | tr '[:upper:]' '[:lower:]')
+                  echo "registry=$host" >> "$GITHUB_OUTPUT"
+                  echo "image=$host/$repo" >> "$GITHUB_OUTPUT"
+                  if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+                      echo "tag=prod" >> "$GITHUB_OUTPUT"
                   else
-                      echo "tag=dev" >> "$FORGEJO_OUTPUT"
+                      echo "tag=dev" >> "$GITHUB_OUTPUT"
                   fi
 
             - uses: docker/login-action@v3
               with:
                   registry: ${{ steps.img.outputs.registry }}
-                  username: ${{ forgejo.actor }}
-                  password: ${{ secrets.FORGEJO_TOKEN }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
             - uses: docker/build-push-action@v6
               with:
@@ -64,26 +64,26 @@ jobs:
                   push: true
                   tags: |
                       ${{ steps.img.outputs.image }}:${{ steps.img.outputs.tag }}
-                      ${{ steps.img.outputs.image }}:${{ forgejo.sha }}
+                      ${{ steps.img.outputs.image }}:${{ github.sha }}
 
     deploy-dev:
         needs: build
-        if: forgejo.ref == 'refs/heads/dev'
+        if: github.ref == 'refs/heads/dev'
         runs-on: ubuntu-latest
         steps:
             - name: Trigger dev deploy
               run: |
-                  curl -fsS --retry 3 -X POST \
+                  curl -fsS --max-time 600 -X POST \
                       -H "X-Deploy-Token: ${{ secrets.DEV_DEPLOY_TOKEN }}" \
                       "${{ secrets.DEV_DEPLOY_HOOK_URL }}"
 
     deploy-prod:
         needs: build
-        if: forgejo.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
         steps:
             - name: Trigger prod deploy
               run: |
-                  curl -fsS --retry 3 -X POST \
+                  curl -fsS --max-time 600 -X POST \
                       -H "X-Deploy-Token: ${{ secrets.PROD_DEPLOY_TOKEN }}" \
                       "${{ secrets.PROD_DEPLOY_HOOK_URL }}"
