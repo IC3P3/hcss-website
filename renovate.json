@@ -1,9 +1,13 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": ["config:recommended", "docker:pinDigests"],
-	"baseBranch": ["dev"],
+	"baseBranchPatterns": ["dev"],
 	"timezone": "Europe/Berlin",
-	"schedule": ["after 11pm every weekday", "before 5am every weekday", "every weekend"],
+	"schedule": [
+		"after 11pm every weekday",
+		"before 5am every weekday",
+		"every weekend"
+	],
 	"packageRules": [
 		{
 			"matchDatasources": ["docker"],
