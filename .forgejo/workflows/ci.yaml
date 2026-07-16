@@ -12,8 +12,14 @@ jobs:
             DATABASE_URL: e2e-test.db
         steps:
             - uses: actions/checkout@v4
-              with:
-                  lfs: true
+
+            - name: Fetch LFS objects
+              # checkout's auth header 401s against Forgejo's LFS endpoint, which
+              # serves objects anonymously — drop the header and pull unauthenticated.
+              run: |
+                  git config --local --get-regexp 'http\..*\.extraheader' | cut -d' ' -f1 |
+                      xargs -r -n1 git config --local --unset-all
+                  git lfs pull
 
             - uses: actions/setup-node@v4
               with:
@@ -40,8 +46,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-              with:
-                  lfs: true
+
+            - name: Fetch LFS objects
+              # checkout's auth header 401s against Forgejo's LFS endpoint, which
+              # serves objects anonymously — drop the header and pull unauthenticated.
+              run: |
+                  git config --local --get-regexp 'http\..*\.extraheader' | cut -d' ' -f1 |
+                      xargs -r -n1 git config --local --unset-all
+                  git lfs pull
 
             - name: Resolve registry, image and tag
               id: img
