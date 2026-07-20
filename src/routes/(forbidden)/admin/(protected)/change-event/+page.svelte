@@ -26,7 +26,6 @@
 		].some((field) => field?.toLowerCase().includes(q));
 	}
 
-	// Events arrive sorted by time descending; upcoming reads better soonest-first.
 	const filtered = $derived.by(() => {
 		const q = search.trim().toLowerCase();
 		const events = data.events.filter(
@@ -48,7 +47,6 @@
 
 	const TWO_DIGITS = 2;
 
-	// datetime-local expects "YYYY-MM-DDTHH:mm" in local time; toISOString would shift to UTC.
 	function toDatetimeLocal(ms: number): string {
 		const d = new Date(ms);
 		const pad = (n: number) => String(n).padStart(TWO_DIGITS, '0');
