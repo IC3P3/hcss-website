@@ -8,13 +8,13 @@
 <section
 	id="veranstaltungen"
 	aria-labelledby="events-heading"
-	class="w-full bg-linear-to-b from-white from-20% via-hcss-primary-100 to-white to-80%"
+	class="w-full bg-linear-to-b from-white from-40% via-hcss-primary-100 via-65% to-white"
 >
 	<div class="mx-auto w-full max-w-7xl p-4 py-6 text-center lg:py-8">
 		<h2 id="events-heading" class="mb-8 text-4xl font-extrabold text-hcss-primary-950">
 			Konzerte
 		</h2>
-		<hr class="my-6 border-hcss-primary-300 sm:mx-auto lg:my-8" />
+		<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 
 		{#if events.length !== 0}
 			<ul aria-label="Liste der Konzerte" class="list-none divide-y divide-gray-200 p-0">
