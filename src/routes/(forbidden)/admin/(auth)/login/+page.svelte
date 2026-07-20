@@ -9,7 +9,7 @@
 	const FIVE_SECONDS_IN_MS = 5000;
 
 	$effect(() => {
-		if (form?.success === false) {
+		if (form) {
 			showMessage = true;
 			const timeout = setTimeout(() => (showMessage = false), FIVE_SECONDS_IN_MS);
 			return () => clearTimeout(timeout);
@@ -32,7 +32,9 @@
 	>
 		<h1 class="text-center text-2xl font-semibold">Anmelden</h1>
 
-		{#if showMessage && form?.success === false}
+		{#if showMessage && form?.error}
+			<p class="text-center text-sm text-red-600">{form.error}</p>
+		{:else if showMessage && form?.success === false}
 			<p class="text-center text-sm text-red-600">Benutzername oder Passwort falsch.</p>
 		{/if}
 
