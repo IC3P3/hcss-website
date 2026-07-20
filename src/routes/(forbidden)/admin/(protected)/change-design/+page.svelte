@@ -2,8 +2,8 @@
 	import { enhance } from '$app/forms';
 	import { SvelteMap } from 'svelte/reactivity';
 	import Dropdown, { type DropdownOption } from '$lib/components/ui/Dropdown.svelte';
+	import LeaveGuard from '$lib/components/ui/LeaveGuard.svelte';
 	import Toast from '$lib/components/ui/Toast.svelte';
-	import { guardUnsavedChanges } from '$lib/utils/leave-guard';
 
 	const { data, form } = $props();
 
@@ -54,10 +54,9 @@
 	const dirty = $derived(
 		data.slots.some((s) => selected[s.id] !== (s.mediaId == null ? '' : String(s.mediaId)))
 	);
-
-	guardUnsavedChanges(() => dirty);
 </script>
 
+<LeaveGuard when={dirty} />
 <Toast {form} />
 
 <form

@@ -3,6 +3,7 @@ import { db } from '$lib/server/db';
 import { Event } from '$lib/server/models/Event';
 import { Media } from '$lib/server/models/Media';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
+import { logger } from '$lib/server/utils/logger';
 import { mediaUrl } from '$lib/server/utils/media';
 import { fail, type Actions } from '@sveltejs/kit';
 import { asc, desc, eq } from 'drizzle-orm';
@@ -85,6 +86,7 @@ export const actions = {
 			return fail(HTTP_STATUS_CODES.notFound, { error: 'Medium nicht gefunden!' });
 		}
 
+		logger.info('Media updated', { id, title, eventId: eventInt });
 		return { success: 'Das Medium wurde gespeichert.' };
 	},
 
@@ -108,8 +110,15 @@ export const actions = {
 		await db.delete(Media).where(eq(Media.id, id));
 
 		// DB row is the source of truth; a leftover file is harmless, so best effort.
-		await unlink(join(process.cwd(), UPLOAD_PATH, media.path)).catch(() => null);
+		await unlink(join(process.cwd(), UPLOAD_PATH, media.path)).catch((err) =>
+			logger.warn('Orphaned upload: file removal after delete failed', {
+				id,
+				path: media.path,
+				error: String(err)
+			})
+		);
 
+		logger.info('Media deleted', { id, path: media.path });
 		return { success: 'Das Medium wurde gelöscht.' };
 	}
 } satisfies Actions;

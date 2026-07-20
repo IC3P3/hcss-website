@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import Dropdown, { type DropdownOption } from '$lib/components/ui/Dropdown.svelte';
+	import LeaveGuard from '$lib/components/ui/LeaveGuard.svelte';
 	import Toast from '$lib/components/ui/Toast.svelte';
-	import { guardUnsavedChanges } from '$lib/utils/leave-guard';
 
 	const { data, form } = $props();
 
@@ -10,8 +10,6 @@
 	let previewImg = $state<string | null>(null);
 	let selectedEvent = $state('');
 	let dirty = $state(false);
-
-	guardUnsavedChanges(() => dirty);
 
 	const dateFormat = new Intl.DateTimeFormat('de-DE', {
 		day: '2-digit',
@@ -40,6 +38,7 @@
 	}
 </script>
 
+<LeaveGuard when={dirty} />
 <Toast {form} />
 
 <div class="mx-auto max-w-7xl px-4 py-10">

@@ -3,6 +3,7 @@ import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
 import { isWebP } from '$lib/server/utils/file-type_functions';
+import { logger } from '$lib/server/utils/logger';
 import { fail, type Actions } from '@sveltejs/kit';
 import { mkdir, unlink, writeFile } from 'fs/promises';
 import { join } from 'path';
@@ -67,12 +68,16 @@ export const actions = {
 				eventId: eventInt
 			});
 		} catch (e) {
-			await unlink(join(process.cwd(), UPLOAD_PATH, filepath)).catch(() => {
-				// TODO: Add logging
-			});
+			await unlink(join(process.cwd(), UPLOAD_PATH, filepath)).catch((err) =>
+				logger.error('Orphaned upload: cleanup after failed insert did not delete file', {
+					path: filepath,
+					error: String(err)
+				})
+			);
 			throw e;
 		}
 
+		logger.info('Media created', { title, path: filepath, eventId: eventInt });
 		return { success: 'Das Medium wurde hochgeladen.' };
 	}
 } satisfies Actions;

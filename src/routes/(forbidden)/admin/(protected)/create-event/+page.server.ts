@@ -1,6 +1,7 @@
 import { db } from '$lib/server/db';
 import { Event } from '$lib/server/models/Event';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
+import { logger } from '$lib/server/utils/logger';
 import { fail, type Actions } from '@sveltejs/kit';
 
 export const actions = {
@@ -38,12 +39,14 @@ export const actions = {
 				songs,
 				participants
 			});
-		} catch {
+		} catch (err) {
+			logger.error('Event insert failed', { title, error: String(err) });
 			return fail(HTTP_STATUS_CODES.internalServerError, {
 				error: 'Es kam zu einem Fehler. Bitte versuchen Sie es erneut.'
 			});
 		}
 
+		logger.info('Event created', { title, time });
 		return { success: 'Die Veranstaltung wurde erstellt.' };
 	}
 } satisfies Actions;

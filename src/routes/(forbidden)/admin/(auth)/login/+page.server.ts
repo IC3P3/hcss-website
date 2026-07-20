@@ -6,6 +6,7 @@ import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { HTTP_STATUS_CODES, THREE_DAYS_IN_S } from '$lib/server/utils/constants';
 import { generateSessionToken } from '$lib/server/utils/session';
+import { logger } from '$lib/server/utils/logger';
 import { verify } from 'argon2';
 import { resolve } from '$app/paths';
 
@@ -16,7 +17,7 @@ export const load: PageServerLoad = ({ locals }) => {
 };
 
 export const actions = {
-	login: async ({ cookies, request }) => {
+	login: async ({ cookies, getClientAddress, request }) => {
 		const data = await request.formData();
 		const username = data.get('username');
 		const password = data.get('password');
@@ -32,14 +33,18 @@ export const actions = {
 				'$argon2id$v=19$m=512,t=8,p=2$TWNJcE5rbUlTZEdTRTN4VQ$7UYi+J7HKfNyIKjiuW2SttAvRlhb8Fy5gH2rkFUNPMg',
 				'no'
 			);
+			logger.warn('Login failed: unknown username', { username, ip: getClientAddress() });
 			return { success: false };
 		}
 
 		try {
 			const userPassword = await verify(user[0].passwordHash, password);
-			if (!userPassword) return { success: false };
-		} catch {
-			// TODO: Proper logging
+			if (!userPassword) {
+				logger.warn('Login failed: wrong password', { username, ip: getClientAddress() });
+				return { success: false };
+			}
+		} catch (err) {
+			logger.error('Password verification failed', { username, error: String(err) });
 			return { success: false };
 		}
 
@@ -51,10 +56,12 @@ export const actions = {
 				lastSeen: Date.now(),
 				sessionKey: sessionToken
 			});
-		} catch {
-			// TODO: Add proper logging
+		} catch (err) {
+			logger.error('Session insert failed', { username, error: String(err) });
 			return { success: false };
 		}
+
+		logger.info('Login succeeded', { username, ip: getClientAddress() });
 
 		cookies.set('session', sessionToken, {
 			path: '/',

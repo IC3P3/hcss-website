@@ -2,8 +2,8 @@
 	import { enhance } from '$app/forms';
 	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
 	import Dropdown, { type DropdownOption } from '$lib/components/ui/Dropdown.svelte';
+	import LeaveGuard from '$lib/components/ui/LeaveGuard.svelte';
 	import Toast from '$lib/components/ui/Toast.svelte';
-	import { guardUnsavedChanges } from '$lib/utils/leave-guard';
 
 	const { data, form } = $props();
 
@@ -20,8 +20,6 @@
 	const PAGE_SIZE = 12;
 
 	let visibleCount = $state(PAGE_SIZE);
-
-	guardUnsavedChanges(() => dirty);
 
 	const dateFormat = new Intl.DateTimeFormat('de-DE', {
 		day: '2-digit',
@@ -71,6 +69,7 @@
 	}
 </script>
 
+<LeaveGuard when={dirty} />
 <Toast {form} />
 
 <div class="mx-auto max-w-7xl px-4 py-10">

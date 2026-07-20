@@ -1,16 +1,15 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import LeaveGuard from '$lib/components/ui/LeaveGuard.svelte';
 	import Toast from '$lib/components/ui/Toast.svelte';
-	import { guardUnsavedChanges } from '$lib/utils/leave-guard';
 
 	const { form } = $props();
 
 	let submitting = $state(false);
 	let dirty = $state(false);
-
-	guardUnsavedChanges(() => dirty);
 </script>
 
+<LeaveGuard when={dirty} />
 <Toast {form} />
 
 <div class="mx-auto max-w-3xl px-4 py-10">

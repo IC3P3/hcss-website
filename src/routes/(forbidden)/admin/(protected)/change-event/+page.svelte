@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
+	import LeaveGuard, { UNSAVED_MESSAGE } from '$lib/components/ui/LeaveGuard.svelte';
 	import Toast from '$lib/components/ui/Toast.svelte';
-	import { guardUnsavedChanges, UNSAVED_MESSAGE } from '$lib/utils/leave-guard';
 
 	const { data, form } = $props();
 
@@ -12,17 +12,28 @@
 	let showPast = $state(false);
 	let dirty = $state(false);
 	let confirmDeleteOpen = $state(false);
+	let confirmSwitchOpen = $state(false);
+	let pendingSelectId = $state<number | null>(null);
 	let deleteForm = $state<HTMLFormElement>();
 
 	const nowMs = Date.now();
 
-	guardUnsavedChanges(() => dirty);
-
 	function selectEvent(id: number) {
 		if (id === selectedId) return;
-		if (dirty && !confirm(UNSAVED_MESSAGE)) return;
+		if (dirty) {
+			pendingSelectId = id;
+			confirmSwitchOpen = true;
+			return;
+		}
 		selectedId = id;
-		dirty = false;
+	}
+
+	function confirmSwitch() {
+		if (pendingSelectId !== null) {
+			selectedId = pendingSelectId;
+			dirty = false;
+		}
+		pendingSelectId = null;
 	}
 
 	const selected = $derived(data.events.find((e) => e.id === selectedId) ?? null);
@@ -67,7 +78,15 @@
 	}
 </script>
 
+<LeaveGuard when={dirty} />
 <Toast {form} />
+
+<ConfirmDialog
+	bind:open={confirmSwitchOpen}
+	message={UNSAVED_MESSAGE}
+	confirmLabel="Verwerfen"
+	onconfirm={confirmSwitch}
+/>
 
 <div class="mx-auto max-w-7xl px-4 py-10">
 	<h1 class="mb-6 text-2xl font-semibold">Veranstaltungen bearbeiten</h1>

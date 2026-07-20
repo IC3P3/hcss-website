@@ -1,6 +1,7 @@
 import { db } from '$lib/server/db';
 import { Event } from '$lib/server/models/Event';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
+import { logger } from '$lib/server/utils/logger';
 import { fail, type Actions } from '@sveltejs/kit';
 import { desc, eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
@@ -55,6 +56,7 @@ export const actions = {
 			return fail(HTTP_STATUS_CODES.notFound, { error: 'Veranstaltung nicht gefunden!' });
 		}
 
+		logger.info('Event updated', { id, title });
 		return { success: 'Die Veranstaltung wurde gespeichert.' };
 	},
 
@@ -71,6 +73,7 @@ export const actions = {
 			return fail(HTTP_STATUS_CODES.notFound, { error: 'Veranstaltung nicht gefunden!' });
 		}
 
+		logger.info('Event deleted', { id });
 		return { success: 'Die Veranstaltung wurde gelöscht.' };
 	}
 } satisfies Actions;
