@@ -55,7 +55,7 @@
 					if (entry.isIntersecting) currentHash = `#${entry.target.id}`;
 				}
 			},
-			{ threshold: 0.5 }
+			{ rootMargin: '-100px 0px -70% 0px', threshold: 0 }
 		);
 
 		sections.forEach((s) => observer.observe(s));
