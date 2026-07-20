@@ -31,7 +31,14 @@ jobs:
 
             - run: pnpm install --frozen-lockfile
 
-            - run: pnpm lint
+            - name: Lint
+              if: github.base_ref != 'main' && github.ref != 'refs/heads/main'
+              run: pnpm lint
+
+            - name: Strict lint (gate for main)
+              if: github.base_ref == 'main' || github.ref == 'refs/heads/main'
+              run: pnpm lint:strict
+
             - run: pnpm check
 
             - run: pnpm build
