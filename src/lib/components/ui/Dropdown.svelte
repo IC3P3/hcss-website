@@ -21,6 +21,7 @@
 		disabled?: boolean;
 		searchable?: boolean;
 		searchPlaceholder?: string;
+		onchange?: () => void;
 	}
 
 	let {
@@ -30,7 +31,8 @@
 		placeholder,
 		disabled,
 		searchable,
-		searchPlaceholder
+		searchPlaceholder,
+		onchange
 	}: Props = $props();
 
 	const NO_ACTIVE_INDEX = -1;
@@ -138,7 +140,9 @@
 	function selectIndex(index: number) {
 		const item = matches[index];
 		if (!item) return;
+		const changed = item.value !== value;
 		value = item.value;
+		if (changed) onchange?.();
 		closeList();
 	}
 
