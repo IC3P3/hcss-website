@@ -45,7 +45,7 @@ export const load: PageServerLoad = async () => {
 export const actions = {
 	default: async ({ request, locals }) => {
 		if (!locals.user)
-			return fail(HTTP_STATUS_CODES.unautherized, { error: 'Kein angemeldeter Nutzer.' });
+			return fail(HTTP_STATUS_CODES.unauthorized, { error: 'Kein angemeldeter Nutzer.' });
 
 		const data = await request.formData();
 
