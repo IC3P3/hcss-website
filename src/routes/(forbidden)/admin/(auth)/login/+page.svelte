@@ -51,7 +51,7 @@
 		<button
 			type="submit"
 			disabled={submitting}
-			class="rounded bg-hcss-primaty-700 py-2 text-white hover:bg-hcss-primary-800 disabled:opacity-50"
+			class="rounded bg-hcss-primary-700 py-2 text-white hover:bg-hcss-primary-800 disabled:opacity-50"
 		>
 			{submitting ? 'Anmelden...' : 'Anmelden'}
 		</button>

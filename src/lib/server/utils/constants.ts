@@ -12,7 +12,7 @@ export const HTTP_STATUS_CODES = {
 	accepted: 202,
 	found: 302,
 	badRequest: 400,
-	unautherized: 401,
+	unauthorized: 401,
 	forbidden: 403,
 	notFound: 404,
 	payloadTooLarge: 413,
