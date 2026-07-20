@@ -24,6 +24,26 @@
 6. Point the site's reverse proxy at `APP_PORT` and set `client_max_body_size`
    for uploads.
 
+## Optional analytics (Umami)
+
+The compose file contains an `umami` + `umami-db` pair behind the `analytics`
+profile; without the profile nothing extra runs. To enable it:
+
+1. Set `UMAMI_DB_PASSWORD`, `UMAMI_APP_SECRET` (random string) and optionally
+   `UMAMI_PORT` / `UMAMI_DB_DIR` in the server `.env`.
+2. Start the stack with the profile:
+
+    ```bash
+    docker compose --profile analytics up -d
+    ```
+
+3. Log into the Umami dashboard on `UMAMI_PORT` (default credentials
+   `admin` / `umami` — change them immediately), add the website, and put a
+   reverse proxy with TLS in front (e.g. `stats.example.de`).
+4. Set `PUBLIC_UMAMI_SRC` (e.g. `https://stats.example.de/script.js`) and
+   `PUBLIC_UMAMI_WEBSITE_ID` in the `.env`, then restart the app container.
+   Leaving these empty keeps the site free of any tracking script.
+
 ## Rollback
 
 Every build is also tagged with the commit SHA. To roll back, set `IMAGE_TAG` to

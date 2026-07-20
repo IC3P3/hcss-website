@@ -85,14 +85,18 @@ pnpm run preview
 All settings are provided through environment variables — copy `.env.example`
 to `.env` for local development, or pass them at runtime in Docker.
 
-| Variable          | Required | Default (Docker image)      | Description                                                             |
-| ----------------- | -------- | --------------------------- | ----------------------------------------------------------------------- |
-| `ADMIN_PASSWORD`  | yes      | —                           | Admin password used by the seed. The container aborts on boot if unset. |
-| `HOST_URL`        | yes      | —                           | Public base URL, used for `sitemap.xml`/`robots.txt`.                   |
-| `ADMIN_USERNAME`  | no       | `admin`                     | Admin username used by the seed.                                        |
-| `DATABASE_URL`    | no       | `/data/website-data.sqlite` | SQLite path. Keep it on the `/data` volume.                             |
-| `UPLOAD_PATH`     | no       | `/data/upload`              | Upload directory. Keep it on the `/data` volume.                        |
-| `BODY_SIZE_LIMIT` | no       | `Infinity`                  | Node request body cap; left disabled so the reverse proxy is the limit. |
+| Variable                  | Required | Default (Docker image)      | Description                                                                                               |
+| ------------------------- | -------- | --------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `ADMIN_PASSWORD`          | yes      | —                           | Admin password used by the seed. The container aborts on boot if unset.                                   |
+| `HOST_URL`                | yes      | —                           | Public base URL, used for `sitemap.xml`/`robots.txt`.                                                     |
+| `ADMIN_USERNAME`          | no       | `admin`                     | Admin username used by the seed.                                                                          |
+| `DATABASE_URL`            | no       | `/data/website-data.sqlite` | SQLite path. Keep it on the `/data` volume.                                                               |
+| `UPLOAD_PATH`             | no       | `/data/upload`              | Upload directory. Keep it on the `/data` volume.                                                          |
+| `BODY_SIZE_LIMIT`         | no       | `Infinity`                  | Node request body cap; left disabled so the reverse proxy is the limit.                                   |
+| `LOG_LEVEL`               | no       | `info`                      | winston log level: `error`, `warn`, `info` or `debug`.                                                    |
+| `TZ`                      | no       | container default (UTC)     | Server timezone. Set `Europe/Berlin` so event datetimes entered in the admin panel are stored correctly.  |
+| `PUBLIC_UMAMI_SRC`        | no       | —                           | URL of the Umami tracking script. Both `PUBLIC_UMAMI_*` values must be set for the script to be embedded. |
+| `PUBLIC_UMAMI_WEBSITE_ID` | no       | —                           | Website ID from the Umami dashboard.                                                                      |
 
 > `ADMIN_PASSWORD` must stay set on every start — the seed validates it before
 > checking whether the admin already exists.
@@ -158,10 +162,32 @@ pnpm db:studio
 
 The admin panel can be accessed at `/admin` (login required). From here, you can:
 
-- Create and manage events
-- Upload and organize media
+- Create, edit and delete events (`/admin/create-event`, `/admin/change-event`)
+- Upload, edit and delete media (`/admin/create-media`, `/admin/change-media`)
 - Update site content by changing images in different sections
+  (`/admin/change-design`)
 - Link media items to events
+
+All admin routes are protected by a session guard in `hooks.server.ts` that
+covers page loads and form actions alike. Forms warn before navigating away
+with unsaved changes.
+
+## Logging
+
+The server logs structured JSON lines to stdout via
+[winston](https://github.com/winstonjs/winston) (`src/lib/server/utils/logger.ts`).
+Logged events include authentication successes/failures, admin content changes,
+failed database operations and unhandled server errors. In Docker, read them
+with `docker logs`; the verbosity is controlled by `LOG_LEVEL`.
+
+## Analytics (optional)
+
+The deployment stack ships an optional, self-hosted
+[Umami](https://umami.is/) instance behind the `analytics` compose profile —
+see `deploy/README.md`. The tracking script is only embedded on public pages
+when both `PUBLIC_UMAMI_SRC` and `PUBLIC_UMAMI_WEBSITE_ID` are set; without
+them the site loads no analytics at all. Umami is cookieless, so no consent
+banner is required.
 
 ## Testing
 
