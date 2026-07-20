@@ -1,9 +1,12 @@
 import { and, eq, gt, lt } from 'drizzle-orm';
 import { db } from '$lib/server/db';
 import { dev } from '$app/environment';
-import type { Handle } from '@sveltejs/kit';
+import { error, redirect, type Handle, type RequestEvent } from '@sveltejs/kit';
+import { resolve as resolvePath } from '$app/paths';
 import { Session } from '$lib/server/models/User';
+import { generateSessionToken } from '$lib/server/utils/session';
 import {
+	HTTP_STATUS_CODES,
 	ONE_DAY_IN_MS,
 	THIRTY_MINUTES_IN_MS,
 	THREE_DAYS_IN_MS,
@@ -15,8 +18,21 @@ const cleanup = { lastRun: 0 };
 export const handle: Handle = async ({ event, resolve }) => {
 	const session = event.cookies.get('session');
 
-	if (!session) return await resolve(event);
+	if (session) {
+		await authenticate(event, session);
+	}
 
+	if (event.route.id?.includes('/(protected)') && !event.locals.user) {
+		if (event.request.method === 'GET') {
+			redirect(HTTP_STATUS_CODES.found, resolvePath('/'));
+		}
+		error(HTTP_STATUS_CODES.unauthorized, 'Nicht angemeldet.');
+	}
+
+	return await resolve(event);
+};
+
+async function authenticate(event: RequestEvent, session: string) {
 	const dateNow = Date.now();
 	// Sweep expired sessions at most once per day (not on every request);
 	// reset lastRun on failure so the next request retries.
@@ -45,11 +61,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 			path: '/'
 		});
 
-		return await resolve(event);
+		return;
 	}
 
 	if (user[0].lastSeen + THIRTY_MINUTES_IN_MS < dateNow) {
-		const newSessionToken = crypto.randomUUID();
+		const newSessionToken = generateSessionToken();
 
 		const result = await db
 			.update(Session)
@@ -71,6 +87,4 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	event.locals.user = userInfo;
-
-	return await resolve(event);
-};
+}

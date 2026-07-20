@@ -5,6 +5,7 @@ import { dev } from '$app/environment';
 import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { HTTP_STATUS_CODES, THREE_DAYS_IN_S } from '$lib/server/utils/constants';
+import { generateSessionToken } from '$lib/server/utils/session';
 import { verify } from 'argon2';
 import { resolve } from '$app/paths';
 
@@ -42,9 +43,7 @@ export const actions = {
 			return { success: false };
 		}
 
-		// TODO: Could be changed to hex or base64 encoded crypto.getRandomValues(new UInt8Array(32))
-		// For a 256 bit token instead of a 112 bit token
-		const sessionToken = crypto.randomUUID();
+		const sessionToken = generateSessionToken();
 
 		try {
 			await db.insert(Session).values({
