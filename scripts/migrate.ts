@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 // Applies pending migrations with drizzle-orm's migrator (a prod dep), so it
 // runs in the container without drizzle-kit. Safe on every boot.
 
