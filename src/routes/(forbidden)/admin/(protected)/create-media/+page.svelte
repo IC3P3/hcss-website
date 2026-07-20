@@ -1,13 +1,28 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import Dropdown, { type DropdownOption } from '$lib/components/ui/Dropdown.svelte';
 
 	const { data, form } = $props();
 
 	let submitting = $state(false);
 	let showMessage = $state(false);
 	let previewImg = $state<string | null>(null);
+	let selectedEvent = $state('');
 
 	const FIVE_SECONDS_IN_MS = 5000;
+
+	const dateFormat = new Intl.DateTimeFormat('de-DE', {
+		day: '2-digit',
+		month: '2-digit',
+		year: 'numeric'
+	});
+
+	const eventOptions = $derived<DropdownOption[]>(
+		data.events.map((e) => ({
+			value: String(e.id),
+			label: e.date ? `${e.title} - ${dateFormat.format(e.date)}` : e.title
+		}))
+	);
 
 	$effect(() => {
 		if (form) {
@@ -41,7 +56,10 @@
 				submitting = true;
 				return ({ update, result }) => {
 					submitting = false;
-					if (result.type === 'success') previewImg = null;
+					if (result.type === 'success') {
+						previewImg = null;
+						selectedEvent = '';
+					}
 					return update({ reset: result.type === 'success' });
 				};
 			}}
@@ -88,27 +106,14 @@
 			</div>
 
 			<div class="flex flex-col gap-1">
-				<label for="event" class="text-sm font-medium">Veranstaltung</label>
-				<select
-					id="event"
+				<span class="text-sm font-medium">Veranstaltung</span>
+				<Dropdown
 					name="event"
-					class="rounded border px-3 py-2 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
-				>
-					<option value="">Keine</option>
-					{#each data.events as event (event.id)}
-						<option value={event.id}
-							>{`${event.title}${
-								event.date
-									? ` - ${new Intl.DateTimeFormat('de-DE', {
-											day: '2-digit',
-											month: '2-digit',
-											year: 'numeric'
-										}).format(event.date)}`
-									: ''
-							}`}</option
-						>
-					{/each}
-				</select>
+					bind:value={selectedEvent}
+					options={eventOptions}
+					placeholder="Keine"
+					searchable
+				/>
 			</div>
 
 			<button
