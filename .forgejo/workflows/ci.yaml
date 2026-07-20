@@ -63,10 +63,12 @@ jobs:
                   echo "registry=$host" >> "$GITHUB_OUTPUT"
                   echo "image=$host/$repo" >> "$GITHUB_OUTPUT"
                   if [ "$GITHUB_REF" = "refs/heads/main" ]; then
-                      echo "tag=prod" >> "$GITHUB_OUTPUT"
+                      env=prod
                   else
-                      echo "tag=dev" >> "$GITHUB_OUTPUT"
+                      env=dev
                   fi
+                  echo "tag=$env" >> "$GITHUB_OUTPUT"
+                  echo "version=$env-$(date -u +%Y%m%d-%H%M%S)-${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
 
             - uses: docker/login-action@v3
               with:
@@ -80,7 +82,7 @@ jobs:
                   push: true
                   tags: |
                       ${{ steps.img.outputs.image }}:${{ steps.img.outputs.tag }}
-                      ${{ steps.img.outputs.image }}:${{ github.sha }}
+                      ${{ steps.img.outputs.image }}:${{ steps.img.outputs.version }}
 
     deploy-dev:
         needs: build
