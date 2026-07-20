@@ -1,16 +1,27 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
 	import Dropdown, { type DropdownOption } from '$lib/components/ui/Dropdown.svelte';
+	import Toast from '$lib/components/ui/Toast.svelte';
+	import { guardUnsavedChanges } from '$lib/utils/leave-guard';
 
 	const { data, form } = $props();
 
 	let submitting = $state(false);
-	let showMessage = $state(false);
 	let search = $state('');
 	let eventFilter = $state('');
+	let dirty = $state(false);
+	let confirmDeleteOpen = $state(false);
+	let deleteTarget = $state<{ id: number; title: string } | null>(null);
+	let deleteForm = $state<HTMLFormElement>();
+	let sentinel = $state<HTMLElement>();
 
-	const FIVE_SECONDS_IN_MS = 5000;
 	const NO_EVENT = 'none';
+	const PAGE_SIZE = 12;
+
+	let visibleCount = $state(PAGE_SIZE);
+
+	guardUnsavedChanges(() => dirty);
 
 	const dateFormat = new Intl.DateTimeFormat('de-DE', {
 		day: '2-digit',
@@ -40,23 +51,30 @@
 		});
 	});
 
+	const visibleMedia = $derived(filtered.slice(0, visibleCount));
+
 	$effect(() => {
-		if (form) {
-			showMessage = true;
-			const timeout = setTimeout(() => (showMessage = false), FIVE_SECONDS_IN_MS);
-			return () => clearTimeout(timeout);
-		}
+		const el = sentinel;
+		if (!el) return;
+		const observer = new IntersectionObserver((entries) => {
+			if (entries.some((entry) => entry.isIntersecting)) {
+				visibleCount = Math.min(visibleCount + PAGE_SIZE, filtered.length);
+			}
+		});
+		observer.observe(el);
+		return () => observer.disconnect();
 	});
+
+	function requestDelete(medium: { id: number; title: string }) {
+		deleteTarget = medium;
+		confirmDeleteOpen = true;
+	}
 </script>
+
+<Toast {form} />
 
 <div class="mx-auto max-w-7xl px-4 py-10">
 	<h1 class="mb-6 text-2xl font-semibold">Impressionen bearbeiten</h1>
-
-	{#if showMessage && form?.error}
-		<p class="mb-4 text-sm text-red-600">{form.error}</p>
-	{:else if showMessage && form?.success}
-		<p class="mb-4 text-sm text-green-600">{form.success}</p>
-	{/if}
 
 	{#if data.media.length === 0}
 		<div class="rounded-lg border border-gray-200 bg-white p-10 text-center text-gray-500">
@@ -82,7 +100,7 @@
 		</div>
 
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-			{#each filtered as medium (medium.id)}
+			{#each visibleMedia as medium (medium.id)}
 				<div class="flex flex-col gap-3 rounded-lg bg-white p-4 shadow">
 					<div
 						class="flex aspect-video items-center justify-center overflow-hidden rounded border border-gray-200 bg-gray-50"
@@ -91,6 +109,7 @@
 							<img
 								src={medium.url}
 								alt={medium.title}
+								loading="lazy"
 								class="h-full w-full object-cover"
 							/>
 						{:else}
@@ -102,10 +121,12 @@
 						class="flex flex-col gap-3"
 						method="POST"
 						action="?/update"
+						oninput={() => (dirty = true)}
 						use:enhance={() => {
 							submitting = true;
-							return ({ update }) => {
+							return ({ update, result }) => {
 								submitting = false;
+								if (result.type === 'success') dirty = false;
 								return update({ reset: false });
 							};
 						}}
@@ -147,6 +168,7 @@
 								options={eventOptions}
 								placeholder="Keine"
 								searchable
+								onchange={() => (dirty = true)}
 							/>
 						</div>
 
@@ -159,33 +181,14 @@
 								Speichern
 							</button>
 							<button
-								type="submit"
-								form={`delete-${medium.id}`}
+								type="button"
+								onclick={() => requestDelete(medium)}
 								disabled={submitting}
 								class="rounded border border-red-600 px-3 py-2 text-sm text-red-600 hover:bg-red-600 hover:text-white disabled:opacity-50"
 							>
 								Löschen
 							</button>
 						</div>
-					</form>
-
-					<form
-						id={`delete-${medium.id}`}
-						method="POST"
-						action="?/delete"
-						use:enhance={({ cancel }) => {
-							if (!confirm(`„${medium.title}“ wirklich löschen?`)) {
-								cancel();
-								return;
-							}
-							submitting = true;
-							return ({ update }) => {
-								submitting = false;
-								return update();
-							};
-						}}
-					>
-						<input type="hidden" name="id" value={medium.id} />
 					</form>
 				</div>
 			{:else}
@@ -196,5 +199,32 @@
 				</div>
 			{/each}
 		</div>
+
+		{#if filtered.length > visibleCount}
+			<div bind:this={sentinel} class="h-px" aria-hidden="true"></div>
+		{/if}
 	{/if}
 </div>
+
+<form
+	bind:this={deleteForm}
+	method="POST"
+	action="?/delete"
+	use:enhance={() => {
+		submitting = true;
+		return ({ update }) => {
+			submitting = false;
+			deleteTarget = null;
+			return update();
+		};
+	}}
+>
+	<input type="hidden" name="id" value={deleteTarget?.id ?? ''} />
+</form>
+
+<ConfirmDialog
+	bind:open={confirmDeleteOpen}
+	message={`„${deleteTarget?.title ?? ''}“ wirklich löschen?`}
+	confirmLabel="Löschen"
+	onconfirm={() => deleteForm?.requestSubmit()}
+/>

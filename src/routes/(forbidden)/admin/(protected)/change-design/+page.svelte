@@ -2,10 +2,11 @@
 	import { enhance } from '$app/forms';
 	import { SvelteMap } from 'svelte/reactivity';
 	import Dropdown, { type DropdownOption } from '$lib/components/ui/Dropdown.svelte';
+	import Toast from '$lib/components/ui/Toast.svelte';
+	import { guardUnsavedChanges } from '$lib/utils/leave-guard';
 
 	const { data, form } = $props();
 
-	const FIVE_SECONDS_IN_MS = 5000;
 	const UNASSIGNED_EVENT = 'Ohne Veranstaltung';
 
 	const SECTION_LABELS: Record<string, string> = {
@@ -20,7 +21,6 @@
 	}
 
 	let submitting = $state(false);
-	let showMessage = $state(false);
 
 	// Seeded once from the saved slot/media mapping; each Dropdown's bind:value mutates an
 	// entry, so this must be a $state proxy for those member writes to stay reactive.
@@ -55,14 +55,10 @@
 		data.slots.some((s) => selected[s.id] !== (s.mediaId == null ? '' : String(s.mediaId)))
 	);
 
-	$effect(() => {
-		if (form) {
-			showMessage = true;
-			const timeout = setTimeout(() => (showMessage = false), FIVE_SECONDS_IN_MS);
-			return () => clearTimeout(timeout);
-		}
-	});
+	guardUnsavedChanges(() => dirty);
 </script>
+
+<Toast {form} />
 
 <form
 	class="mx-auto max-w-7xl px-4 py-10"
@@ -78,11 +74,7 @@
 	<div class="mb-8 flex items-center justify-between gap-4">
 		<h1 class="text-3xl font-bold text-hcss-primary-950">Erscheinungsbild</h1>
 
-		{#if showMessage && form?.error}
-			<p class="ml-auto text-sm text-red-600">{form.error}</p>
-		{:else if showMessage && form?.success}
-			<p class="ml-auto text-sm text-green-600">{form.success}</p>
-		{:else if dirty}
+		{#if dirty}
 			<p class="ml-auto text-sm text-amber-600">Ungespeicherte Änderungen.</p>
 		{/if}
 

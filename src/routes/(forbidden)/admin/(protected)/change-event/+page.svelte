@@ -1,16 +1,29 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
+	import Toast from '$lib/components/ui/Toast.svelte';
+	import { guardUnsavedChanges, UNSAVED_MESSAGE } from '$lib/utils/leave-guard';
 
 	const { data, form } = $props();
 
 	let submitting = $state(false);
-	let showMessage = $state(false);
 	let selectedId = $state<number | null>(null);
 	let search = $state('');
 	let showPast = $state(false);
+	let dirty = $state(false);
+	let confirmDeleteOpen = $state(false);
+	let deleteForm = $state<HTMLFormElement>();
 
-	const FIVE_SECONDS_IN_MS = 5000;
 	const nowMs = Date.now();
+
+	guardUnsavedChanges(() => dirty);
+
+	function selectEvent(id: number) {
+		if (id === selectedId) return;
+		if (dirty && !confirm(UNSAVED_MESSAGE)) return;
+		selectedId = id;
+		dirty = false;
+	}
 
 	const selected = $derived(data.events.find((e) => e.id === selectedId) ?? null);
 
@@ -52,24 +65,12 @@
 		const pad = (n: number) => String(n).padStart(TWO_DIGITS, '0');
 		return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 	}
-
-	$effect(() => {
-		if (form) {
-			showMessage = true;
-			const timeout = setTimeout(() => (showMessage = false), FIVE_SECONDS_IN_MS);
-			return () => clearTimeout(timeout);
-		}
-	});
 </script>
+
+<Toast {form} />
 
 <div class="mx-auto max-w-7xl px-4 py-10">
 	<h1 class="mb-6 text-2xl font-semibold">Veranstaltungen bearbeiten</h1>
-
-	{#if showMessage && form?.error}
-		<p class="mb-4 text-sm text-red-600">{form.error}</p>
-	{:else if showMessage && form?.success}
-		<p class="mb-4 text-sm text-green-600">{form.success}</p>
-	{/if}
 
 	<div class="flex flex-col gap-8 lg:flex-row">
 		<div class="flex flex-col gap-3 lg:w-1/3">
@@ -107,7 +108,7 @@
 					<li>
 						<button
 							type="button"
-							onclick={() => (selectedId = event.id)}
+							onclick={() => selectEvent(event.id)}
 							class="w-full rounded-lg border p-4 text-left transition-colors duration-200 {selectedId ===
 							event.id
 								? 'border-hcss-primary-700 bg-hcss-primary-100'
@@ -134,10 +135,12 @@
 						class="flex flex-col gap-4 rounded-lg bg-white p-6 shadow"
 						method="POST"
 						action="?/update"
+						oninput={() => (dirty = true)}
 						use:enhance={() => {
 							submitting = true;
-							return ({ update }) => {
+							return ({ update, result }) => {
 								submitting = false;
+								if (result.type === 'success') dirty = false;
 								return update({ reset: false });
 							};
 						}}
@@ -240,8 +243,8 @@
 								{submitting ? 'Speichern...' : 'Speichern'}
 							</button>
 							<button
-								type="submit"
-								form="delete-form"
+								type="button"
+								onclick={() => (confirmDeleteOpen = true)}
 								disabled={submitting}
 								class="rounded border border-red-600 px-4 py-2 text-red-600 hover:bg-red-600 hover:text-white disabled:opacity-50"
 							>
@@ -251,24 +254,30 @@
 					</form>
 
 					<form
-						id="delete-form"
+						bind:this={deleteForm}
 						method="POST"
 						action="?/delete"
-						use:enhance={({ cancel }) => {
-							if (!confirm(`„${selected?.title}“ wirklich löschen?`)) {
-								cancel();
-								return;
-							}
+						use:enhance={() => {
 							submitting = true;
 							return ({ update, result }) => {
 								submitting = false;
-								if (result.type === 'success') selectedId = null;
+								if (result.type === 'success') {
+									selectedId = null;
+									dirty = false;
+								}
 								return update();
 							};
 						}}
 					>
 						<input type="hidden" name="id" value={selected.id} />
 					</form>
+
+					<ConfirmDialog
+						bind:open={confirmDeleteOpen}
+						message={`„${selected.title}“ wirklich löschen?`}
+						confirmLabel="Löschen"
+						onconfirm={() => deleteForm?.requestSubmit()}
+					/>
 				{/key}
 			{:else}
 				<div

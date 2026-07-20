@@ -1,41 +1,33 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import Toast from '$lib/components/ui/Toast.svelte';
+	import { guardUnsavedChanges } from '$lib/utils/leave-guard';
 
 	const { form } = $props();
 
 	let submitting = $state(false);
-	let showMessage = $state(false);
+	let dirty = $state(false);
 
-	const FIVE_SECONDS_IN_MS = 5000;
-
-	$effect(() => {
-		if (form) {
-			showMessage = true;
-			const timeout = setTimeout(() => (showMessage = false), FIVE_SECONDS_IN_MS);
-			return () => clearTimeout(timeout);
-		}
-	});
+	guardUnsavedChanges(() => dirty);
 </script>
+
+<Toast {form} />
 
 <div class="mx-auto max-w-3xl px-4 py-10">
 	<form
 		class="flex flex-col gap-4 p-8"
 		method="POST"
+		oninput={() => (dirty = true)}
 		use:enhance={() => {
 			submitting = true;
 			return ({ update, result }) => {
 				submitting = false;
+				if (result.type === 'success') dirty = false;
 				return update({ reset: result.type === 'success' });
 			};
 		}}
 	>
 		<h1 class="text-2xl font-semibold">Veranstaltung erstellen</h1>
-
-		{#if showMessage && form?.error}
-			<p class="text-sm text-red-600">{form.error}</p>
-		{:else if showMessage && form?.success}
-			<p class="text-sm text-green-600">{form.success}</p>
-		{/if}
 
 		<div class="flex flex-col gap-1">
 			<label for="title" class="text-sm font-medium">Titel</label>
