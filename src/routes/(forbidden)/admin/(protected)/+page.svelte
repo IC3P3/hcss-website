@@ -2,8 +2,6 @@
 	import { resolve } from '$app/paths';
 </script>
 
-<!-- TODO: routes below not built yet, re-enable this rule and restore resolve() once they exist -->
-<!-- eslint-disable svelte/no-navigation-without-resolve -->
 <div class="mx-auto max-w-5xl px-4 py-10">
 	<h1 class="mb-8 text-3xl font-bold text-hcss-primary-950">Administrationsbereich</h1>
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -15,7 +13,7 @@
 			>
 			<a
 				class="rounded border border-hcss-primary-700 px-4 py-2 text-center text-sm text-hcss-primary-700 transition-colors duration-200 hover:bg-hcss-primary-700 hover:text-white"
-				href="/admin/change-media">Impression bearbeiten</a
+				href={resolve('/admin/change-media')}>Impression bearbeiten</a
 			>
 		</div>
 		<div class="flex flex-col gap-2 rounded-lg bg-white p-6 shadow">
@@ -38,4 +36,3 @@
 		</div>
 	</div>
 </div>
-<!-- eslint-enable svelte/no-navigation-without-resolve -->
