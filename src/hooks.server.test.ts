@@ -24,11 +24,7 @@ beforeAll(async () => {
 	});
 });
 
-function makeEvent(overrides: {
-	routeId: string;
-	method?: string;
-	session?: string;
-}): MockEvent {
+function makeEvent(overrides: { routeId: string; method?: string; session?: string }): MockEvent {
 	return {
 		cookies: {
 			get: () => overrides.session,

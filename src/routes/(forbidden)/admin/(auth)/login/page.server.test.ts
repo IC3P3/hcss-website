@@ -46,7 +46,10 @@ describe('login', () => {
 	});
 
 	it('redirects and sets a session cookie on success', async () => {
-		const { event, cookies } = loginEvent({ username: USERNAME, password: PASSWORD }, '10.0.0.4');
+		const { event, cookies } = loginEvent(
+			{ username: USERNAME, password: PASSWORD },
+			'10.0.0.4'
+		);
 		await expect(actions.login(event)).rejects.toMatchObject({
 			status: HTTP_STATUS_CODES.found
 		});
