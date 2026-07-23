@@ -33,8 +33,7 @@
 
 	let submitting = $state(false);
 
-	// Seeded once from the saved slot/media mapping; each Dropdown's bind:value mutates an
-	// entry, so this must be a $state proxy for those member writes to stay reactive.
+	// Seeded once from the saved slot/media mapping
 	// svelte-ignore state_referenced_locally
 	const selected = $state<Record<number, string>>(
 		Object.fromEntries(
