@@ -57,6 +57,7 @@
 	"dependencies": {
 		"argon2": "0.44.0",
 		"better-sqlite3": "12.11.1",
+		"sharp": "^0.35.3",
 		"winston": "^3.19.0"
 	}
 }

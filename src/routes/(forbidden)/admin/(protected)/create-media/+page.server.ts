@@ -2,13 +2,13 @@ import { env } from '$env/dynamic/private';
 import { db } from '$lib/server/db';
 import { Media } from '$lib/server/models/Media';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
-import { isWebP } from '$lib/server/utils/file-type_functions';
 import { logger } from '$lib/server/utils/logger';
 import { fail, type Actions } from '@sveltejs/kit';
 import { mkdir, unlink, writeFile } from 'fs/promises';
 import { join } from 'path';
 import type { PageServerLoad } from './$types';
 import { Event } from '$lib/server/models/Event';
+import sharp from 'sharp';
 
 const UPLOAD_PATH = env.UPLOAD_PATH ?? 'upload';
 
@@ -83,13 +83,14 @@ export const actions = {
 } satisfies Actions;
 
 async function uploadFile(file: File): Promise<string | null> {
-	const buffer = Buffer.from(await file.arrayBuffer());
+	let buffer = Buffer.from(await file.arrayBuffer());
 
-	if (!isWebP(buffer)) {
-		return null;
-	}
+	buffer = await sharp(buffer)
+		.webp({ quality: 82, effort: 6 })
+		.resize({ width: 2160, withoutEnlargement: true })
+		.toBuffer();
 
-	const filename = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+	const filename = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}.webp`;
 
 	const uploadDir = join(process.cwd(), UPLOAD_PATH);
 	await mkdir(uploadDir, { recursive: true });

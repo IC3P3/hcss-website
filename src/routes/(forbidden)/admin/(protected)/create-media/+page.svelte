@@ -90,7 +90,7 @@
 					onchange={onFileChange}
 					id="media"
 					name="media"
-					accept="image/webp"
+					accept="image/*"
 					required
 					class="rounded border px-3 py-2"
 				/>
