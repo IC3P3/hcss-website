@@ -44,6 +44,9 @@ jobs:
 
             - run: pnpm build
 
+            - name: Probe cache server (throwaway)
+              run: echo "ACTIONS_CACHE_URL=$ACTIONS_CACHE_URL"
+
             - run: pnpm exec playwright install --with-deps chromium
             - run: pnpm test:unit -- --run
             - run: pnpm test:e2e
