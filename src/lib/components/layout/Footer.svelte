@@ -32,7 +32,9 @@
 
 			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-6">
 				<div>
-					<h3 class="animated-underline text-md mb-5 font-semibold text-gray-900 uppercase">
+					<h3
+						class="animated-underline text-md mb-5 font-semibold text-gray-900 uppercase"
+					>
 						<a href={resolve('/impressum')}>Impressum</a>
 					</h3>
 					<address class="not-italic">
