@@ -22,7 +22,7 @@ jobs:
                       xargs -r -n1 git config --local --unset-all
                   git lfs pull
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: 24.18.0
 
