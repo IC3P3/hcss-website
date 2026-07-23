@@ -3,7 +3,7 @@ import { User } from '$lib/server/models/User';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
 import { logger } from '$lib/server/utils/logger';
 import { fail, type Actions } from '@sveltejs/kit';
-import { asc, eq } from 'drizzle-orm';
+import { asc, count, eq } from 'drizzle-orm';
 import { hash, verify } from 'argon2';
 import type { PageServerLoad } from './$types';
 
@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 		.from(User)
 		.orderBy(asc(User.username));
 
-	return { currentUsername: me?.username ?? '', admins };
+	return { currentUsername: me?.username ?? '', currentUserId: locals.user.id, admins };
 };
 
 export const actions = {
@@ -148,5 +148,43 @@ export const actions = {
 
 		logger.info('Password changed', { userId: locals.user.id });
 		return { success: 'Ihr Passwort wurde geändert.' };
+	},
+
+	deleteAdmin: async ({ request, locals }) => {
+		const data = await request.formData();
+		const id = Number(data.get('id'));
+
+		if (!Number.isInteger(id)) {
+			return fail(HTTP_STATUS_CODES.badRequest, { error: 'Ungültiger Administrator.' });
+		}
+		if (id === locals.user.id) {
+			return fail(HTTP_STATUS_CODES.badRequest, {
+				error: 'Sie können Ihr eigenes Konto nicht löschen.'
+			});
+		}
+
+		const [{ n }] = await db.select({ n: count() }).from(User);
+		if (n <= 1) {
+			return fail(HTTP_STATUS_CODES.badRequest, {
+				error: 'Der letzte Administrator kann nicht gelöscht werden.'
+			});
+		}
+
+		try {
+			const result = await db.delete(User).where(eq(User.id, id));
+			if (result.changes === 0) {
+				return fail(HTTP_STATUS_CODES.badRequest, {
+					error: 'Administrator nicht gefunden.'
+				});
+			}
+		} catch (err) {
+			logger.error('Admin delete failed', { id, error: String(err) });
+			return fail(HTTP_STATUS_CODES.internalServerError, {
+				error: 'Es kam zu einem Fehler. Bitte versuchen Sie es erneut.'
+			});
+		}
+
+		logger.info('Admin deleted', { id, by: locals.user.id });
+		return { success: 'Der Administrator wurde gelöscht.' };
 	}
 } satisfies Actions;

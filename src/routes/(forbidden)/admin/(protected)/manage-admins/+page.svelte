@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import Toast from '$lib/components/ui/Toast.svelte';
+	import ConfirmDialog from '$lib/components/ui/ConfirmDialog.svelte';
 
 	const { data, form } = $props();
 
 	let submitting = $state('');
+	let confirmDeleteOpen = $state(false);
+	let pendingDelete = $state<{ id: number; username: string } | null>(null);
+	let deleteForm = $state<HTMLFormElement>();
 
 	function submit(name: string) {
 		submitting = name;
@@ -139,8 +143,45 @@
 
 		<ul class="flex flex-col gap-1 text-sm text-gray-700">
 			{#each data.admins as admin (admin.id)}
-				<li class="border-b border-gray-100 py-1">{admin.username}</li>
+				<li class="flex items-center justify-between border-b border-gray-100 py-1">
+					<span>{admin.username}{admin.id === data.currentUserId ? ' (Sie)' : ''}</span>
+					{#if admin.id !== data.currentUserId}
+						<button
+							type="button"
+							onclick={() => {
+								pendingDelete = { id: admin.id, username: admin.username };
+								confirmDeleteOpen = true;
+							}}
+							disabled={submitting === 'deleteAdmin'}
+							class="rounded px-2 py-1 text-xs text-red-600 hover:bg-red-50 disabled:opacity-50"
+						>
+							Löschen
+						</button>
+					{/if}
+				</li>
 			{/each}
 		</ul>
+
+		<form
+			bind:this={deleteForm}
+			method="POST"
+			action="?/deleteAdmin"
+			use:enhance={() => {
+				const cb = submit('deleteAdmin');
+				return async (event) => {
+					if (event.result.type === 'success') pendingDelete = null;
+					await cb(event);
+				};
+			}}
+		>
+			<input type="hidden" name="id" value={pendingDelete?.id ?? ''} />
+		</form>
 	</section>
 </div>
+
+<ConfirmDialog
+	bind:open={confirmDeleteOpen}
+	message={`Administrator „${pendingDelete?.username ?? ''}“ wirklich löschen?`}
+	confirmLabel="Löschen"
+	onconfirm={() => deleteForm?.requestSubmit()}
+/>
