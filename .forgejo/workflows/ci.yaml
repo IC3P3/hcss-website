@@ -44,10 +44,20 @@ jobs:
 
             - run: pnpm build
 
-            - name: Probe cache server (throwaway)
-              run: echo "ACTIONS_CACHE_URL=$ACTIONS_CACHE_URL"
+            - name: Cache Playwright browsers
+              id: pw-cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/ms-playwright
+                  key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
 
-            - run: pnpm exec playwright install --with-deps chromium
+            - name: Install Playwright (browser + deps)
+              if: steps.pw-cache.outputs.cache-hit != 'true'
+              run: pnpm exec playwright install --with-deps chromium
+
+            - name: Install Playwright system deps
+              if: steps.pw-cache.outputs.cache-hit == 'true'
+              run: pnpm exec playwright install-deps chromium
             - run: pnpm test:unit -- --run
             - run: pnpm test:e2e
 
