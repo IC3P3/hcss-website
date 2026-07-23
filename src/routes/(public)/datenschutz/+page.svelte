@@ -118,10 +118,7 @@ privacy"
 		Klosterstr. 12<br />
 		38350 Helmstedt
 	</p>
-	<p>
-		Telefon: &#91;Telefonnummer der verantwortlichen Stelle&#93;<br />
-		E-Mail: HCSS38350@gmx.de
-	</p>
+	<p>E-Mail: HCSS38350@gmx.de</p>
 	<p>
 		Verantwortliche Stelle ist die nat&uuml;rliche oder juristische Person, die allein oder
 		gemeinsam mit anderen &uuml;ber die Zwecke und Mittel der Verarbeitung von personenbezogenen
