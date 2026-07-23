@@ -61,5 +61,15 @@
 				href={resolve('/admin/change-design')}>Design-Elemente bearbeiten</a
 			>
 		</div>
+		<div class="flex flex-col gap-2 rounded-lg bg-white p-6 shadow">
+			<h2 class="text-xl font-semibold text-gray-900">Administratoren</h2>
+			<p class="mb-4 grow text-sm text-gray-500">
+				Konto verwalten und weitere Administratoren hinzufügen
+			</p>
+			<a
+				class="rounded border border-hcss-primary-700 px-4 py-2 text-center text-sm text-hcss-primary-700 transition-colors duration-200 hover:bg-hcss-primary-700 hover:text-white"
+				href={resolve('/admin/manage-admins')}>Administratoren verwalten</a
+			>
+		</div>
 	</div>
 </div>
