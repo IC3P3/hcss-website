@@ -15,6 +15,17 @@
 		offer: 'Angebote'
 	};
 
+	const SECTION_RANK = new Map(
+		[SECTION_LABELS.hero, SECTION_LABELS.offer, SECTION_LABELS.media].map((name, i) => [
+			name,
+			i
+		])
+	);
+
+	function rankOf(name: string): number {
+		return SECTION_RANK.get(name) ?? SECTION_RANK.size;
+	}
+
 	function sectionOf(tag: string): string {
 		if (tag.startsWith('offer-')) return SECTION_LABELS.offer;
 		return SECTION_LABELS[tag] ?? 'Sonstige';
@@ -48,7 +59,9 @@
 			if (!map.has(name)) map.set(name, []);
 			map.get(name)!.push(slot);
 		}
-		return [...map.entries()].map(([name, slots]) => ({ name, slots }));
+		return [...map.entries()]
+			.map(([name, slots]) => ({ name, slots }))
+			.sort((a, b) => rankOf(a.name) - rankOf(b.name));
 	});
 
 	const dirty = $derived(
