@@ -42,7 +42,7 @@ interface for content management.
     pnpm install
     ```
 
-3. Set up environment variables — copy `.env.example` to `.env` and adjust the
+3. To set up environment variables copy `.env.example` to `.env` and adjust the
    values (see [Configuration](#configuration)):
 
     ```bash
@@ -82,23 +82,23 @@ pnpm run preview
 
 ## Configuration
 
-All settings are provided through environment variables — copy `.env.example`
+All settings are provided through environment variables. Copy `.env.example`
 to `.env` for local development, or pass them at runtime in Docker.
 
 | Variable                  | Required | Default (Docker image)      | Description                                                                                               |
 | ------------------------- | -------- | --------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `ADMIN_PASSWORD`          | yes      | —                           | Admin password used by the seed. The container aborts on boot if unset.                                   |
-| `HOST_URL`                | yes      | —                           | Public base URL, used for `sitemap.xml`/`robots.txt`.                                                     |
+| `ADMIN_PASSWORD`          | yes      | x                           | Admin password used by the seed. The container aborts on boot if unset.                                   |
+| `HOST_URL`                | yes      | x                           | Public base URL, used for `sitemap.xml`/`robots.txt`.                                                     |
 | `ADMIN_USERNAME`          | no       | `admin`                     | Admin username used by the seed.                                                                          |
 | `DATABASE_URL`            | no       | `/data/website-data.sqlite` | SQLite path. Keep it on the `/data` volume.                                                               |
 | `UPLOAD_PATH`             | no       | `/data/upload`              | Upload directory. Keep it on the `/data` volume.                                                          |
 | `BODY_SIZE_LIMIT`         | no       | `Infinity`                  | Node request body cap; left disabled so the reverse proxy is the limit.                                   |
 | `LOG_LEVEL`               | no       | `info`                      | winston log level: `error`, `warn`, `info` or `debug`.                                                    |
 | `TZ`                      | no       | container default (UTC)     | Server timezone. Set `Europe/Berlin` so event datetimes entered in the admin panel are stored correctly.  |
-| `PUBLIC_UMAMI_SRC`        | no       | —                           | URL of the Umami tracking script. Both `PUBLIC_UMAMI_*` values must be set for the script to be embedded. |
-| `PUBLIC_UMAMI_WEBSITE_ID` | no       | —                           | Website ID from the Umami dashboard.                                                                      |
+| `PUBLIC_UMAMI_SRC`        | no       | x                           | URL of the Umami tracking script. Both `PUBLIC_UMAMI_*` values must be set for the script to be embedded. |
+| `PUBLIC_UMAMI_WEBSITE_ID` | no       | x                           | Website ID from the Umami dashboard.                                                                      |
 
-> `ADMIN_PASSWORD` must stay set on every start — the seed validates it before
+> `ADMIN_PASSWORD` must stay set on every start. The seed validates it before
 > checking whether the admin already exists.
 
 ## Deployment with Docker
@@ -178,16 +178,15 @@ The server logs structured JSON lines to stdout via
 [winston](https://github.com/winstonjs/winston) (`src/lib/server/utils/logger.ts`).
 Logged events include authentication successes/failures, admin content changes,
 failed database operations and unhandled server errors. In Docker, read them
-with `docker logs`; the verbosity is controlled by `LOG_LEVEL`.
+with `docker logs`. The verbosity is controlled by `LOG_LEVEL`.
 
 ## Analytics (optional)
 
 The deployment stack ships an optional, self-hosted
-[Umami](https://umami.is/) instance behind the `analytics` compose profile —
-see `deploy/README.md`. The tracking script is only embedded on public pages
-when both `PUBLIC_UMAMI_SRC` and `PUBLIC_UMAMI_WEBSITE_ID` are set; without
-them the site loads no analytics at all. Umami is cookieless, so no consent
-banner is required.
+[Umami](https://umami.is/) instance behind the `analytics` compose profile.
+See `deploy/README.md`. The tracking script is only embedded on public pages
+when both `PUBLIC_UMAMI_SRC` and `PUBLIC_UMAMI_WEBSITE_ID` are set. Without
+them the site loads no analytics at all.
 
 ## Testing
 

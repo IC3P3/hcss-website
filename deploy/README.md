@@ -18,7 +18,7 @@
     Restart=always
     ```
 
-    Put nginx/TLS in front of port `9000`; that public URL is the
+    Put nginx/TLS in front of port `9000`. That public URL is the
     `*_DEPLOY_HOOK_URL` secret.
 
 6. Point the site's reverse proxy at `APP_PORT` and set `client_max_body_size`
@@ -27,7 +27,7 @@
 ## Optional analytics (Umami)
 
 The compose file contains an `umami` + `umami-db` pair behind the `analytics`
-profile; without the profile nothing extra runs. To enable it:
+profile. Without the profile nothing extra runs. To enable it:
 
 1. Set `UMAMI_DB_PASSWORD`, `UMAMI_APP_SECRET` (random string) and optionally
    `UMAMI_PORT` / `UMAMI_DB_DIR` in the server `.env`.
