@@ -76,13 +76,13 @@
 						</h3>
 						<p
 							class={offering.times.length > 0
-								? 'font-semibold text-gray-700 text-left'
-								: 'text-gray-700 text-left'}
+								? 'text-left font-semibold text-gray-700'
+								: 'text-left text-gray-700'}
 						>
 							{offering.subtitle}
 						</p>
 						{#each offering.times as time, j (j)}
-							<p class="text-gray-700 my-2 text-left">{time}</p>
+							<p class="my-2 text-left text-gray-700">{time}</p>
 						{/each}
 					</div>
 				</div>

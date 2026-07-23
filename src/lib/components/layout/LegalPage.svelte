@@ -15,17 +15,17 @@
 
 <article
 	class="mx-auto max-w-4xl px-4 py-12 leading-relaxed font-light text-gray-600 lg:py-16
-		[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-gray-200 [&_h2]:pb-2 [&_h2]:text-[1.75rem] [&_h2]:leading-tight [&_h2]:font-extrabold [&_h2]:text-hcss-primary-950
-		[&_h2:first-child]:mt-0
-		[&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-hcss-primary-900
-		[&_h4]:mt-6 [&_h4]:mb-2 [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-gray-800
-		[&_p]:mb-4 [&_p]:text-justify
-		[&_strong]:font-semibold [&_strong]:text-gray-900
-		[&_ul]:mb-4 [&_ul]:ml-6 [&_ul]:list-disc
-		[&_li]:mb-2
-		[&_a]:relative [&_a]:font-medium [&_a]:wrap-break-word [&_a]:text-hcss-secondary
-		[&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-px [&_a]:after:w-full [&_a]:after:origin-left [&_a]:after:scale-x-100 [&_a]:after:bg-current [&_a]:after:transition-transform [&_a]:after:duration-300
-		[&_a:hover]:after:scale-x-0"
+		[&_a]:relative [&_a]:font-medium [&_a]:wrap-break-word [&_a]:text-hcss-secondary [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-px [&_a]:after:w-full
+		[&_a]:after:origin-left
+		[&_a]:after:scale-x-100 [&_a]:after:bg-current [&_a]:after:transition-transform [&_a]:after:duration-300 [&_a:hover]:after:scale-x-0
+		[&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-gray-200 [&_h2]:pb-2
+		[&_h2]:text-[1.75rem] [&_h2]:leading-tight
+		[&_h2]:font-extrabold [&_h2]:text-hcss-primary-950
+		[&_h2:first-child]:mt-0 [&_h3]:mt-8 [&_h3]:mb-3
+		[&_h3]:text-xl
+		[&_h3]:font-bold [&_h3]:text-hcss-primary-900 [&_h4]:mt-6 [&_h4]:mb-2
+		[&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-gray-800 [&_li]:mb-2 [&_p]:mb-4 [&_p]:text-justify [&_strong]:font-semibold [&_strong]:text-gray-900 [&_ul]:mb-4 [&_ul]:ml-6
+		[&_ul]:list-disc"
 >
 	{@render children()}
 </article>
