@@ -50,7 +50,7 @@
 		CD-Aufnahmen entstanden.
 	</p>
 
-	<h2 class="clear-both text-4xl font-extrabold text-hcss-primary-950 pt-6 lg:pt-8">
+	<h2 class="clear-both pt-6 text-4xl font-extrabold text-hcss-primary-950 lg:pt-8">
 		Das sind wir - heute
 	</h2>
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
@@ -86,18 +86,18 @@
 			<h3 class="mb-2 text-lg font-bold text-hcss-primary-950">
 				Helmstedter Chor- und Singschule e.V.
 			</h3>
-			<p class="text-gray-700 text-justify">
+			<p class="text-justify text-gray-700">
 				Der Verein Helmstedter Chor- und Singschule e.V. ist der Trägerverein des
 				Singschulangebote und des Konzertchores. Auch die Gesangsklasse ist letztlich ein
 				Angebot des Vereins. Die Funktionsträger des Vereins sind:
 			</p>
-			<ul class="text-gray-900 ml-7 my-4 text-start list-disc">
+			<ul class="my-4 ml-7 list-disc text-start text-gray-900">
 				<li>1. Vorsitzender: Stefan PD Runge</li>
 				<li>2. Vorsitzende: Marina Golombeck</li>
 				<li>Kassiererin: Gesa von Rützen-Kositzkau</li>
 				<li>Beisitzer: Lucas Schwaiger und Helena Wedekind</li>
 			</ul>
-			<p class="text-gray-700 text-justify">
+			<p class="text-justify text-gray-700">
 				Den Verein erreichst du am besten per <a
 					href="mailto:HCSS38350@gmx.de"
 					class="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-100 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-0"
@@ -113,7 +113,7 @@
 		</div>
 		<div class="rounded-lg bg-white p-6 shadow-lg">
 			<h3 class="mb-2 text-lg font-bold text-hcss-primary-950">Förderverein</h3>
-			<p class="text-gray-700 text-justify">
+			<p class="text-justify text-gray-700">
 				Die Helmstedter Chor- und Singschule finanziert sich hauptsächlich durch die
 				Beiträge ihrer Mitglieder, aber auch durch Zuschüsse von Stadt und Landkreis
 				Helmstedt und nicht zuletzt durch Spenden. Größere Projekte werden zudem durch
@@ -123,7 +123,7 @@
 				Zweck des Verein ist die Unterstützung der musikalisch, jugendpflegerischen und sozialen
 				Arbeit der Helmstedter Chor- und Singschule. Konkret:
 			</p>
-			<ul class="text-gray-900 ml-7 my-4 text-start list-disc">
+			<ul class="my-4 ml-7 list-disc text-start text-gray-900">
 				<li>
 					Erhaltung der Helmstedter Chor- und Singschule für ein vielfältiges
 					Kulturangebot im Landkreis Helmstedt.
@@ -142,7 +142,7 @@
 					Musik hinaus.
 				</li>
 			</ul>
-			<p class="text-gray-700 text-justify">
+			<p class="text-justify text-gray-700">
 				Wenn du einen dieser Zwecke für wichtig hältst, dann sei einfach dabei. Hier findest
 				du ein Anmeldeformular. Für alle, die einfach spenden wollen, hier die
 				Bankverbindung:<br /><br />Förderverein Helmstedter Chorknaben e.V.<br />

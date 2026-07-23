@@ -3,6 +3,7 @@ import { Event } from '$lib/server/models/Event';
 import { Media } from '$lib/server/models/Media';
 import { PageContent } from '$lib/server/models/PageContent';
 import { HTTP_STATUS_CODES } from '$lib/server/utils/constants';
+import { logger } from '$lib/server/utils/logger';
 import { mediaUrl } from '$lib/server/utils/media';
 import { fail, type Actions } from '@sveltejs/kit';
 import { asc, eq } from 'drizzle-orm';
@@ -45,7 +46,7 @@ export const load: PageServerLoad = async () => {
 export const actions = {
 	default: async ({ request, locals }) => {
 		if (!locals.user)
-			return fail(HTTP_STATUS_CODES.unautherized, { error: 'Kein angemeldeter Nutzer.' });
+			return fail(HTTP_STATUS_CODES.unauthorized, { error: 'Kein angemeldeter Nutzer.' });
 
 		const data = await request.formData();
 
@@ -81,12 +82,14 @@ export const actions = {
 						.run();
 				}
 			});
-		} catch {
+		} catch (err) {
+			logger.error('PageContent update transaction failed', { error: String(err) });
 			return fail(HTTP_STATUS_CODES.internalServerError, {
 				error: 'Es kam zu einem Fehler. Bitte laden Sie die Seite neu.'
 			});
 		}
 
+		logger.info('PageContent slots updated', { count: updates.length });
 		return { success: 'Änderungen gespeichert.' };
 	}
 } satisfies Actions;

@@ -121,26 +121,39 @@ async function main(adminPassword: string) {
 				},
 				{
 					tag: 'offer-1',
-					title: 'Bild der Vorgruppen',
-					description: 'Darstellung der Vorgruppe im Angebot unserer Einrichtung',
+					title: 'Bild: Vorgruppe 1',
+					description: 'Bild für die Vorgruppe 1 (Kinder ab etwa 5 Jahren) im Angebot.',
 					subpageId: 1
 				},
 				{
 					tag: 'offer-2',
-					title: 'Bild des Konzertchor',
-					description: 'Darstellung des Konzertchors im Angebot unserer Einrichtung',
+					title: 'Bild: Vorgruppe 2',
+					description: 'Bild für die Vorgruppe 2 (Kinder ab etwa 8 Jahren) im Angebot.',
 					subpageId: 1
 				},
 				{
 					tag: 'offer-3',
-					title: 'Unterrichtsbild',
-					description: 'Darstellung des Konzertchors im Angebot unserer Einrichtung',
+					title: 'Bild: Konzertchor',
+					description: 'Bild für den Konzertchor im Angebot.',
 					subpageId: 1
 				},
 				{
 					tag: 'offer-4',
-					title: 'Bild des Projektchors',
-					description: 'Darstellung des Projektchors im Angebot unserer Einrichtung',
+					title: 'Bild: Gesangs-, Klavierunterricht & Musiktheorie',
+					description:
+						'Bild für den Gesangs-, Klavier- und Musiktheorieunterricht im Angebot.',
+					subpageId: 1
+				},
+				{
+					tag: 'offer-5',
+					title: 'Bild: Chorprojekte',
+					description: 'Bild für die Chorprojekte im Angebot.',
+					subpageId: 1
+				},
+				{
+					tag: 'offer-6',
+					title: 'Bild: Vocalcoaching',
+					description: 'Bild für das Vocalcoaching im Angebot.',
 					subpageId: 1
 				}
 			])

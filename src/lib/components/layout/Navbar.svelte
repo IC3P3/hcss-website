@@ -6,7 +6,6 @@
 	import { slide } from 'svelte/transition';
 
 	import type { NavbarItem } from '$lib/types/Navbar';
-	import { onMount } from 'svelte';
 
 	const { items, isLoggedIn } = $props<{ items: NavbarItem[]; isLoggedIn: boolean }>();
 
@@ -46,8 +45,13 @@
 		return page.url.pathname === href;
 	}
 
-	onMount(() => {
+	$effect(() => {
+		// Re-run on navigation so the observer re-attaches to the current page's sections
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		page.url.pathname;
+
 		const sections = document.querySelectorAll('section[id]');
+		if (!sections.length) return;
 
 		const observer = new IntersectionObserver(
 			(entries: IntersectionObserverEntry[]) => {
@@ -55,7 +59,7 @@
 					if (entry.isIntersecting) currentHash = `#${entry.target.id}`;
 				}
 			},
-			{ threshold: 0.5 }
+			{ rootMargin: '-100px 0px -70% 0px', threshold: 0 }
 		);
 
 		sections.forEach((s) => observer.observe(s));

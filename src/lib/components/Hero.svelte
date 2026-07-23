@@ -27,7 +27,7 @@
 					Helmstedter Chor- und Singschule
 				</h1>
 				<p
-					class="mx-5 mt-4 max-w-4xl px-2 text-center text-base text-white font-semibold text-shadow-lg sm:text-xl"
+					class="mx-5 mt-4 max-w-4xl px-2 text-center text-base font-semibold text-white text-shadow-lg sm:text-xl"
 				>
 					Willkommen. Hier lernst du den Konzertchor Helmstedt und die Angebote der
 					Helmstedter Chor- und Singschule kennen. Wenn du uns schon kennst aber Kontakt
@@ -44,12 +44,12 @@
 			<div class="flex flex-col items-center sm:flex-row">
 				<a
 					href="mailto:HCSS38350@gmx.de"
-					class="mt-4 rounded-md bg-hcss-primary-700 px-7 py-3 mx-4 text-xs font-bold text-white uppercase transition-colors duration-200 hover:bg-hcss-primary-900"
+					class="mx-4 mt-4 rounded-md bg-hcss-primary-700 px-7 py-3 text-xs font-bold text-white uppercase transition-colors duration-200 hover:bg-hcss-primary-900"
 					>Unsere E-Mail</a
 				>
 				<a
 					href="#veranstaltungen"
-					class="mt-4 rounded-md bg-hcss-primary-700 px-7 py-3 mx-4 text-xs font-bold text-white uppercase transition-colors duration-200 hover:bg-hcss-primary-900"
+					class="mx-4 mt-4 rounded-md bg-hcss-primary-700 px-7 py-3 text-xs font-bold text-white uppercase transition-colors duration-200 hover:bg-hcss-primary-900"
 					>Unsere Termine</a
 				>
 			</div>

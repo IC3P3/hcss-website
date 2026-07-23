@@ -51,7 +51,10 @@
 	];
 </script>
 
-<section id="angebote" class="w-full bg-linear-to-b from-white via-hcss-primary-100 to-white">
+<section
+	id="angebote"
+	class="w-full bg-linear-to-b from-white from-[10rem] via-hcss-primary-100 via-[22rem] to-white"
+>
 	<div class="mx-auto w-full max-w-7xl p-4 py-6 text-center lg:py-8">
 		<h2 class="text-4xl font-extrabold text-hcss-primary-950">Unsere Angebote</h2>
 		<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
@@ -73,13 +76,13 @@
 						</h3>
 						<p
 							class={offering.times.length > 0
-								? 'font-semibold text-gray-700 text-left'
-								: 'text-gray-700 text-left'}
+								? 'text-left font-semibold text-gray-700'
+								: 'text-left text-gray-700'}
 						>
 							{offering.subtitle}
 						</p>
 						{#each offering.times as time, j (j)}
-							<p class="text-gray-700 my-2 text-left">{time}</p>
+							<p class="my-2 text-left text-gray-700">{time}</p>
 						{/each}
 					</div>
 				</div>

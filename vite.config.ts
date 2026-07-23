@@ -27,6 +27,9 @@ export default defineConfig({
 				test: {
 					name: 'server',
 					environment: 'node',
+					// In-memory DB so tests never touch a real database file.
+					env: { DATABASE_URL: ':memory:', LOG_LEVEL: 'error' },
+					setupFiles: ['./vitest-setup.server.ts'],
 					include: ['src/**/*.{test,spec}.{js,ts}'],
 					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
 				}
