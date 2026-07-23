@@ -84,7 +84,7 @@
 			</div>
 
 			<div class="flex flex-col gap-1">
-				<label for="media" class="text-sm font-medium">Bild (WebP)</label>
+				<label for="media" class="text-sm font-medium">Bild</label>
 				<input
 					type="file"
 					onchange={onFileChange}
