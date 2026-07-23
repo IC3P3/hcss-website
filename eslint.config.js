@@ -104,5 +104,12 @@ export default ts.config(
 		rules: {
 			'no-magic-numbers': 'off'
 		}
+	},
+	{
+		// CLI scripts talk to the operator via stdout.
+		files: ['scripts/**'],
+		rules: {
+			'no-console': 'off'
+		}
 	}
 );

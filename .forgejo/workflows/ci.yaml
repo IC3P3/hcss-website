@@ -3,6 +3,7 @@ name: CI
 on:
     push:
         branches: [main, dev]
+        paths-ignore: ['**.md', 'deploy/**', 'LICENSE']
     pull_request:
 
 jobs:
@@ -13,39 +14,115 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
+            - name: Fetch LFS objects
+              # checkout's auth header 401s against Forgejo's LFS endpoint, which
+              # serves objects anonymously — drop the header and pull unauthenticated.
+              run: |
+                  git config --local --get-regexp 'http\..*\.extraheader' | cut -d' ' -f1 |
+                      xargs -r -n1 git config --local --unset-all
+                  git lfs pull
+
             - uses: actions/setup-node@v4
               with:
                   node-version: 24.18.0
 
             - uses: pnpm/action-setup@v4
               with:
-                  version: 11.10.0
+                  version: 11.13.1
 
             - run: pnpm install --frozen-lockfile
 
-            - run: pnpm lint
+            - name: Lint
+              if: github.base_ref != 'main' && github.ref != 'refs/heads/main'
+              run: pnpm lint
+
+            - name: Strict lint (gate for main)
+              if: github.base_ref == 'main' || github.ref == 'refs/heads/main'
+              run: pnpm lint:strict
+
             - run: pnpm check
 
             - run: pnpm build
 
-            - run: pnpm exec playwright install --with-deps chromium
+            - name: Cache Playwright browsers
+              id: pw-cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/ms-playwright
+                  key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+            - name: Install Playwright (browser + deps)
+              if: steps.pw-cache.outputs.cache-hit != 'true'
+              run: pnpm exec playwright install --with-deps chromium
+
+            - name: Install Playwright system deps
+              if: steps.pw-cache.outputs.cache-hit == 'true'
+              run: pnpm exec playwright install-deps chromium
             - run: pnpm test:unit -- --run
             - run: pnpm test:e2e
 
-    deploy-dev:
+    build:
         needs: test
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Fetch LFS objects
+              # checkout's auth header 401s against Forgejo's LFS endpoint, which
+              # serves objects anonymously — drop the header and pull unauthenticated.
+              run: |
+                  git config --local --get-regexp 'http\..*\.extraheader' | cut -d' ' -f1 |
+                      xargs -r -n1 git config --local --unset-all
+                  git lfs pull
+
+            - name: Resolve registry, image and tag
+              id: img
+              run: |
+                  host="${GITHUB_SERVER_URL#*://}"
+                  repo=$(echo "$GITHUB_REPOSITORY" | tr '[:upper:]' '[:lower:]')
+                  echo "registry=$host" >> "$GITHUB_OUTPUT"
+                  echo "image=$host/$repo" >> "$GITHUB_OUTPUT"
+                  if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+                      env=prod
+                  else
+                      env=dev
+                  fi
+                  echo "tag=$env" >> "$GITHUB_OUTPUT"
+                  echo "version=$env-$(date -u +%Y%m%d-%H%M%S)-${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
+
+            - uses: docker/login-action@v3
+              with:
+                  registry: ${{ steps.img.outputs.registry }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.REGISTRY_TOKEN }}
+
+            - uses: docker/build-push-action@v6
+              with:
+                  context: .
+                  push: true
+                  tags: |
+                      ${{ steps.img.outputs.image }}:${{ steps.img.outputs.tag }}
+                      ${{ steps.img.outputs.image }}:${{ steps.img.outputs.version }}
+
+    deploy-dev:
+        needs: build
         if: github.ref == 'refs/heads/dev'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            # TODO: deploy to the dev server (e.g. build+push image, ssh + docker compose up).
-            - run: echo "Deploying to DEV server..."
+            - name: Trigger dev deploy
+              run: |
+                  curl -fsS --max-time 600 -X POST \
+                      -H "X-Deploy-Token: ${{ secrets.DEV_DEPLOY_TOKEN }}" \
+                      "${{ secrets.DEV_DEPLOY_HOOK_URL }}"
 
     deploy-prod:
-        needs: test
+        needs: build
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            # TODO: deploy to the production server.
-            - run: echo "Deploying to PRODUCTION server..."
+            - name: Trigger prod deploy
+              run: |
+                  curl -fsS --max-time 600 -X POST \
+                      -H "X-Deploy-Token: ${{ secrets.PROD_DEPLOY_TOKEN }}" \
+                      "${{ secrets.PROD_DEPLOY_HOOK_URL }}"

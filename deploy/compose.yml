@@ -1,0 +1,43 @@
+# App stack for one environment. Committed template — no secrets live here.
+# Real values come from a .env file that sits next to this one on the server
+# only (gitignored). Compose reads that same .env for ${...} interpolation.
+services:
+    app:
+        image: ${IMAGE_NAME}:${IMAGE_TAG}
+        restart: unless-stopped
+        env_file: .env
+        ports:
+            - '${APP_PORT}:3000'
+        volumes:
+            - ${DATA_DIR}:/data
+
+    # Optional analytics — started only with `docker compose --profile analytics up -d`.
+    umami:
+        image: ghcr.io/umami-software/umami:postgresql-latest
+        restart: unless-stopped
+        profiles: [analytics]
+        environment:
+            DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD}@umami-db:5432/umami
+            DATABASE_TYPE: postgresql
+            APP_SECRET: ${UMAMI_APP_SECRET}
+        ports:
+            - '${UMAMI_PORT:-3001}:3000'
+        depends_on:
+            umami-db:
+                condition: service_healthy
+
+    umami-db:
+        image: postgres:17-alpine
+        restart: unless-stopped
+        profiles: [analytics]
+        environment:
+            POSTGRES_DB: umami
+            POSTGRES_USER: umami
+            POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD}
+        volumes:
+            - ${UMAMI_DB_DIR:-/srv/hcss/umami-db}:/var/lib/postgresql/data
+        healthcheck:
+            test: ['CMD-SHELL', 'pg_isready -U umami']
+            interval: 10s
+            timeout: 5s
+            retries: 5

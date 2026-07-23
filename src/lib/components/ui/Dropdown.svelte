@@ -21,6 +21,7 @@
 		disabled?: boolean;
 		searchable?: boolean;
 		searchPlaceholder?: string;
+		onchange?: () => void;
 	}
 
 	let {
@@ -30,7 +31,8 @@
 		placeholder,
 		disabled,
 		searchable,
-		searchPlaceholder
+		searchPlaceholder,
+		onchange
 	}: Props = $props();
 
 	const NO_ACTIVE_INDEX = -1;
@@ -48,9 +50,7 @@
 	let listEl = $state<HTMLUListElement>();
 	let searchEl = $state<HTMLInputElement>();
 
-	// Reorder so options sharing a group are contiguous (first-appearance order,
-	// stable within a group). `rows` emits one header per group change, so this
-	// guarantees a single header per group regardless of the caller's ordering.
+	// Reorder so options sharing a group are contiguous
 	const orderedOptions = $derived.by(() => {
 		const order: string[] = [];
 		const buckets = new SvelteMap<string, DropdownOption[]>();
@@ -77,8 +77,7 @@
 
 	const isPlaceholder = $derived(!value);
 
-	// An option matches if its own label matches, or its group (event name) does —
-	// so searching an event name surfaces every media item belonging to it.
+	// Searching an event name surfaces every media item belonging to it
 	const matches = $derived.by(() => {
 		const q = query.trim().toLowerCase();
 		return items.filter((item) => {
@@ -115,8 +114,6 @@
 		if (disabled) return;
 		open = true;
 		query = '';
-		// query is now empty, so `matches` equals `items`; index against `items`
-		// directly rather than depending on the derived recomputing in time.
 		activeIndex = Math.max(
 			0,
 			items.findIndex((item) => item.value === value)
@@ -138,7 +135,9 @@
 	function selectIndex(index: number) {
 		const item = matches[index];
 		if (!item) return;
+		const changed = item.value !== value;
 		value = item.value;
+		if (changed) onchange?.();
 		closeList();
 	}
 
@@ -195,7 +194,7 @@
 		}
 	}
 
-	// Outside-click dismissal: bound once per open, not on every keystroke.
+	// Outside-click dismissal
 	$effect(() => {
 		if (!open) return;
 

@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
+	import { env } from '$env/dynamic/public';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import Up from '$lib/components/layout/Up.svelte';
@@ -7,13 +10,31 @@
 	const { children, data } = $props();
 	const isLoggedIn = $derived(Boolean(data.user));
 
-	const items: NavbarItem[] = [
+	const umamiSrc = env.PUBLIC_UMAMI_SRC;
+	const umamiWebsiteId = env.PUBLIC_UMAMI_WEBSITE_ID;
+
+	const mainItems: NavbarItem[] = [
 		{ id: 1, title: 'Über uns', href: '#ueberuns' },
 		{ id: 2, title: 'Angebote', href: '#angebote' },
 		{ id: 3, title: 'Impressionen', href: '#impressionen' },
 		{ id: 4, title: 'Veranstaltungen', href: '#veranstaltungen' }
 	];
+
+	const legalItems: NavbarItem[] = [
+		{ id: 1, title: 'Startseite', href: resolve('/') },
+		{ id: 2, title: 'Impressum', href: resolve('/impressum') },
+		{ id: 3, title: 'Datenschutz', href: resolve('/datenschutz') }
+	];
+
+	const legalPaths = ['/impressum', '/datenschutz'];
+	const items = $derived(legalPaths.includes(page.url.pathname) ? legalItems : mainItems);
 </script>
+
+<svelte:head>
+	{#if umamiSrc && umamiWebsiteId}
+		<script defer src={umamiSrc} data-website-id={umamiWebsiteId}></script>
+	{/if}
+</svelte:head>
 
 <div class="flex min-h-screen flex-col">
 	<a

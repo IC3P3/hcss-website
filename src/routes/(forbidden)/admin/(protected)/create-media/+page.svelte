@@ -1,21 +1,28 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import Dropdown, { type DropdownOption } from '$lib/components/ui/Dropdown.svelte';
+	import LeaveGuard from '$lib/components/ui/LeaveGuard.svelte';
+	import Toast from '$lib/components/ui/Toast.svelte';
 
 	const { data, form } = $props();
 
 	let submitting = $state(false);
-	let showMessage = $state(false);
 	let previewImg = $state<string | null>(null);
+	let selectedEvent = $state('');
+	let dirty = $state(false);
 
-	const FIVE_SECONDS_IN_MS = 5000;
-
-	$effect(() => {
-		if (form) {
-			showMessage = true;
-			const timeout = setTimeout(() => (showMessage = false), FIVE_SECONDS_IN_MS);
-			return () => clearTimeout(timeout);
-		}
+	const dateFormat = new Intl.DateTimeFormat('de-DE', {
+		day: '2-digit',
+		month: '2-digit',
+		year: 'numeric'
 	});
+
+	const eventOptions = $derived<DropdownOption[]>(
+		data.events.map((e) => ({
+			value: String(e.id),
+			label: e.date ? `${e.title} - ${dateFormat.format(e.date)}` : e.title
+		}))
+	);
 
 	function onFileChange(e: Event) {
 		const input = e.target as HTMLInputElement;
@@ -31,28 +38,30 @@
 	}
 </script>
 
+<LeaveGuard when={dirty} />
+<Toast {form} />
+
 <div class="mx-auto max-w-7xl px-4 py-10">
-	<div class="flex gap-8">
+	<div class="flex flex-col gap-8 lg:flex-row">
 		<form
-			class="flex w-1/2 flex-col gap-4 p-8"
+			class="flex w-full flex-col gap-4 p-8 lg:w-1/2"
 			method="POST"
 			enctype="multipart/form-data"
+			oninput={() => (dirty = true)}
 			use:enhance={() => {
 				submitting = true;
 				return ({ update, result }) => {
 					submitting = false;
-					if (result.type === 'success') previewImg = null;
+					if (result.type === 'success') {
+						previewImg = null;
+						selectedEvent = '';
+						dirty = false;
+					}
 					return update({ reset: result.type === 'success' });
 				};
 			}}
 		>
 			<h1 class="text-2xl font-semibold">Impression erstellen</h1>
-
-			{#if showMessage && form?.error}
-				<p class="text-sm text-red-600">{form.error}</p>
-			{:else if showMessage && form?.success}
-				<p class="text-sm text-green-600">{form.success}</p>
-			{/if}
 
 			<div class="flex flex-col gap-1">
 				<label for="title" class="text-sm font-medium">Titel</label>
@@ -75,40 +84,28 @@
 			</div>
 
 			<div class="flex flex-col gap-1">
-				<label for="media" class="text-sm font-medium">Bild (WebP)</label>
+				<label for="media" class="text-sm font-medium">Bild</label>
 				<input
 					type="file"
 					onchange={onFileChange}
 					id="media"
 					name="media"
-					accept="image/webp"
+					accept="image/*"
 					required
 					class="rounded border px-3 py-2"
 				/>
 			</div>
 
 			<div class="flex flex-col gap-1">
-				<label for="event" class="text-sm font-medium">Veranstaltung</label>
-				<select
-					id="event"
+				<span class="text-sm font-medium">Veranstaltung</span>
+				<Dropdown
 					name="event"
-					class="rounded border px-3 py-2 focus:ring-2 focus:ring-hcss-primary-700 focus:outline-none"
-				>
-					<option value="">Keine</option>
-					{#each data.events as event (event.id)}
-						<option value={event.id}
-							>{`${event.title}${
-								event.date
-									? ` - ${new Intl.DateTimeFormat('de-DE', {
-											day: '2-digit',
-											month: '2-digit',
-											year: 'numeric'
-										}).format(event.date)}`
-									: ''
-							}`}</option
-						>
-					{/each}
-				</select>
+					bind:value={selectedEvent}
+					options={eventOptions}
+					placeholder="Keine"
+					searchable
+					onchange={() => (dirty = true)}
+				/>
 			</div>
 
 			<button
@@ -121,7 +118,7 @@
 		</form>
 
 		<div
-			class="flex w-1/2 items-center justify-center self-stretch rounded-lg border-2 border-dashed border-gray-300 bg-gray-50"
+			class="flex min-h-64 w-full items-center justify-center self-stretch rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 lg:min-h-0 lg:w-1/2"
 		>
 			{#if previewImg}
 				<img
