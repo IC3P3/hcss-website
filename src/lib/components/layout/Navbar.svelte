@@ -47,6 +47,7 @@
 
 	$effect(() => {
 		// Re-run on navigation so the observer re-attaches to the current page's sections
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		page.url.pathname;
 
 		const sections = document.querySelectorAll('section[id]');
