@@ -85,10 +85,7 @@ export const actions = {
 async function uploadFile(file: File): Promise<string | null> {
 	let buffer = Buffer.from(await file.arrayBuffer());
 
-	buffer = await sharp(buffer)
-		.webp({ quality: 82, effort: 6 })
-		.resize({ width: 2160, withoutEnlargement: true })
-		.toBuffer();
+	buffer = await sharp(buffer).webp({ nearLossless: true }).toBuffer();
 
 	const filename = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}.webp`;
 
