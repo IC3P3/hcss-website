@@ -12,7 +12,7 @@ jobs:
         env:
             DATABASE_URL: e2e-test.db
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
 
             - name: Fetch LFS objects
               # checkout's auth header 401s against Forgejo's LFS endpoint, which
@@ -66,7 +66,7 @@ jobs:
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
 
             - name: Fetch LFS objects
               # checkout's auth header 401s against Forgejo's LFS endpoint, which
