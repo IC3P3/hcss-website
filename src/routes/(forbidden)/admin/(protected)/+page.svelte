@@ -16,7 +16,7 @@
 	<h1 class="mb-8 text-3xl font-bold text-hcss-primary-950">Administrationsbereich</h1>
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		<div class="flex flex-col gap-2 rounded-lg bg-white p-6 shadow">
-			<h2 class="text-xl font-semibold text-gray-900">Medien</h2>
+			<h2 class="text-xl font-semibold text-gray-900">Impressionen</h2>
 			<p class="mb-4 grow text-sm text-gray-500">
 				{stats.mediaTotal}
 				{stats.mediaTotal === 1 ? 'Impression' : 'Impressionen'}{stats.mediaUnassigned > 0
