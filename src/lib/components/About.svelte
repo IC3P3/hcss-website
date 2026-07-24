@@ -21,7 +21,7 @@
 		/>Generationen von Jungen, ganz unabhängig von einem möglichen gesellschaftlichen Status,
 		durchliefen seine Schule, sangen und entwickelten sich zu mündigen Erwachsenen mit Werten.
 		Jahre lang leitete Helfrid Israel den Helmstedter Knabenchor äußerst erfolgreich, führte ihn
-		von Konzert zu Konzert, und das weit über die Stadt- und Kreisgrenzen hinaus.Doch die Zeit
+		von Konzert zu Konzert, und das weit über die Stadt- und Kreisgrenzen hinaus. Doch die Zeit
 		reiner Knabenchöre neigte sich gerade im ländlichen Bereich ihrem Ende zu. In dieser Zeit
 		übernahm Stefan PD Runge 1995 die Leitung des Chores. Ein neues Kapitel der
 		Erfolgsgeschichte begann. Der Neue, ein ausgewiesener Chorexperte, baute den Knabenchor um,
