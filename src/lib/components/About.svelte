@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Logo from '$lib/assets/logo.webp';
+	import AboutImg from '$lib/assets/ueberuns.webp';
 </script>
 
 <section id="ueberuns" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
@@ -27,11 +28,7 @@
 			freuen uns auf dich. Die Lage des Chorstudios in Helmstedt ist geradezu als
 			Ausgangspunkt für außerchorische Aktivitäten prädestiniert.
 		</p>
-		<img
-			class="mx-auto self-center rounded-lg"
-			src="http://localhost:5173/upload/1783247466883-Test.webp"
-			alt="Placeholder"
-		/>
+		<img class="mx-auto self-center rounded-lg" src={AboutImg} alt="Placeholder" />
 		<p class="text-justify font-light text-gray-600">
 			Choristenleben ist vielfältig und voller Abenteuer. Im Vordergrund steht aber immer das
 			gemeinsame Singen. So sind wir eben. Die Proben des Chores und die
