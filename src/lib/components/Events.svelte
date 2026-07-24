@@ -74,7 +74,7 @@
 				<div class="mt-6 flex justify-center">
 					<SocialMedia
 						color="text-hcss-primary-950"
-						hoverColor="hover:text-hcss-primary-700"
+						hoverColor="hover:text-hcss-secondary"
 					/>
 				</div>
 			</div>
