@@ -3,57 +3,19 @@
 </script>
 
 <section id="ueberuns" class="mx-auto w-full max-w-7xl justify-center p-4 py-6 text-center lg:py-8">
-	<h2 class="text-4xl font-extrabold text-hcss-primary-950">
-		Das sind wir - ein kleiner Rückblick
-	</h2>
+	<h2 class="text-4xl font-extrabold text-hcss-primary-950">Das sind wir</h2>
 
 	<!-- TODO: Add images -->
 	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-	<p class="mx-auto max-w-3xl text-justify font-light text-gray-600">
-		Sie ist eine Institution in Helmstedt, die Helmstedter Chor- und Singschule mit ihrem
-		Konzertchor. Ihren Ursprung hat sie in den Helmstedter Chorknaben, 1970 vom Kinderarzt
-		Helfrid Israel gegründet. Israel sah den gesanglich-musikalischen Erfolg eng mit einem
-		jugendpflegerischen Auftrag verbunden. Musik als Gesundheitsaspekt - mit diesem Ansatz war
-		der Kinderarzt aus Helmstedt seiner Zeit weit voraus.<img
-			class="my-4 aspect-video w-full rounded-lg object-cover md:float-right md:my-2 md:ml-8 md:w-2/5"
-			src="http://localhost:5173/upload/1783444895191-Der_Antrag.webp"
-			alt="Placeholder"
-		/>Generationen von Jungen, ganz unabhängig von einem möglichen gesellschaftlichen Status,
-		durchliefen seine Schule, sangen und entwickelten sich zu mündigen Erwachsenen mit Werten.
-		Jahre lang leitete Helfrid Israel den Helmstedter Knabenchor äußerst erfolgreich, führte ihn
-		von Konzert zu Konzert, und das weit über die Stadt- und Kreisgrenzen hinaus. Doch die Zeit
-		reiner Knabenchöre neigte sich gerade im ländlichen Bereich ihrem Ende zu. In dieser Zeit
-		übernahm Stefan PD Runge 1995 die Leitung des Chores. Ein neues Kapitel der
-		Erfolgsgeschichte begann. Der Neue, ein ausgewiesener Chorexperte, baute den Knabenchor um,
-		ließ Mädchen, Frauen und Männer zu. So entstand ein gemischter und
-		generationenübergreifender Chor, dessen Repertoire sich allein aus seiner Besetzung und
-		einem sich verändertem Anspruch heraus erweiterte.<img
-			class="my-4 aspect-video w-full rounded-lg object-cover md:float-left md:my-2 md:mr-8 md:w-2/5"
-			src="http://localhost:5173/upload/1783247466883-Test.webp"
-			alt="Placeholder"
-		/>Fortan ergaben sich neue Möglichkeiten. Und die zeigten sich dann auch schnell: Seit dem
-		ersten Auftritt im Rahmen einer Vesper in St. Marienberg ist der Chor nicht mehr aus dem
-		kulturellen Leben Helmstedts wegzudenken. Trotz der regionalen Verwurzelung ist der
-		Wirkungskreis des Chores nahezu unbegrenzt, wie zahlreiche Konzertreisen auch ins
-		europäische Ausland eindrucksvoll beweisen. Im Vordergrund stand und steht die musikalische
-		Ausgestaltung von Konzerten, Abendmusiken, Feiern und Gottesdiensten. Dabei reicht das
-		Repertoire vom schlichten Volkslied über weltliche und geistliche Werke aus verschiedenen
-		Jahrhunderten und Stilrichtungen bis zu den großen Oratorien. Neben den traditionellen
-		Werken wird das Repertoire seit einigen Jahren immer wieder um diverse zeitlose Stücke
-		erweitert.<img
-			class="my-4 aspect-video w-full rounded-lg object-cover md:float-right md:my-2 md:ml-8 md:w-2/5"
-			src="http://localhost:5173/upload/1783247466883-Test.webp"
-			alt="Placeholder"
-		/>So die Operette "Im weißen Rössl", die Opern "Dido and Aeneas", "Brundibar" und "Amahl and
-		the nightvisitors". Inzwischen widmet sich der Chor auch Musicals und zeitlosen Pop- wie
-		Rocksongs. Übrigens: Mit der Zeit sind diverse LP, das waren mal Langspielplatten, wie auch
-		CD-Aufnahmen entstanden.
+	<p class="mx-auto my-8 max-w-7xl text-justify font-light text-gray-600">
+		Sie ist eine Institution in Helmstedt und weiter Umgebung, die Helmstedter Chor- und
+		Singschule mit ihrem Konzertchor. Ihren Ursprung hat sie in den Helmstedter Chorknaben, 1970
+		vom Kinderarzt Helfrid Israel gegründet. Eine einzige Erfolgsgeschichte, sah Israel den
+		gesanglich-musikalischen Erfolg doch eng mit einem jugendpflegerischen Auftrag verbunden.
+		Tiefere Einblicke in die Geschichte des Chores und der Chor- und Singschule gibt es in
+		unserer Chronik.
 	</p>
 
-	<h2 class="clear-both pt-6 text-4xl font-extrabold text-hcss-primary-950 lg:pt-8">
-		Das sind wir - heute
-	</h2>
-	<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 	<div class="grid grid-cols-1 items-start gap-8 xl:grid-cols-3">
 		<p class="text-justify font-light text-gray-600">
 			Heute sind wir ein gemischter Chor mit allen üblichen Stimmen. Unsere Gemeinschaft
