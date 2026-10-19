@@ -1,4 +1,4 @@
 [tools]
-"npm:pnpm" = "11.28.4"
+"npm:pnpm" = "11.28.5"
 node = "24.21.0"
 sqlite = "latest"
