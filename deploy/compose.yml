@@ -27,7 +27,7 @@ services:
                 condition: service_healthy
 
     umami-db:
-        image: postgres:17-alpine@sha256:742f40ea20b9ff2ff31db5458d127452988a2164df9e17441e191f3b72252193
+        image: postgres:17-alpine@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac
         restart: unless-stopped
         profiles: [analytics]
         environment:
