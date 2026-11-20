@@ -24,11 +24,11 @@ jobs:
 
             - uses: actions/setup-node@v6
               with:
-                  node-version: 24.22.2
+                  node-version: 24.22.3
 
             - uses: pnpm/action-setup@v6
               with:
-                  version: 11.28.11
+                  version: 11.28.12
 
             - run: pnpm install --frozen-lockfile
 
